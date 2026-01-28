@@ -21,6 +21,13 @@
             "email": "yasodhav@eng.pdn.ac.lk"
         }
     ],
+    "media": [
+        {
+            "type": "youtube",
+            "title": "",
+            "url": "#"
+        }
+    ],
     
     "tags": ["Final Year Projects","MultiAgentSystem","AI"],
     "image":"cover_page.jpg",
