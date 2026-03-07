@@ -35,7 +35,7 @@ def main():
         allow_dangerous_deserialization=True,
     )
 
-    query = "අධිකාරියේ සහාපතිවරයා සභ පූර්ණකාලීන සාමාජිකයන්‌ගේ ධුර කාලය කුමක්ද?"
+    query = "අධිකාරියේ අරමුණු කුමක්ද?"
     results = vectorstore.similarity_search(
         query=query,
         k=10,
