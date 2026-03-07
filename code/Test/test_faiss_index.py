@@ -35,7 +35,7 @@ def main():
         allow_dangerous_deserialization=True,
     )
 
-    query = "අධිකාරියේ අරමුණු කුමක්ද?"
+    query = "අධිකාරිය විසින්‌, පාරිභෝගිකයා ආරක්ෂා කරනු පිණිස~"
     results = vectorstore.similarity_search(
         query=query,
         k=10,

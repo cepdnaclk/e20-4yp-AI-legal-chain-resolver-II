@@ -156,6 +156,53 @@ def retrieve_chunks_bm25(
     return chunks
 
 
+def retrieve_chunks_title(
+    vectorstore: FAISS, query: str, top_k: int
+) -> List[RetrievedChunk]:
+    logging.info("Retrieving top %s title matches for query: %s", top_k, query)
+    doc_ids = list(vectorstore.index_to_docstore_id.values())
+    documents = []
+    for doc_id in doc_ids:
+        doc = vectorstore.docstore.search(doc_id)
+        if doc is not None:
+            documents.append(doc)
+
+    if not documents:
+        return []
+
+    query_terms = [term.lower() for term in tokenize(query)]
+    scored = []
+    for doc in documents:
+        metadata = doc.metadata or {}
+        title = (metadata.get("section_title") or "").lower()
+        if not title:
+            scored.append((0, doc))
+            continue
+        score = 0
+        for term in query_terms:
+            if term and term in title:
+                score += 1
+        scored.append((score, doc))
+
+    ranked = sorted(scored, key=lambda item: item[0], reverse=True)
+    chunks = []
+    for score, doc in ranked[:top_k]:
+        metadata = doc.metadata or {}
+        chunks.append(
+            RetrievedChunk(
+                content=doc.page_content,
+                source=metadata.get("source", "unknown"),
+                section_number=metadata.get("section_number"),
+                section_title=metadata.get("section_title"),
+                subsection_number=metadata.get("subsection_number"),
+                act=metadata.get("act"),
+                method="title",
+                score=float(score),
+            )
+        )
+    return chunks
+
+
 def build_prompt(query: str, chunks: List[RetrievedChunk]) -> str:
     logging.info("Building prompt with %s retrieved chunks", len(chunks))
     context_blocks = []
@@ -228,18 +275,20 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> None:
     args = parse_args()
-    query = "අධිකාරියේ අරමුණු කුමක්ද?" if not args.query else args.query
+    query = "අධිකාරිය පාරිභෝකකියා ආරක්ෂා කරන වගන්තිය කුමක්ද?" if not args.query else args.query
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
     repo_root = Path(__file__).resolve().parents[1]
     logging.info("Repo root: %s", repo_root)
     vectorstore = load_vectorstore(repo_root)
     faiss_chunks = retrieve_chunks_faiss(vectorstore, query, args.top_k)
     bm25_chunks = retrieve_chunks_bm25(vectorstore, query, args.top_k)
-    chunks = faiss_chunks + bm25_chunks
+    title_chunks = retrieve_chunks_title(vectorstore, query, args.top_k)
+    chunks = faiss_chunks + bm25_chunks + title_chunks
     logging.info(
-        "Retrieved %s FAISS chunks and %s BM25 chunks",
+        "Retrieved %s FAISS chunks, %s BM25 chunks, and %s title chunks",
         len(faiss_chunks),
         len(bm25_chunks),
+        len(title_chunks),
     )
     print("\nRetrieved chunks:\n")
     for idx, chunk in enumerate(chunks, start=1):
