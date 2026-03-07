@@ -86,7 +86,7 @@ def build_chunks(text, chunk_size, chunk_overlap, separators=None):
     return splitter.split_text(text)
 
 
-def chunk_text(text, chunk_size=300, chunk_overlap=20, separators=None):
+def chunk_text(text, chunk_size=500, chunk_overlap=50, separators=None):
     chunks = []
     for section in iter_sections(text):
         chunks.extend(
