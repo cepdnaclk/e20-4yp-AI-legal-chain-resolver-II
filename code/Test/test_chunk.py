@@ -51,13 +51,13 @@ def main() -> None:
                 chunk_index += 1
                 handle.write(
                     "--- chunk {idx} (len={length}) | "
-                    "section={section_number} | title={section_title} | "
-                    "header={section_header} ---\n".format(
+                    "section={section_number} | subsection={subsection_number} | "
+                    "title={section_title} ---\n".format(
                         idx=chunk_index,
                         length=len(chunk),
                         section_number=section["number"],
+                        subsection_number=section.get("subsection_number"),
                         section_title=section["title"],
-                        section_header=section["header_line"],
                     )
                 )
                 handle.write(chunk.strip() + "\n\n")

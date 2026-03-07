@@ -19,7 +19,7 @@ class SentenceTransformerEmbeddings(Embeddings):
 def main():
     repo_root = Path(__file__).resolve().parents[1]
     model_path = repo_root / "Models" / "Embedding" / "sin_bert_finetuned_model"
-    index_dir = repo_root / "Data" / "Indexes" / "bills_of_exchange_2025_index"
+    index_dir = repo_root / "Data" / "Indexes" / "commercial_law_faiss_index"
 
     if not model_path.exists():
         raise FileNotFoundError(f"Model not found: {model_path}")
@@ -35,10 +35,10 @@ def main():
         allow_dangerous_deserialization=True,
     )
 
-    query = "බැංකුකරු යනු කවුද?"
+    query = "අධිකාරියේ සහාපතිවරයා සභ පූර්ණකාලීන සාමාජිකයන්‌ගේ ධුර කාලය කුමක්ද?"
     results = vectorstore.similarity_search(
         query=query,
-        k=5,
+        k=10,
     )
 
     for i, doc in enumerate(results, start=1):

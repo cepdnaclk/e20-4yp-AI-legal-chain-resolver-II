@@ -2,9 +2,13 @@ import re
 
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
-DEFAULT_SEPARATORS = ["\n\n", ".", "\n", " ", ""]
+DEFAULT_SEPARATORS = ["\n\n", "\n", ".", " ", ""]
 SECTION_PATTERN = re.compile(
     r"^\s*(?P<num>\d+)\.\s*(?P<title>[^\n]{0,200})",
+    flags=re.MULTILINE,
+)
+SUBSECTION_PATTERN = re.compile(
+    r"^\s*\((?P<num>\d+)\)\s*",
     flags=re.MULTILINE,
 )
 
@@ -15,7 +19,7 @@ def iter_sections(text):
         yield {
             "number": None,
             "title": None,
-            "header_line": None,
+            "subsection_number": None,
             "content": text,
         }
         return
@@ -23,19 +27,46 @@ def iter_sections(text):
     for idx, match in enumerate(matches):
         start = match.start()
         end = matches[idx + 1].start() if idx + 1 < len(matches) else len(text)
-        line_end = text.find("\n", start)
-        if line_end == -1:
-            line_end = len(text)
-        header_line = text[start:line_end].strip()
         title = match.group("title").strip()
+        subsection_in_title = SUBSECTION_PATTERN.match(title)
+        if subsection_in_title:
+            title = title[subsection_in_title.end():].strip()
         number = match.group("num").strip()
         content = text[start:end].strip()
-        yield {
-            "number": number,
-            "title": title,
-            "header_line": header_line,
-            "content": content,
-        }
+        subsections = list(SUBSECTION_PATTERN.finditer(content))
+        if not subsections:
+            yield {
+                "number": number,
+                "title": title,
+                "subsection_number": None,
+                "content": content,
+            }
+            continue
+
+        prefix = content[:subsections[0].start()].strip()
+        if prefix and prefix not in {number, f"{number}."}:
+            yield {
+                "number": number,
+                "title": title,
+                "subsection_number": None,
+                "content": prefix,
+            }
+
+        for sub_idx, submatch in enumerate(subsections):
+            sub_start = submatch.start()
+            sub_end = (
+                subsections[sub_idx + 1].start()
+                if sub_idx + 1 < len(subsections)
+                else len(content)
+            )
+            sub_number = submatch.group("num").strip()
+            sub_content = content[sub_start:sub_end].strip()
+            yield {
+                "number": number,
+                "title": title,
+                "subsection_number": sub_number,
+                "content": sub_content,
+            }
 
 
 def build_text_splitter(chunk_size, chunk_overlap, separators=None):

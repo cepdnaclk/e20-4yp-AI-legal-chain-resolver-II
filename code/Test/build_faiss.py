@@ -20,7 +20,6 @@ class SentenceTransformerEmbeddings(Embeddings):
 def main():
     repo_root = Path(__file__).resolve().parents[1]
     text_file_path = repo_root/"Data/Acts/Text"
-    act_name = "2003 අංක 9  පාරිභෝගික කටයුතු පිළිබඳ අධිකාරිය පනත"
 
     files = [f for f in text_file_path.glob("**/*.txt") if f.is_file()]
 
@@ -35,7 +34,7 @@ def main():
     print(f"You selected: {selected_file}")
     text_path = files[choice - 1]
     model_path = repo_root / "Models" / "Embedding" / "sin_bert_finetuned_model"
-    output_dir = repo_root / "Data" / "Indexes" / "commercial_law_faiss_index"
+    output_dir = repo_root / "Data" / "Indexes" / f"{selected_file.strip('.txt')}_index"
 
     print(output_dir)
 
@@ -61,31 +60,21 @@ def main():
                     page_content=chunk,
                     metadata={
                         "source": text_path.stem,
-                        "act": act_name,
                         "section_number": section["number"],
                         "section_title": section["title"],
-                        "subsection_number": section.get("subsection_number"),
                     },
                 )
             )
     
-    print("Model and text loaded, creating or updating FAISS index...")
+    print("Model and text loaded, creating FAISS index...")
     model = SentenceTransformer(str(model_path))
     embedding = SentenceTransformerEmbeddings(model)
 
     output_dir.parent.mkdir(parents=True, exist_ok=True)
-    if output_dir.exists():
-        vectorstore = FAISS.load_local(
-            str(output_dir),
-            embedding,
-            allow_dangerous_deserialization=True,
-        )
-        vectorstore.add_documents(documents)
-    else:
-        vectorstore = FAISS.from_documents(
-            documents=documents,
-            embedding=embedding,
-        )
+    vectorstore = FAISS.from_documents(
+        documents=documents,
+        embedding=embedding,
+    )
     vectorstore.save_local(str(output_dir))
 
     print(f"Saved FAISS index to {output_dir}")

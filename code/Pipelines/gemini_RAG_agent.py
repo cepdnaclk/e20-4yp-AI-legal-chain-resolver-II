@@ -28,12 +28,11 @@ class RetrievedChunk:
     source: str
     section_number: str | None
     section_title: str | None
-    section_header: str | None
 
 
 def load_vectorstore(repo_root: Path) -> FAISS:
     model_path = repo_root / "Models" / "Embedding" / "sin_bert_finetuned_model"
-    index_dir = repo_root / "Data" / "Indexes" / "bills_of_exchange_2025_index"
+    index_dir = repo_root / "Data" / "Indexes" / "commercial_law_faiss_index"
 
     if not model_path.exists():
         raise FileNotFoundError(f"Model not found: {model_path}")
@@ -65,7 +64,6 @@ def retrieve_chunks(vectorstore: FAISS, query: str, top_k: int) -> List[Retrieve
                 source=source,
                 section_number=metadata.get("section_number"),
                 section_title=metadata.get("section_title"),
-                section_header=metadata.get("section_header"),
             )
         )
     return chunks
@@ -77,13 +75,12 @@ def build_prompt(query: str, chunks: List[RetrievedChunk]) -> str:
     for idx, chunk in enumerate(chunks, start=1):
         context_blocks.append(
             "[Context {idx} | source: {source} | "
-            "section: {section_number} | title: {section_title} | header: {section_header}]\n"
+            "section: {section_number} | title: {section_title}]\n"
             "{content}".format(
                 idx=idx,
                 source=chunk.source,
                 section_number=chunk.section_number,
                 section_title=chunk.section_title,
-                section_header=chunk.section_header,
                 content=chunk.content,
             )
         )
@@ -141,7 +138,7 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> None:
     args = parse_args()
-    query = "අණකරුගේ ගිණුමේ මුදල් ප්‍රමාණවත් නොවීම හේතුවෙන් නොගෙවා ආපසු එවන ලද චෙක්පතක් සම්බන්ධයෙන්, ආදායකයා හෝ යථා කාල ධාරකයා විසින් නීති කෘත්‍යයක් ආරම්භ කළ හැකි කාලසීමාව කුමක්ද?"
+    query = "අධිකාරියේ සහාපතිවරයා සභ පූර්ණකාලීන සාමාජිකයන්‌ගේ ධුර කාලය කුමක්ද?"
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
     repo_root = Path(__file__).resolve().parents[1]
     logging.info("Repo root: %s", repo_root)
@@ -152,12 +149,11 @@ def main() -> None:
     for idx, chunk in enumerate(chunks, start=1):
         print(
             "[Chunk {idx} | source: {source} | section: {section_number} | "
-            "title: {section_title} | header: {section_header}]\n{content}\n".format(
+            "title: {section_title}]\n{content}\n".format(
                 idx=idx,
                 source=chunk.source,
                 section_number=chunk.section_number,
                 section_title=chunk.section_title,
-                section_header=chunk.section_header,
                 content=chunk.content,
             )
         )
