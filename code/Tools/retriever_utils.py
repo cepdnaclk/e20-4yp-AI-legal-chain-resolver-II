@@ -1,4 +1,3 @@
-import argparse
 from dataclasses import dataclass
 import logging
 import math
@@ -206,6 +205,7 @@ def retrieve_chunks_title(
         )
     ]
 
+
 def retrieve_chunks_by_section(
     vectorstore: FAISS, section_number: str
 ) -> List[RetrievedChunk]:
@@ -250,35 +250,7 @@ def retrieve_chunks_by_section(
         )
     ]
 
-def build_prompt(query: str, chunks: List[RetrievedChunk]) -> str:
-    logging.info("Building prompt with %s retrieved chunks", len(chunks))
-    context_blocks = []
-    for idx, chunk in enumerate(chunks, start=1):
-        context_blocks.append(
-            "[Context {idx} | method: {method} | source: {source} | "
-            "section: {section_number} | subsection: {subsection_number} | "
-            "title: {section_title}]\n"
-            "{content}".format(
-                idx=idx,
-                method=chunk.method,
-                source=chunk.source,
-                section_number=chunk.section_number,
-                subsection_number=chunk.subsection_number,
-                section_title=chunk.section_title,
-                content=chunk.content,
-            )
-        )
 
-    context_text = "\n\n".join(context_blocks)
-    return (
-        "You are a legal assistant. Answer the user question using only the context.\n"
-        "If the context is insufficient, say you do not have enough information.\n"
-        "When you use a chunk, cite it by its source/section metadata if provided.\n"
-        "There might be multiple relevant chunks; you can use information from all of them, but dont use unrelated chunks. \n"
-        "Use short citations like [source=..., section=..., rule=...].\n\n"
-        f"Question:\n{query}\n\n"
-        f"Context:\n{context_text}"
-    )
 
 
 def rerank_chunks(
@@ -309,97 +281,4 @@ def deduplicate_chunks(chunks: List[RetrievedChunk]) -> List[RetrievedChunk]:
     return unique_chunks
 
 
-def call_gemini(prompt: str, model_name: str) -> str:
-    logging.info("Calling Gemini model %s", model_name)
-    try:
-        import google.generativeai as genai
-    except ImportError as exc:
-        raise ImportError(
-            "google-generativeai is not installed. Install it with "
-            "`pip install google-generativeai`."
-        ) from exc
 
-    load_dotenv()
-    api_key = os.environ.get("GEMINI_API_KEY")
-    if not api_key:
-        raise EnvironmentError("Missing GEMINI_API_KEY environment variable.")
-
-    genai.configure(api_key=api_key)
-    model = genai.GenerativeModel(model_name)
-    logging.info("Sending prompt to Gemini (chars=%s)", len(prompt))
-    response = model.generate_content(prompt)
-    if not response or not response.text:
-        return "No response text returned from Gemini."
-    return response.text.strip()
-
-
-def parse_args() -> argparse.Namespace:
-    query_default = ""
-    parser = argparse.ArgumentParser(
-        description="Retrieve FAISS chunks and answer with Gemini."
-    )
-    parser.add_argument("--query", default=query_default, help="User query to answer.")
-    parser.add_argument("--top-k", type=int, default=5, help="Number of chunks to retrieve.")
-    parser.add_argument("--act", default=None, help="Act name to retrieve by.")
-    parser.add_argument(
-        "--section",
-        default=None,
-        help="Section number to retrieve by (requires --act or can be standalone).",
-    )
-    parser.add_argument(
-        "--model-name",
-        default=os.environ.get("GEMINI_MODEL", "gemini-2.5-flash"),
-        help="Gemini model name (or set GEMINI_MODEL).",
-    )
-    return parser.parse_args()
-
-
-def main() -> None:
-    args = parse_args()
-    query = "විකුණවෙළෙනදකු විසින්‌ ගැනුමිකරුවකු ඉල්ලා සිටින විට " if not args.query else args.query
-    logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
-    repo_root = Path(__file__).resolve().parents[1]
-    logging.info("Repo root: %s", repo_root)
-    vectorstore, _embedding_model = load_vectorstore(repo_root)
-    faiss_chunks = retrieve_chunks_faiss(vectorstore, query, args.top_k)
-    bm25_chunks = retrieve_chunks_bm25(vectorstore, query, args.top_k)
-    title_chunks = retrieve_chunks_title(vectorstore, args.act, args.section)
-    chunks = faiss_chunks + bm25_chunks + title_chunks
-    unique_chunks = deduplicate_chunks(chunks)
-    reranked_chunks = rerank_chunks(
-        query,
-        unique_chunks,
-        "cross-encoder/mmarco-mMiniLMv2-L12-H384-v1",
-        args.top_k,
-    )
-    logging.info(
-        "Retrieved %s FAISS chunks, %s BM25 chunks, and %s title chunks",
-        len(faiss_chunks),
-        len(bm25_chunks),
-        len(title_chunks),
-    )
-    logging.info("Deduplicated chunks: %s -> %s", len(chunks), len(unique_chunks))
-    print("\nRetrieved chunks:\n")
-    for idx, chunk in enumerate(reranked_chunks, start=1):
-        print(
-            "[Chunk {idx} | method: {method} | source: {source} | "
-            "section: {section_number} | subsection: {subsection_number} | "
-            "title: {section_title}]\n{content}\n".format(
-                idx=idx,
-                method=chunk.method,
-                source=chunk.source,
-                section_number=chunk.section_number,
-                subsection_number=chunk.subsection_number,
-                section_title=chunk.section_title,
-                content=chunk.content,
-            )
-        )
-    #prompt = build_prompt(query, reranked_chunks)
-    # answer = call_gemini(prompt, args.model_name)
-
-    # print("\nAnswer:\n")
-    # print(answer)
-
-
-if __name__ == "__main__":
-    main()
