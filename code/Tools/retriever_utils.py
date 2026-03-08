@@ -250,9 +250,6 @@ def retrieve_chunks_by_section(
         )
     ]
 
-
-
-
 def rerank_chunks(
     query: str, chunks: List[RetrievedChunk], model_name: str, top_k: int
 ) -> List[RetrievedChunk]:

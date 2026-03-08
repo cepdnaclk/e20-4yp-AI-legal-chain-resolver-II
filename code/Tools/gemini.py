@@ -2,7 +2,8 @@ import logging
 import os
 from pathlib import Path
 import sys
-from typing import List
+
+from dotenv import load_dotenv
 
 sys.path.append(str(Path(__file__).resolve().parents[1]))
 
