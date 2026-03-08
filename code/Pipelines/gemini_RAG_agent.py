@@ -304,7 +304,7 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> None:
     args = parse_args()
-    query = "විකුණනු ලබන යම්‌ භාණ්ඩයක්‌, ප්‍රමිති හා පිරිවිතරවලට අනුකූල නොවනේ නම්" if not args.query else args.query
+    query = "විකුණනු ලබන භාණ්ඩයක්‌ ප්‍රමිතියෙන් තොර නම් ගත හැකි පිය්වර මොනවාද?" if not args.query else args.query
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
     repo_root = Path(__file__).resolve().parents[1]
     logging.info("Repo root: %s", repo_root)
@@ -314,12 +314,12 @@ def main() -> None:
     title_chunks = retrieve_chunks_title(vectorstore, query, args.top_k)
     chunks = faiss_chunks + bm25_chunks + title_chunks
     unique_chunks = deduplicate_chunks(chunks)
-    reranked_chunks = rerank_chunks(
-        query,
-        unique_chunks,
-        "cross-encoder/mmarco-mMiniLMv2-L12-H384-v1",
-        args.top_k,
-    )
+    # reranked_chunks = rerank_chunks(
+    #     query,
+    #     unique_chunks,
+    #     "cross-encoder/mmarco-mMiniLMv2-L12-H384-v1",
+    #     args.top_k,
+    # )
     logging.info(
         "Retrieved %s FAISS chunks, %s BM25 chunks, and %s title chunks",
         len(faiss_chunks),
@@ -328,7 +328,7 @@ def main() -> None:
     )
     logging.info("Deduplicated chunks: %s -> %s", len(chunks), len(unique_chunks))
     print("\nRetrieved chunks:\n")
-    for idx, chunk in enumerate(reranked_chunks, start=1):
+    for idx, chunk in enumerate(chunks, start=1):
         print(
             "[Chunk {idx} | method: {method} | source: {source} | "
             "section: {section_number} | subsection: {subsection_number} | "
@@ -342,7 +342,7 @@ def main() -> None:
                 content=chunk.content,
             )
         )
-    prompt = build_prompt(query, reranked_chunks)
+    #prompt = build_prompt(query, reranked_chunks)
     # answer = call_gemini(prompt, args.model_name)
 
     # print("\nAnswer:\n")

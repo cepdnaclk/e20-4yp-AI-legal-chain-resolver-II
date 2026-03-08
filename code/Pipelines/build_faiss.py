@@ -51,8 +51,8 @@ def main():
     for section in iter_sections(text):
         chunks = build_chunks(
             section["content"],
-            chunk_size=450,
-            chunk_overlap=20,
+            chunk_size=500,
+            chunk_overlap=50,
             separators=DEFAULT_SEPARATORS,
         )
         for chunk in chunks:

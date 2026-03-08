@@ -23,8 +23,8 @@ def parse_args() -> argparse.Namespace:
         default="Data/chunks/chunks.txt",
         help="Relative path to write the chunk output.",
     )
-    parser.add_argument("--chunk-size", type=int, default=450)
-    parser.add_argument("--chunk-overlap", type=int, default=20)
+    parser.add_argument("--chunk-size", type=int, default=800)
+    parser.add_argument("--chunk-overlap", type=int, default=50)
     return parser.parse_args()
 
 
