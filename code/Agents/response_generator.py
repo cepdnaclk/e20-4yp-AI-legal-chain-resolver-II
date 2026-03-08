@@ -14,13 +14,14 @@ def build_prompt(query: str, chunks) -> str:
     context_blocks = []
     for idx, chunk in enumerate(chunks, start=1):
         context_blocks.append(
-            "[Context {idx} | method: {method} | source: {source} | "
+            "[Context {idx} | method: {method} | source: {source} | act: {act} | "
             "section: {section_number} | subsection: {subsection_number} | "
             "title: {section_title}]\n"
             "{content}".format(
                 idx=idx,
                 method=chunk.method,
                 source=chunk.source,
+                act=chunk.act,
                 section_number=chunk.section_number,
                 subsection_number=chunk.subsection_number,
                 section_title=chunk.section_title,
@@ -34,13 +35,15 @@ def build_prompt(query: str, chunks) -> str:
         "If the context is insufficient, say you do not have enough information.\n"
         "When you use a chunk, cite it by its source/section metadata if provided.\n"
         "There might be multiple relevant chunks; you can use information from all of them, but dont use unrelated chunks. \n"
-        "Use short citations like [source=..., section=..., rule=...].\n\n"
+        "Use short citations like [source=..., section=...,act=..., rule=...].\n\n"
         f"Question:\n{query}\n\n"
         f"Context:\n{context_text}"
     )
 
 def generate_response(query: str, chunks) -> str:
     prompt = build_prompt(query, chunks)
+    print("Generated prompt for response generation:\n", prompt)
     model_name = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash")
-    response = call_gemini(prompt, model_name)
-    return response
+    #response = call_gemini(prompt, model_name)
+    #return response
+    return "Generated response would be returned here."

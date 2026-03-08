@@ -22,13 +22,14 @@ def build_prompt(query: str, chunks: List[RetrievedChunk]) -> str:
     context_blocks = []
     for idx, chunk in enumerate(chunks, start=1):
         context_blocks.append(
-            "[Context {idx} | method: {method} | source: {source} | "
+            "[Context {idx} | method: {method} | source: {source} | act: {act} | "
             "section: {section_number} | subsection: {subsection_number} | "
             "title: {section_title}]\n"
             "{content}".format(
                 idx=idx,
                 method=chunk.method,
                 source=chunk.source,
+                act=chunk.act,
                 section_number=chunk.section_number,
                 subsection_number=chunk.subsection_number,
                 section_title=chunk.section_title,
