@@ -10,7 +10,7 @@ from typing import List
 from dotenv import load_dotenv
 from langchain_core.embeddings import Embeddings
 from langchain_community.vectorstores import FAISS
-from sentence_transformers import SentenceTransformer
+from sentence_transformers import CrossEncoder, SentenceTransformer
 
 
 class SentenceTransformerEmbeddings(Embeddings):
@@ -36,7 +36,7 @@ class RetrievedChunk:
     score: float | None
 
 
-def load_vectorstore(repo_root: Path) -> FAISS:
+def load_vectorstore(repo_root: Path) -> tuple[FAISS, SentenceTransformer]:
     model_path = repo_root / "Models" / "Embedding" / "sin_bert_finetuned_model"
     index_dir = repo_root / "Data" / "Indexes" / "commercial_law_faiss_index"
 
@@ -50,11 +50,12 @@ def load_vectorstore(repo_root: Path) -> FAISS:
     embedding = SentenceTransformerEmbeddings(model)
 
     logging.info("Loading FAISS index from %s", index_dir)
-    return FAISS.load_local(
+    vectorstore = FAISS.load_local(
         str(index_dir),
         embedding,
         allow_dangerous_deserialization=True,
     )
+    return vectorstore, model
 
 
 def tokenize(text: str) -> List[str]:
@@ -234,6 +235,34 @@ def build_prompt(query: str, chunks: List[RetrievedChunk]) -> str:
     )
 
 
+def rerank_chunks(
+    query: str, chunks: List[RetrievedChunk], model_name: str, top_k: int
+) -> List[RetrievedChunk]:
+    if not chunks:
+        return []
+    reranker = CrossEncoder(model_name)
+    pairs = [(query, chunk.content) for chunk in chunks]
+    scores = reranker.predict(pairs).tolist()
+    scored = []
+    for chunk, score in zip(chunks, scores):
+        chunk.score = float(score)
+        scored.append((score, chunk))
+    scored.sort(key=lambda item: item[0], reverse=True)
+    return [chunk for _, chunk in scored[:top_k]]
+
+
+def deduplicate_chunks(chunks: List[RetrievedChunk]) -> List[RetrievedChunk]:
+    seen = set()
+    unique_chunks = []
+    for chunk in chunks:
+        key = (chunk.section_number, chunk.subsection_number, chunk.section_title)
+        if key in seen:
+            continue
+        seen.add(key)
+        unique_chunks.append(chunk)
+    return unique_chunks
+
+
 def call_gemini(prompt: str, model_name: str) -> str:
     logging.info("Calling Gemini model %s", model_name)
     try:
@@ -275,23 +304,31 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> None:
     args = parse_args()
-    query = "අධිකාරිය පාරිභෝකකියා ආරක්ෂා කරන වගන්තිය කුමක්ද?" if not args.query else args.query
+    query = "විකුණනු ලබන යම්‌ භාණ්ඩයක්‌, ප්‍රමිති හා පිරිවිතරවලට අනුකූල නොවනේ නම්" if not args.query else args.query
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
     repo_root = Path(__file__).resolve().parents[1]
     logging.info("Repo root: %s", repo_root)
-    vectorstore = load_vectorstore(repo_root)
+    vectorstore, _embedding_model = load_vectorstore(repo_root)
     faiss_chunks = retrieve_chunks_faiss(vectorstore, query, args.top_k)
     bm25_chunks = retrieve_chunks_bm25(vectorstore, query, args.top_k)
     title_chunks = retrieve_chunks_title(vectorstore, query, args.top_k)
     chunks = faiss_chunks + bm25_chunks + title_chunks
+    unique_chunks = deduplicate_chunks(chunks)
+    reranked_chunks = rerank_chunks(
+        query,
+        unique_chunks,
+        "cross-encoder/mmarco-mMiniLMv2-L12-H384-v1",
+        args.top_k,
+    )
     logging.info(
         "Retrieved %s FAISS chunks, %s BM25 chunks, and %s title chunks",
         len(faiss_chunks),
         len(bm25_chunks),
         len(title_chunks),
     )
+    logging.info("Deduplicated chunks: %s -> %s", len(chunks), len(unique_chunks))
     print("\nRetrieved chunks:\n")
-    for idx, chunk in enumerate(chunks, start=1):
+    for idx, chunk in enumerate(reranked_chunks, start=1):
         print(
             "[Chunk {idx} | method: {method} | source: {source} | "
             "section: {section_number} | subsection: {subsection_number} | "
@@ -305,7 +342,7 @@ def main() -> None:
                 content=chunk.content,
             )
         )
-    prompt = build_prompt(query, chunks)
+    prompt = build_prompt(query, reranked_chunks)
     # answer = call_gemini(prompt, args.model_name)
 
     # print("\nAnswer:\n")
