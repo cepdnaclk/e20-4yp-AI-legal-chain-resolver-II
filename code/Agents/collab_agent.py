@@ -1,8 +1,12 @@
+from pathlib import Path
+import sys
 from typing import List
 
-from retriver import RetrievedChunk, retrieve_from_intent
-from intent_classifier import intent_classify
-from response_generator import generate_response
+sys.path.append(str(Path(__file__).resolve().parents[1]))
+
+from Agents.retriver import RetrievedChunk, retrieve_from_intent
+from Agents.intent_classifier import intent_classify
+from Agents.response_generator import generate_response
 
 
 def retrieve_with_intent(user_query: str, top_k: int = 5) -> str | None:

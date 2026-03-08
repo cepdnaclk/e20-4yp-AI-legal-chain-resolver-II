@@ -33,17 +33,27 @@ def build_prompt(query: str, chunks) -> str:
     return (
         "You are a legal assistant. Answer the user question using only the context.\n"
         "If the context is insufficient, say you do not have enough information.\n"
-        "When you use a chunk, cite it by its source/section metadata if provided.\n"
-        "There might be multiple relevant chunks; you can use information from all of them, but dont use unrelated chunks. \n"
-        "Use short citations like [source=..., section=...,act=..., rule=...].\n\n"
+        "Return ONLY valid JSON.\n"
+        "JSON format:\n"
+        "{\n"
+        '  "answer": "<clear Sinhala answer>",\n'
+        '  "citations": [\n'
+        "    {\n"
+        '      "source": "<source>",\n'
+        '      "act": "<act>",\n'
+        '      "section": "<section_number>",\n'
+        '      "subsection": "<subsection_number>"\n'
+        "    }\n"
+        "  ]\n"
+        "}\n"
+        "If you use multiple chunks, include multiple citation objects.\n"
+        "Do not add extra text outside JSON.\n\n"
         f"Question:\n{query}\n\n"
         f"Context:\n{context_text}"
     )
 
 def generate_response(query: str, chunks) -> str:
     prompt = build_prompt(query, chunks)
-    print("Generated prompt for response generation:\n", prompt)
     model_name = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash")
-    #response = call_gemini(prompt, model_name)
-    #return response
-    return "Generated response would be returned here."
+    response = call_gemini(prompt, model_name)
+    return response
