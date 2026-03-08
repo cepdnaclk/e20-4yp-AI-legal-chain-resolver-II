@@ -3,6 +3,15 @@ import os
 
 from dotenv import load_dotenv
 
+try:
+    import google.genai as genai
+    from google.genai import types
+except ImportError as exc:
+    raise ImportError(
+        "google-genai is not installed. Install it with "
+        "`pip install google-genai`."
+    ) from exc
+
 
 SYSTEM_PROMPT = (
     "You are a legal query normalizer for a Sinhala legal RAG system. "
@@ -10,7 +19,7 @@ SYSTEM_PROMPT = (
     "cleaned query for retrieval. "
     "Rules: "
     "1) Output ONLY valid JSON. "
-    "2) intent must be one of: QUESTION, ACT, SECTION, OTHER. "
+    "2) intent must be one of: QUESTION, ACT, ERROR_LAN, OTHER. "
     "3) query should be a short Sinhala noun phrase without a trailing question. "
     "4) If a specific act is mentioned, include act field. "
     "5) If a section number is mentioned, include section as a number string. "
@@ -18,7 +27,7 @@ SYSTEM_PROMPT = (
     "7) Remove filler words and keep legal terms. "
     "8) Do not add extra text outside JSON. "
     "9)If the query is not in Sinhala, return intent as ERROR_LAN and keep the original query."
-    "10) If the query is unrelated to law, return intent as OTHER and give respsnose as you normally do in sinhla."
+    "10) If the query is unrelated to law, return intent as OTHER and give respsnose as you normally do in sinhla,in query field."
     "Examples: "
     "Input: \"විකුණනු බඩුවක් ප්‍රමිතියෙන් තොර නම් ගත හැකි පියවර මොනවාද?\" "
     "Output: {\"intent\":\"QUESTION\",\"query\":\"විකුණනු ලබන භාණ්ඩයක් ප්‍රමිතියෙන් තොර\"} "
@@ -27,25 +36,35 @@ SYSTEM_PROMPT = (
 )
 
 
-def call_gemini(prompt: str, model_name: str) -> str:
-    try:
-        import google.generativeai as genai
-    except ImportError as exc:
-        raise ImportError(
-            "google-generativeai is not installed. Install it with "
-            "`pip install google-generativeai`."
-        ) from exc
+_GENAI_CLIENT = None
+
+
+def get_gemini_client():
+    global _GENAI_CLIENT
+    if _GENAI_CLIENT:
+        return _GENAI_CLIENT
 
     load_dotenv()
     api_key = os.environ.get("GEMINI_API_KEY")
     if not api_key:
         raise EnvironmentError("Missing GEMINI_API_KEY environment variable.")
 
-    genai.configure(api_key=api_key)
-    model = genai.GenerativeModel(model_name)
-    response = model.generate_content(
-        prompt,
-        generation_config={"response_mime_type": "application/json"},
+    _GENAI_CLIENT = genai.Client(api_key=api_key)
+    return _GENAI_CLIENT
+
+
+def preload_gemini() -> None:
+    get_gemini_client()
+
+
+def call_gemini(prompt: str, model_name: str) -> str:
+    client = get_gemini_client()
+    response = client.models.generate_content(
+        model=model_name,
+        contents=prompt,
+        config=types.GenerateContentConfig(
+            response_mime_type="application/json"
+        ),
     )
     if not response or not response.text:
         return ""

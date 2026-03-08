@@ -3,6 +3,15 @@ import os
 
 from dotenv import load_dotenv
 
+try:
+    import google.genai as genai
+    from google.genai import types
+except ImportError as exc:
+    raise ImportError(
+        "google-genai is not installed. Install it with "
+        "`pip install google-genai`."
+    ) from exc
+
 
 SYSTEM_PROMPT = (
     "You are a legal query normalizer for a Sinhala legal RAG system. "
@@ -28,24 +37,18 @@ SYSTEM_PROMPT = (
 
 
 def call_gemini(prompt: str, model_name: str) -> str:
-    try:
-        import google.generativeai as genai
-    except ImportError as exc:
-        raise ImportError(
-            "google-generativeai is not installed. Install it with "
-            "`pip install google-generativeai`."
-        ) from exc
-
     load_dotenv()
     api_key = os.environ.get("GEMINI_API_KEY")
     if not api_key:
         raise EnvironmentError("Missing GEMINI_API_KEY environment variable.")
 
-    genai.configure(api_key=api_key)
-    model = genai.GenerativeModel(model_name)
-    response = model.generate_content(
-        prompt,
-        generation_config={"response_mime_type": "application/json"},
+    client = genai.Client(api_key=api_key)
+    response = client.models.generate_content(
+        model=model_name,
+        contents=prompt,
+        config=types.GenerateContentConfig(
+            response_mime_type="application/json"
+        ),
     )
     if not response or not response.text:
         return ""

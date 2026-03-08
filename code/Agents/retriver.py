@@ -43,6 +43,7 @@ def build_prompt(query: str, chunks: List[RetrievedChunk]) -> str:
         "If the context is insufficient, say you do not have enough information.\n"
         "When you use a chunk, cite it by its source/section metadata if provided.\n"
         "There might be multiple relevant chunks; you can use information from all of them, but dont use unrelated chunks. \n"
+        "At the end, provide summary of the answer in one short paragraph. \n"
         "Use short citations like [source=..., section=..., rule=...].\n\n"
         f"Question:\n{query}\n\n"
         f"Context:\n{context_text}"

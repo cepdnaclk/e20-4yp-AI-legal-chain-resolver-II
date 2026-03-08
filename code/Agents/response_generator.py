@@ -8,7 +8,20 @@ sys.path.append(str(Path(__file__).resolve().parents[1]))
 from Tools.gemini import call_gemini
 from Tools.retriever_utils import RetrievedChunk
 
-def build_prompt(query: str, chunks) -> str:
+def build_prompt(query: str, RAG_enabled: bool, chunks) -> str:
+
+    if not RAG_enabled:
+        return (
+            "You are a legal assistant for Sri lankan LAW. Answer the user question in sinhala based on your knowledge.\n"
+            "If you do not know the answer, say you do not have enough information.\n"
+            "Return ONLY valid JSON.\n"
+            "JSON format:\n"
+            "{\n"
+            '  "answer": "<clear Sinhala answer>",\n'
+            '  "citations": []\n'
+            "}\n"
+            f"Question:\n{query}"
+        )
 
     logging.info("Building prompt with %s retrieved chunks", len(chunks))
     context_blocks = []
@@ -52,8 +65,8 @@ def build_prompt(query: str, chunks) -> str:
         f"Context:\n{context_text}"
     )
 
-def generate_response(query: str, chunks) -> str:
-    prompt = build_prompt(query, chunks)
+def generate_response(query: str,RAG_enabled: bool, chunks) -> str:
+    prompt = build_prompt(query,RAG_enabled, chunks)
     model_name = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash")
     response = call_gemini(prompt, model_name)
     return response

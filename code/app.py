@@ -10,8 +10,13 @@ repo_root = Path(__file__).resolve().parent
 sys.path.append(str(repo_root))
 
 from Agents.collab_agent import retrieve_with_intent
+from Agents.intent_classifier import preload_gemini
 
 app = Flask(__name__, template_folder="templates", static_folder="static")
+try:
+    preload_gemini()
+except Exception as exc:
+    app.logger.warning("Gemini preload failed: %s", exc)
 
 
 @app.route("/")
@@ -23,11 +28,12 @@ def index():
 def api_query():
     payload = request.get_json(silent=True) or {}
     query = (payload.get("query") or "").strip()
+    _rag_enabled = bool(payload.get("ragenable"))
     if not query:
         return jsonify({"error": "query_required"}), 400
 
     try:
-        response = retrieve_with_intent(query)
+        response = retrieve_with_intent(query, RAG_enabled=_rag_enabled)
     except Exception as exc:
         return jsonify({"error": "internal_error", "details": str(exc)}), 500
 

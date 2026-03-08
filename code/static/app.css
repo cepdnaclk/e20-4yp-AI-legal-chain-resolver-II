@@ -146,6 +146,54 @@ body {
   color: var(--accent-2);
 }
 
+.rag-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(31, 111, 122, 0.18);
+  background: rgba(31, 111, 122, 0.06);
+  cursor: pointer;
+  user-select: none;
+  font-size: 0.8rem;
+  color: var(--accent-2);
+}
+
+.rag-toggle input {
+  display: none;
+}
+
+.rag-track {
+  position: relative;
+  width: 36px;
+  height: 20px;
+  border-radius: 999px;
+  background: rgba(31, 111, 122, 0.2);
+  transition: background 150ms ease;
+}
+
+.rag-track::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+  transition: transform 150ms ease;
+}
+
+.rag-toggle input:checked + .rag-track {
+  background: rgba(31, 111, 122, 0.65);
+}
+
+.rag-toggle input:checked + .rag-track::after {
+  transform: translateX(16px);
+}
+
 .chat-log {
   padding: 24px;
   display: flex;
