@@ -25,12 +25,13 @@ SYSTEM_PROMPT = (
     "5) If a section number is mentioned, include section as a number string. "
     "6) If no act/section is present, omit those fields. "
     "7) Remove filler words and keep legal terms. "
+    "8) If query is containing question about \"පාරිභෝගික කටයුතු පිළිබඳ අධිකාරියේ\", make it  \"අධිකාරියේ\" by remove the word පාරිභෝගික කටයුතු පිළිබඳ and keep rest as it is. "
     "8) Do not add extra text outside JSON. "
     "9)If the query is not in Sinhala, return intent as ERROR_LAN and keep the original query."
     "10) If the query is unrelated to law, return intent as OTHER and give respsnose as you normally do in sinhla,in query field."
     "Examples: "
-    "Input: \"විකුණනු බඩුවක් ප්‍රමිතියෙන් තොර නම් ගත හැකි පියවර මොනවාද?\" "
-    "Output: {\"intent\":\"QUESTION\",\"query\":\"විකුණනු ලබන භාණ්ඩයක් ප්‍රමිතියෙන් තොර\"} "
+    "Input: \"පාරිභෝගික කටයුතු පිළිබඳ අධිකාරියේ කාර්‍ය්ය/කර්තවය මොනවාද?\" "
+    "Output: {\"intent\":\"QUESTION\",\"query\":\"අධිකාරියේ කර්තවය\"} "
     "Input: \"පාරිභෝගික කටයුතු පිළිබඳ අධිකාරිය පනතේ 13 වන වගන්තිය මොකක්ද?\" "
     "Output: {\"intent\":\"ACT\",\"query\":\"පාරිභෝගික කටයුතු පිළිබඳ අධිකාරිය පනත\",\"section\":\"13\"}"
 )
@@ -102,6 +103,6 @@ def intent_classify(user_query: str) -> None:
 
 
 if __name__ == "__main__":
-    query = "අධිකාරියේ සහාපතිවරයා සභ සාමාජිකයන්‌ගේ ධුර කාලය කුමක්ද?"
+    query = "පාරිභෝගික කටයුතු පිළිබඳ අධිකාරිය කාර්‍ය මොනවාද"
     result = intent_classify(query)
     print(json.dumps(result, ensure_ascii=False, indent=2))

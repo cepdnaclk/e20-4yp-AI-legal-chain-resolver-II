@@ -91,6 +91,19 @@ def retrieve_from_intent(intent_payload: dict, top_k: int = 5) -> List[Retrieved
     return reranked_chunks
 
 
+def retrieve_full_section(
+    act: str | None, section: str | None
+) -> List[RetrievedChunk]:
+    if not section:
+        return []
+    logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
+    repo_root = Path(__file__).resolve().parents[1]
+    vectorstore, _embedding_model = get_vectorstore(repo_root)
+    if act:
+        return retrieve_chunks_by_act_section(vectorstore, act, section)
+    return retrieve_chunks_by_section(vectorstore, str(section))
+
+
 def _expand_top_section(
     vectorstore, chunks: List[RetrievedChunk], intent_act: str | None
 ) -> List[RetrievedChunk]:
@@ -125,11 +138,12 @@ def _expand_top_section(
 if __name__ == "__main__":
     test_intent = {
         "intent": "QUESTION",
-        "query": "අධිකාරියේ කාර්‍යය"
+        "query": "අධිකාරියේ කාර්‍යය සහ අරමුණු"
     }
     query1= "අධිකාරියේ සහාපතිවරයා සභ සාමාජිකයන්‌ගේ ධුර කාලය කුමක්ද?"
     query2 = "පාරිභෝගික කටයුතු පිළිබඳ අධිකාරිය පනතේ 13 වන වගන්තිය මොකක්ද?"
     query3 = "අධිකාරියේ අරමුණු මොනවාද?"
+    query4="අධිකාරියේ කර්තවය"
     retrieved_chunks = retrieve_from_intent(test_intent, top_k=5)
     for chunk in retrieved_chunks:
         print(f"Method: {chunk.method}, Source: {chunk.source}, Act: {chunk.act}, "
