@@ -11,12 +11,18 @@ sys.path.append(str(repo_root))
 
 from Agents.collab_agent import retrieve_with_intent
 from Agents.intent_classifier import preload_gemini
+from Tools.retriever_utils import preload_retriever
 
 app = Flask(__name__, template_folder="templates", static_folder="static")
 try:
     preload_gemini()
 except Exception as exc:
     app.logger.warning("Gemini preload failed: %s", exc)
+try:
+    repo_root = Path(__file__).resolve().parent
+    preload_retriever(repo_root, "cross-encoder/mmarco-mMiniLMv2-L12-H384-v1")
+except Exception as exc:
+    app.logger.warning("Retriever preload failed: %s", exc)
 
 
 @app.route("/")

@@ -9,7 +9,7 @@ sys.path.append(str(Path(__file__).resolve().parents[1]))
 from Tools.retriever_utils import (
     RetrievedChunk,
     deduplicate_chunks,
-    load_vectorstore,
+    get_vectorstore,
     retrieve_chunks_bm25,
     retrieve_chunks_by_section,
     retrieve_chunks_faiss,
@@ -53,7 +53,7 @@ def retrieve_from_intent(intent_payload: dict, top_k: int = 5) -> List[Retrieved
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
     repo_root = Path(__file__).resolve().parents[1]
     logging.info("Repo root: %s", repo_root)
-    vectorstore, _embedding_model = load_vectorstore(repo_root)
+    vectorstore, _embedding_model = get_vectorstore(repo_root)
 
     intent_type = (intent_payload.get("type") or intent_payload.get("intent") or "").upper()
     query = intent_payload.get("query") or intent_payload.get("quesry") or ""

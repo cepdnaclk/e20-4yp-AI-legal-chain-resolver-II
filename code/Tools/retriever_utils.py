@@ -11,6 +11,11 @@ from langchain_core.embeddings import Embeddings
 from langchain_community.vectorstores import FAISS
 from sentence_transformers import CrossEncoder, SentenceTransformer
 
+_VECTORSTORE = None
+_EMBEDDING_MODEL = None
+_RERANKER = None
+_RERANKER_MODEL_NAME = None
+
 
 class SentenceTransformerEmbeddings(Embeddings):
     def __init__(self, model):
@@ -55,6 +60,30 @@ def load_vectorstore(repo_root: Path) -> tuple[FAISS, SentenceTransformer]:
         allow_dangerous_deserialization=True,
     )
     return vectorstore, model
+
+
+def get_vectorstore(repo_root: Path) -> tuple[FAISS, SentenceTransformer]:
+    global _VECTORSTORE, _EMBEDDING_MODEL
+    if _VECTORSTORE is not None and _EMBEDDING_MODEL is not None:
+        return _VECTORSTORE, _EMBEDDING_MODEL
+
+    _VECTORSTORE, _EMBEDDING_MODEL = load_vectorstore(repo_root)
+    return _VECTORSTORE, _EMBEDDING_MODEL
+
+
+def get_reranker(model_name: str) -> CrossEncoder:
+    global _RERANKER, _RERANKER_MODEL_NAME
+    if _RERANKER is not None and _RERANKER_MODEL_NAME == model_name:
+        return _RERANKER
+
+    _RERANKER = CrossEncoder(model_name)
+    _RERANKER_MODEL_NAME = model_name
+    return _RERANKER
+
+
+def preload_retriever(repo_root: Path, reranker_model_name: str) -> None:
+    get_vectorstore(repo_root)
+    get_reranker(reranker_model_name)
 
 
 def tokenize(text: str) -> List[str]:
@@ -255,7 +284,7 @@ def rerank_chunks(
 ) -> List[RetrievedChunk]:
     if not chunks:
         return []
-    reranker = CrossEncoder(model_name)
+    reranker = get_reranker(model_name)
     pairs = [(query, chunk.content) for chunk in chunks]
     scores = reranker.predict(pairs).tolist()
     scored = []
@@ -276,6 +305,5 @@ def deduplicate_chunks(chunks: List[RetrievedChunk]) -> List[RetrievedChunk]:
         seen.add(key)
         unique_chunks.append(chunk)
     return unique_chunks
-
 
 
