@@ -235,6 +235,72 @@ def retrieve_chunks_title(
     ]
 
 
+def _parse_subsection_number(value: str | None) -> int | None:
+    if value is None:
+        return None
+    try:
+        return int(str(value).strip())
+    except ValueError:
+        return None
+
+
+def retrieve_chunks_by_act_section(
+    vectorstore: FAISS, act: str | None, section_number: str | None
+) -> List[RetrievedChunk]:
+    if not section_number:
+        return []
+
+    doc_ids = list(vectorstore.index_to_docstore_id.values())
+    documents = []
+    for doc_id in doc_ids:
+        doc = vectorstore.docstore.search(doc_id)
+        if doc is not None:
+            documents.append(doc)
+
+    if not documents:
+        return []
+
+    matched = []
+    for doc_index, doc in enumerate(documents):
+        metadata = doc.metadata or {}
+        doc_act = metadata.get("act")
+        doc_section = metadata.get("section_number")
+        if act and (doc_act or "").strip() != act.strip():
+            continue
+        if doc_section is None:
+            continue
+        if str(doc_section).strip() != str(section_number).strip():
+            continue
+        matched.append((doc_index, doc))
+
+    if not matched:
+        return []
+
+    def sort_key(item):
+        doc_index, doc = item
+        subsection = (doc.metadata or {}).get("subsection_number")
+        parsed = _parse_subsection_number(subsection)
+        if parsed is None:
+            return (1, doc_index)
+        return (0, parsed, doc_index)
+
+    matched.sort(key=sort_key)
+    first_meta = matched[0][1].metadata or {}
+    merged_content = "\n\n".join(doc.page_content for _, doc in matched)
+    return [
+        RetrievedChunk(
+            content=merged_content,
+            source=first_meta.get("source", "unknown"),
+            section_number=first_meta.get("section_number"),
+            section_title=first_meta.get("section_title"),
+            subsection_number=None,
+            act=first_meta.get("act"),
+            method="act_section",
+            score=None,
+        )
+    ]
+
+
 def retrieve_chunks_by_section(
     vectorstore: FAISS, section_number: str
 ) -> List[RetrievedChunk]:

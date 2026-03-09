@@ -358,7 +358,7 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> None:
     args = parse_args()
-    query = "විකුණවෙළෙනදකු විසින්‌ ගැනුමිකරුවකු ඉල්ලා සිටින විට " if not args.query else args.query
+    query = "අධිකාරියේ අරමුණු " if not args.query else args.query
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
     repo_root = Path(__file__).resolve().parents[1]
     logging.info("Repo root: %s", repo_root)

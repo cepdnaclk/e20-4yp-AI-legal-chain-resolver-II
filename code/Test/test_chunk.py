@@ -5,8 +5,9 @@ import sys
 REPO_ROOT = Path(__file__).resolve().parents[1]
 PIPELINES_DIR = REPO_ROOT / "Pipelines"
 sys.path.append(str(PIPELINES_DIR))
+sys.path.append(str(REPO_ROOT))
 
-from chunking import iter_sections, build_chunks, DEFAULT_SEPARATORS
+from Tools.chunking import iter_sections, build_chunks, DEFAULT_SEPARATORS
 
 
 def parse_args() -> argparse.Namespace:
@@ -15,7 +16,7 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--input",
-        default="Data/Acts/Text/salesofGood.txt",
+        default="Data/Acts/Text/Consumer_Affairs_Authority_ActNo9_of_2003.txt",
         help="Relative path to the input text file.",
     )
     parser.add_argument(
@@ -23,7 +24,7 @@ def parse_args() -> argparse.Namespace:
         default="Data/chunks/chunks.txt",
         help="Relative path to write the chunk output.",
     )
-    parser.add_argument("--chunk-size", type=int, default=800)
+    parser.add_argument("--chunk-size", type=int, default=500)
     parser.add_argument("--chunk-overlap", type=int, default=50)
     return parser.parse_args()
 

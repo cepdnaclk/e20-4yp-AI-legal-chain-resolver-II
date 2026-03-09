@@ -10,6 +10,7 @@ from Tools.retriever_utils import (
     RetrievedChunk,
     deduplicate_chunks,
     get_vectorstore,
+    retrieve_chunks_by_act_section,
     retrieve_chunks_bm25,
     retrieve_chunks_by_section,
     retrieve_chunks_faiss,
@@ -77,8 +78,9 @@ def retrieve_from_intent(intent_payload: dict, top_k: int = 5) -> List[Retrieved
         query,
         unique_chunks,
         "cross-encoder/mmarco-mMiniLMv2-L12-H384-v1",
-        top_k,
+        top_k=3,
     )
+    reranked_chunks = _expand_top_section(vectorstore, reranked_chunks, act)
     logging.info(
         "Retrieved %s FAISS chunks, %s BM25 chunks, and %s title chunks",
         len(faiss_chunks),
@@ -87,3 +89,49 @@ def retrieve_from_intent(intent_payload: dict, top_k: int = 5) -> List[Retrieved
     )
     logging.info("Deduplicated chunks: %s -> %s", len(chunks), len(unique_chunks))
     return reranked_chunks
+
+
+def _expand_top_section(
+    vectorstore, chunks: List[RetrievedChunk], intent_act: str | None
+) -> List[RetrievedChunk]:
+    if not chunks:
+        return chunks
+    top = chunks[0]
+    if top.method in {"act_section", "section"}:
+        return chunks
+    if not top.section_number:
+        return chunks
+
+    act = top.act or intent_act
+    if act:
+        expanded = retrieve_chunks_by_act_section(
+            vectorstore, act, top.section_number
+        )
+    else:
+        expanded = retrieve_chunks_by_section(vectorstore, str(top.section_number))
+
+    if not expanded:
+        return chunks
+
+    filtered = []
+    for chunk in chunks:
+        if chunk.section_number == top.section_number and (
+            not act or chunk.act == act
+        ):
+            continue
+        filtered.append(chunk)
+    return expanded + filtered
+
+if __name__ == "__main__":
+    test_intent = {
+        "intent": "QUESTION",
+        "query": "අධිකාරියේ කාර්‍යය"
+    }
+    query1= "අධිකාරියේ සහාපතිවරයා සභ සාමාජිකයන්‌ගේ ධුර කාලය කුමක්ද?"
+    query2 = "පාරිභෝගික කටයුතු පිළිබඳ අධිකාරිය පනතේ 13 වන වගන්තිය මොකක්ද?"
+    query3 = "අධිකාරියේ අරමුණු මොනවාද?"
+    retrieved_chunks = retrieve_from_intent(test_intent, top_k=5)
+    for chunk in retrieved_chunks:
+        print(f"Method: {chunk.method}, Source: {chunk.source}, Act: {chunk.act}, "
+              f"Section: {chunk.section_number}, Subsection: {chunk.subsection_number}, "
+              f"Title: {chunk.section_title}\nContent: {chunk.content}\n{'-'*80}")

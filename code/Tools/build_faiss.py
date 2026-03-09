@@ -17,10 +17,14 @@ class SentenceTransformerEmbeddings(Embeddings):
         return self.model.encode(text).tolist()
 
 
+CHUNK_SIZE = 500
+CHUNK_OVERLAP = 50
+ACT_NAME = "2003 අංක 9  පාරිභෝගික කටයුතු පිළිබඳ අධිකාරිය පනත"
+
 def main():
     repo_root = Path(__file__).resolve().parents[1]
     text_file_path = repo_root/"Data/Acts/Text"
-    act_name = "2003 අංක 9  පාරිභෝගික කටයුතු පිළිබඳ අධිකාරිය පනත"
+    
 
     files = [f for f in text_file_path.glob("**/*.txt") if f.is_file()]
 
@@ -51,8 +55,8 @@ def main():
     for section in iter_sections(text):
         chunks = build_chunks(
             section["content"],
-            chunk_size=500,
-            chunk_overlap=50,
+            chunk_size=CHUNK_SIZE,
+            chunk_overlap=CHUNK_OVERLAP,
             separators=DEFAULT_SEPARATORS,
         )
         for chunk in chunks:
@@ -61,7 +65,7 @@ def main():
                     page_content=chunk,
                     metadata={
                         "source": text_path.stem,
-                        "act": act_name,
+                        "act": ACT_NAME,
                         "section_number": section["number"],
                         "section_title": section["title"],
                         "subsection_number": section.get("subsection_number"),
