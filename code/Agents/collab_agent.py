@@ -8,7 +8,7 @@ sys.path.append(str(Path(__file__).resolve().parents[1]))
 
 from Agents.retriver import RetrievedChunk, retrieve_from_intent, retrieve_full_section
 from Agents.intent_classifier import intent_classify
-from Agents.response_generator import generate_response
+from Agents.response_generator import generate_response, generate_response_stream
 from Tools.retriever_utils import deduplicate_chunks
 
 
@@ -69,6 +69,26 @@ def retrieve_with_intent(user_query: str,RAG_enabled: bool, top_k: int = 5) -> s
             response = generate_response(user_query, RAG_enabled, merged)
     print("Final response:\n", response)
     return response
+
+
+def retrieve_with_intent_stream(user_query: str, RAG_enabled: bool, top_k: int = 5):
+    logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
+    intent_payload = intent_classify(user_query)
+    if not intent_payload:
+        yield json.dumps({"answer": "No response generated.", "citations": []})
+        return
+
+    intent_type = (intent_payload.get("type") or intent_payload.get("intent") or "").upper()
+    if intent_type == "OTHER" or intent_type.startswith("ERROR"):
+        yield json.dumps({"answer": intent_payload.get("query"), "citations": []})
+        return
+
+    if not RAG_enabled:
+        yield from generate_response_stream(user_query, RAG_enabled, [])
+        return
+
+    chunks = retrieve_from_intent(intent_payload, top_k=top_k)
+    yield from generate_response_stream(user_query, RAG_enabled, chunks)
 
 if __name__ == "__main__":
     query = "අධිකාරියේ සහාපතිවරයා සභ සාමාජිකයන්‌ගේ ධුර කාලය කුමක්ද?"

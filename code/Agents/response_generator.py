@@ -5,7 +5,7 @@ import sys
 
 sys.path.append(str(Path(__file__).resolve().parents[1]))
 
-from Tools.gemini import call_gemini
+from Tools.gemini import call_gemini, call_gemini_stream
 from Tools.retriever_utils import RetrievedChunk
 
 def build_prompt(query: str, RAG_enabled: bool, chunks) -> str:
@@ -98,3 +98,9 @@ def generate_response(query: str,RAG_enabled: bool, chunks) -> str:
     model_name = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash")
     response = call_gemini(prompt, model_name)
     return response
+
+
+def generate_response_stream(query: str, RAG_enabled: bool, chunks):
+    prompt = build_prompt(query, RAG_enabled, chunks)
+    model_name = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash")
+    return call_gemini_stream(prompt, model_name)

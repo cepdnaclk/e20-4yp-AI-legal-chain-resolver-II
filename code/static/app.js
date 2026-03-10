@@ -23,25 +23,42 @@ const renderCitations = (citations = []) => {
     return "";
   }
 
-  const items = citations
-    .map((cite) => {
-      const act = cite.act || "unknown";
-      const section = cite.section || "n/a";
-      const subsection = cite.subsection || "n/a";
-      const source = cite.source || "";
-      const downloadButton = source
-        ? `<button class="citation-download" data-source="${source}" type="button">Download PDF</button>`
+  const grouped = new Map();
+  citations.forEach((cite) => {
+    const act = cite.act || "unknown";
+    const source = cite.source || "";
+    const key = `${act}::${source}`;
+    if (!grouped.has(key)) {
+      grouped.set(key, { act, source, items: [] });
+    }
+    grouped.get(key).items.push({
+      section: cite.section || "n/a",
+      subsection: cite.subsection || "n/a",
+    });
+  });
+
+  const items = Array.from(grouped.values())
+    .map((group) => {
+      const downloadButton = group.source
+        ? `<button class="citation-download" data-source="${group.source}" type="button">Download PDF</button>`
         : "";
+      const citationsHtml = group.items
+        .map(
+          (item) => `
+            <div class="citation-meta">
+              <span>section: ${item.section}</span>
+              <span>subsection: ${item.subsection}</span>
+            </div>
+          `
+        )
+        .join("");
       return `
         <div class="citation-card">
           <div class="citation-pill">
             <span class="citation-icon" aria-hidden="true"></span>
-            <span>act: ${act}</span>
+            <span>act: ${group.act}</span>
           </div>
-          <div class="citation-meta">
-            <span>section: ${section}</span>
-            <span>subsection: ${subsection}</span>
-          </div>
+          ${citationsHtml}
           ${downloadButton}
         </div>
       `;
@@ -157,7 +174,7 @@ form.addEventListener("submit", async (event) => {
         ],
       };
     } else {
-      const response = await fetch("/api/query", {
+      const response = await fetch("/api/query-stream", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -165,11 +182,34 @@ form.addEventListener("submit", async (event) => {
           ragenable: Boolean(ragToggle && ragToggle.checked),
         }),
       });
-      data = await response.json();
       if (!response.ok) {
-        typingBubble.textContent = data.error || "Something went wrong.";
+        const errorText = await response.text();
+        typingBubble.textContent = errorText || "Something went wrong.";
         return;
       }
+
+      if (!response.body) {
+        typingBubble.textContent = "Streaming not supported in this browser.";
+        return;
+      }
+
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+      let buffer = "";
+      typingBubble.innerHTML = "";
+
+      while (true) {
+        const { value, done } = await reader.read();
+        if (done) {
+          break;
+        }
+        buffer += decoder.decode(value, { stream: true });
+        typingBubble.innerHTML = formatMultiline(buffer);
+        chat.scrollTop = chat.scrollHeight;
+      }
+
+      buffer += decoder.decode();
+      data = { response: buffer };
     }
     typingBubble.innerHTML = "";
 

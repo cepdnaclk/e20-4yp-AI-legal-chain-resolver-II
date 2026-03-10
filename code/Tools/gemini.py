@@ -43,3 +43,17 @@ def call_gemini(prompt: str, model_name: str) -> str:
     if not response or not response.text:
         return "No response text returned from Gemini."
     return response.text.strip()
+
+
+def call_gemini_stream(prompt: str, model_name: str):
+    logging.info("Streaming Gemini model %s", model_name)
+    client = get_gemini_client()
+    logging.info("Sending prompt to Gemini (chars=%s)", len(prompt))
+    stream = client.models.generate_content_stream(
+        model=model_name,
+        contents=prompt,
+    )
+    for chunk in stream:
+        text = getattr(chunk, "text", None)
+        if text:
+            yield text

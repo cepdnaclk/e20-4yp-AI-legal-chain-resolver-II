@@ -4,12 +4,12 @@ import re
 import sys
 from pathlib import Path
 
-from flask import Flask, jsonify, render_template, request, send_file
+from flask import Flask, jsonify, render_template, request, send_file, Response, stream_with_context
 
 repo_root = Path(__file__).resolve().parent
 sys.path.append(str(repo_root))
 
-from Agents.collab_agent import retrieve_with_intent
+from Agents.collab_agent import retrieve_with_intent, retrieve_with_intent_stream
 from Agents.intent_classifier import preload_gemini
 from Tools.retriever_utils import preload_retriever
 
@@ -66,6 +66,26 @@ def api_query():
         )
 
     return jsonify({"answer": raw, "citations": []})
+
+
+@app.route("/api/query-stream", methods=["POST"])
+def api_query_stream():
+    payload = request.get_json(silent=True) or {}
+    query = (payload.get("query") or "").strip()
+    _rag_enabled = bool(payload.get("ragenable"))
+    if not query:
+        return jsonify({"error": "query_required"}), 400
+
+    def generate():
+        try:
+            for chunk in retrieve_with_intent_stream(query, RAG_enabled=_rag_enabled):
+                if chunk:
+                    yield chunk
+        except Exception as exc:
+            app.logger.exception("Stream error: %s", exc)
+            yield json.dumps({"error": "internal_error", "details": str(exc)})
+
+    return Response(stream_with_context(generate()), mimetype="text/plain")
 
 
 @app.route("/api/citation-pdf", methods=["POST"])
