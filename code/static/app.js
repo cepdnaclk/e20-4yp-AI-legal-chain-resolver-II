@@ -4,8 +4,19 @@ const input = document.getElementById("queryInput");
 const sendBtn = document.getElementById("sendBtn");
 const ragToggle = document.getElementById("ragToggle");
 
+const escapeHtml = (text = "") =>
+  String(text)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+
 const formatInlineBold = (text = "") =>
-  String(text).replace(/\*\*([\s\S]+?)\*\*/g, "<strong>$1</strong>");
+  escapeHtml(text).replace(/\*\*([\s\S]+?)\*\*/g, "<strong>$1</strong>");
+
+const formatMultiline = (text = "") =>
+  formatInlineBold(text).replace(/\r?\n/g, "<br>");
 
 const renderCitations = (citations = []) => {
   if (!Array.isArray(citations) || citations.length === 0) {
@@ -17,6 +28,10 @@ const renderCitations = (citations = []) => {
       const act = cite.act || "unknown";
       const section = cite.section || "n/a";
       const subsection = cite.subsection || "n/a";
+      const source = cite.source || "";
+      const downloadButton = source
+        ? `<button class="citation-download" data-source="${source}" type="button">Download PDF</button>`
+        : "";
       return `
         <div class="citation-card">
           <div class="citation-pill">
@@ -27,6 +42,7 @@ const renderCitations = (citations = []) => {
             <span>section: ${section}</span>
             <span>subsection: ${subsection}</span>
           </div>
+          ${downloadButton}
         </div>
       `;
     })
@@ -49,7 +65,7 @@ const addMessage = (text, role, options = {}) => {
       </div>
     `;
   } else {
-    bubble.innerHTML = formatInlineBold(text);
+    bubble.innerHTML = formatMultiline(text);
   }
 
   message.appendChild(bubble);
@@ -64,6 +80,44 @@ const autoGrow = () => {
 };
 
 input.addEventListener("input", autoGrow);
+
+chat.addEventListener("click", async (event) => {
+  const target = event.target.closest(".citation-download");
+  if (!target) {
+    return;
+  }
+
+  const source = target.dataset.source;
+  if (!source) {
+    return;
+  }
+
+  target.disabled = true;
+  try {
+    const response = await fetch("/api/citation-pdf", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ source }),
+    });
+    if (!response.ok) {
+      target.disabled = false;
+      return;
+    }
+    const blob = await response.blob();
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `${source}.pdf`;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    URL.revokeObjectURL(url);
+  } catch (error) {
+    target.disabled = false;
+  } finally {
+    target.disabled = false;
+  }
+});
 
 form.addEventListener("submit", async (event) => {
   event.preventDefault();

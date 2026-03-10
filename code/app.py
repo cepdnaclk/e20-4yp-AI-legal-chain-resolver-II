@@ -4,7 +4,7 @@ import re
 import sys
 from pathlib import Path
 
-from flask import Flask, jsonify, render_template, request
+from flask import Flask, jsonify, render_template, request, send_file
 
 repo_root = Path(__file__).resolve().parent
 sys.path.append(str(repo_root))
@@ -66,6 +66,30 @@ def api_query():
         )
 
     return jsonify({"answer": raw, "citations": []})
+
+
+@app.route("/api/citation-pdf", methods=["POST"])
+def api_citation_pdf():
+    payload = request.get_json(silent=True) or {}
+    source = (payload.get("source") or "").strip()
+    if not source:
+        return jsonify({"error": "source_required"}), 400
+    if Path(source).name != source:
+        return jsonify({"error": "invalid_source"}), 400
+    if not re.fullmatch(r"[A-Za-z0-9_\-(). ]+", source):
+        return jsonify({"error": "invalid_source"}), 400
+
+    pdf_dir = repo_root / "Data" / "Acts" / "PDF"
+    pdf_path = pdf_dir / f"{source}.pdf"
+    if not pdf_path.is_file():
+        return jsonify({"error": "pdf_not_found"}), 404
+
+    return send_file(
+        pdf_path,
+        as_attachment=True,
+        download_name=f"{source}.pdf",
+        mimetype="application/pdf",
+    )
 
 
 if __name__ == "__main__":
