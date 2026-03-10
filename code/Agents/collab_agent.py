@@ -30,7 +30,7 @@ def _extract_json_payload(raw: str) -> dict | None:
 
 def retrieve_with_intent(user_query: str,RAG_enabled: bool, top_k: int = 5) -> str | None:
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
-    print("Classifying intent for query: %s", user_query)
+    print(user_query)
     intent_payload = intent_classify(user_query)
     if not intent_payload:
         return None

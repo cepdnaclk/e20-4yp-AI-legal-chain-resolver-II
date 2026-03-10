@@ -81,16 +81,11 @@ def build_prompt(query: str, RAG_enabled: bool, chunks) -> str:
     '      "subsection": "<subsection_number>"\n'
     "    }\n"
     "  ],\n"
-    '  "action": null\n'
     "}\n\n"
 
     "Citation Rules:\n"
     "- Every legal explanation must be supported by the provided context.\n"
     "- If multiple context chunks are used, include multiple citation objects.\n\n"
-
-    "If the context is insufficient but you can identify a specific Act and Section to retrieve,\n"
-    'set "action" to {"type":"FETCH_SECTION","act":"...","section":"..."} and leave "answer" empty.\n'
-    'If the answer can be completed using the context, keep "action" as null.\n\n'
 
     "Do NOT include any text outside the JSON structure.\n\n"
 
