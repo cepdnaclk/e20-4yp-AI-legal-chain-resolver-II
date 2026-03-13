@@ -1,0 +1,543 @@
+{
+  "metrics": {
+    "hit_rate": 0.62,
+    "precision_at_k": 0.06200000000000003,
+    "recall_at_k": 0.62,
+    "mrr": 0.55
+  },
+  "details": [
+    {
+      "question": "භාණ්ඩයක මිල ලේබල් නොකර විකිණීම වරදක්ද?",
+      "relevant_section": "10",
+      "retrieved_sections": [
+        "10",
+        "11"
+      ],
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "question": "පාරිභෝගික අධිකාරියේ ප්‍රධාන අරමුණු මොනවාද?",
+      "relevant_section": "7",
+      "retrieved_sections": [
+        "7",
+        "32",
+        "2"
+      ],
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "question": "මිල ලකුණු කර ඇති භාණ්ඩයක් එම මිලට වඩා වැඩි මිලකට විකිණිය හැකිද?",
+      "relevant_section": "11",
+      "retrieved_sections": [
+        "11",
+        "20",
+        "26"
+      ],
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "question": "වෙළෙන්දකුට තමා සන්තකයේ ඇති භාණ්ඩ විකිණීම ප්‍රතික්ෂේප කළ හැකිද?",
+      "relevant_section": "15",
+      "retrieved_sections": [
+        "15",
+        "61",
+        "16"
+      ],
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "question": "භාණ්ඩ සඟවා තබා ගැනීම හෝ රැස්කර තබා ගැනීම (Hoarding) වරදක්ද?",
+      "relevant_section": "17",
+      "retrieved_sections": [
+        "61",
+        "58",
+        "10"
+      ],
+      "hit": false,
+      "hit_rank": null
+    },
+    {
+      "question": "වෙළෙන්දකු විසින් මිල ලැයිස්තුවක් ප්‍රදර්ශනය කළ යුතුද?",
+      "relevant_section": "26",
+      "retrieved_sections": [
+        "26",
+        "29"
+      ],
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "question": "පාරිභෝගිකයා නොමඟ යවන ආකාරයේ වෙළෙඳ දැන්වීම් පළ කිරීම වරදක්ද?",
+      "relevant_section": "30",
+      "retrieved_sections": [
+        "30",
+        "7",
+        "32"
+      ],
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "question": "පළමු වරට වරදක් කරන පුද්ගලයකුට පනත යටතේ ලැබිය හැකි දඬුවම කුමක්ද?",
+      "relevant_section": "60",
+      "retrieved_sections": [
+        "60"
+      ],
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "question": "අත්‍යවශ්‍ය භාණ්ඩයක මිල වැඩි කිරීමට නම් කළ යුත්තේ කුමක්ද?",
+      "relevant_section": "18",
+      "retrieved_sections": [
+        "18",
+        "20",
+        "26"
+      ],
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "question": "පාරිභෝගික පැමිණිල්ලක් කළ යුත්තේ කොපමණ කාලයක් ඇතුළතද?",
+      "relevant_section": "13",
+      "retrieved_sections": [
+        "18",
+        "13",
+        "61"
+      ],
+      "hit": true,
+      "hit_rank": 2
+    },
+    {
+      "question": "බඩු නැහැ කියා වෙළෙන්දකු බොරු කීම වරදක්ද?",
+      "relevant_section": "16",
+      "retrieved_sections": [
+        "16",
+        "61",
+        "10"
+      ],
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "question": "භාණ්ඩයක් විකිණීමට කොන්දේසි පැනවිය හැකිද?",
+      "relevant_section": "16",
+      "retrieved_sections": [
+        "10",
+        "14",
+        "59"
+      ],
+      "hit": false,
+      "hit_rank": null
+    },
+    {
+      "question": "අධිකාරියට භාණ්ඩවල ප්‍රමිතීන් නියම කළ හැකිද?",
+      "relevant_section": "12",
+      "retrieved_sections": [
+        "13",
+        "32",
+        "23"
+      ],
+      "hit": false,
+      "hit_rank": null
+    },
+    {
+      "question": "සංස්ථාවක් පනත උල්ලංඝනය කළහොත් ලැබෙන දඬුවම කුමක්ද?",
+      "relevant_section": "60",
+      "retrieved_sections": [
+        "60"
+      ],
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "question": "දෙවන වරටත් වරදක් කරන පුද්ගලයකුට ලැබෙන දඬුවම කුමක්ද?",
+      "relevant_section": "60",
+      "retrieved_sections": [
+        "60"
+      ],
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "question": "අධිකාරිය පරීක්ෂණ පවත්වන්නේ කුමන පැමිණිලි ගැනද?",
+      "relevant_section": "13",
+      "retrieved_sections": [
+        "13",
+        "38"
+      ],
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "question": "අධිකාරියට වෙළෙඳපොළ තරගකාරිත්වය ගැන මැදිහත් විය හැකිද?",
+      "relevant_section": "8",
+      "retrieved_sections": [
+        "8",
+        "9",
+        "41"
+      ],
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "question": "අධිකාරිය නිකුත් කරන විධාන (Directions) දැනගත හැක්කේ කෙසේද?",
+      "relevant_section": "10",
+      "retrieved_sections": [
+        "10",
+        "29"
+      ],
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "question": "මිල ප්‍රදර්ශනය නොකිරීමට එරෙහිව ගත හැකි නීතිමය පියවර කුමක්ද?",
+      "relevant_section": "60",
+      "retrieved_sections": [
+        "26",
+        "21",
+        "10"
+      ],
+      "hit": false,
+      "hit_rank": null
+    },
+    {
+      "question": "බඩු මිල වැඩි කිරීම ගැන පාරිභෝගිකයාට කළ හැක්කේ කුමක්ද?",
+      "relevant_section": "13",
+      "retrieved_sections": [
+        "18",
+        "10"
+      ],
+      "hit": false,
+      "hit_rank": null
+    },
+    {
+      "question": "වෙළෙන්දකුට භාණ්ඩයක් විකිණීමේදී 'මෙය මිලදී ගැනීමට තවත් භාණ්ඩයක් ගත යුතුයි' කියා කොන්දේසි පැනවිය හැකිද?",
+      "relevant_section": "16",
+      "retrieved_sections": [
+        "16",
+        "10",
+        "14"
+      ],
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "question": "ලකුණු කර ඇති මිලට වඩා රුපියල් පහක් වැඩියෙන් විකිණීම වරදක්ද?",
+      "relevant_section": "11",
+      "retrieved_sections": [
+        "11",
+        "10",
+        "26"
+      ],
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "question": "ගබඩාවේ බඩු තබාගෙන බඩු නැතැයි කීම දඬුවම් ලැබිය හැකි වරදක්ද?",
+      "relevant_section": "16",
+      "retrieved_sections": [
+        "61",
+        "58",
+        "59"
+      ],
+      "hit": false,
+      "hit_rank": null
+    },
+    {
+      "question": "අධිකාරියේ නිලධාරියකුට රාජකාරියට බාධා කළහොත් ලැබෙන දඬුවම කුමක්ද?",
+      "relevant_section": "60",
+      "retrieved_sections": [
+        "36",
+        "60",
+        "32"
+      ],
+      "hit": true,
+      "hit_rank": 2
+    },
+    {
+      "question": "මිල ලේබල් නැති භාණ්ඩයක් වෙළෙන්දකුට විකිණිය හැකිද?",
+      "relevant_section": "10",
+      "retrieved_sections": [
+        "10",
+        "16",
+        "14"
+      ],
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "question": "පාරිභෝගික අයිතීන් උල්ලංඝනය වීම ගැන පැමිණිලි කිරීමට මාස කීයක් තිබේද?",
+      "relevant_section": "13",
+      "retrieved_sections": [
+        "13",
+        "19",
+        "60"
+      ],
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "question": "වෙළෙඳපොළේ ඒකාධිකාරයක් පවත්වාගෙන යාම පාලනය කිරීමට අධිකාරියට හැකිද?",
+      "relevant_section": "8",
+      "retrieved_sections": [
+        "18",
+        "49",
+        "17"
+      ],
+      "hit": false,
+      "hit_rank": null
+    },
+    {
+      "question": "භාණ්ඩ නිෂ්පාදනයේදී අනුගමනය කළ යුතු ප්‍රමිතීන් පැනවිය හැක්කේ කාටද?",
+      "relevant_section": "12",
+      "retrieved_sections": [
+        "35",
+        "12",
+        "13"
+      ],
+      "hit": true,
+      "hit_rank": 2
+    },
+    {
+      "question": "අමාත්‍යවරයාට පනත යටතේ ලැබෙන එක් බලතලයක් කුමක්ද?",
+      "relevant_section": "18",
+      "retrieved_sections": [
+        "52",
+        "39",
+        "24"
+      ],
+      "hit": false,
+      "hit_rank": null
+    },
+    {
+      "question": "පාරිභෝගිකයන්ට අහිතකර ලෙස ක්‍රියා කරන වෙළෙන්දන්ට ලැබිය හැකි අවම දඩය කොපමණද?",
+      "relevant_section": "60",
+      "retrieved_sections": [
+        "7",
+        "32",
+        "10"
+      ],
+      "hit": false,
+      "hit_rank": null
+    },
+    {
+      "question": "භාණ්ඩයක් උපරිම සිල්ලර මිලට වඩා වැඩියෙන් විකුණන අතර මිල ලේබලයද ඉවත් කර ඇත්නම් අදාළ වන වගන්ති මොනවාද?",
+      "relevant_section": "10",
+      "retrieved_sections": [
+        "11",
+        "14",
+        "20"
+      ],
+      "hit": false,
+      "hit_rank": null
+    },
+    {
+      "question": "පාරිභෝගිකයා රවටන අයුරින් ව්‍යාජ ප්‍රචාරණයක් සිදු කර ප්‍රමිතියෙන් තොර භාණ්ඩයක් විකුණන්නේ නම් ගත හැකි පියවර කුමක්ද?",
+      "relevant_section": "30",
+      "retrieved_sections": [
+        "13",
+        "30"
+      ],
+      "hit": true,
+      "hit_rank": 2
+    },
+    {
+      "question": "වෙළෙන්දකු බඩු විකිණීම ප්‍රතික්ෂේප කර ගබඩාවේ සඟවා තබා ගන්නේ නම් අදාළ වගන්ති මොනවාද?",
+      "relevant_section": "15",
+      "retrieved_sections": [
+        "15",
+        "28"
+      ],
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "question": "පාරිභෝගිකයාගේ ආරක්ෂාව තහවුරු කිරීමට අධිකාරියට ඇති ප්‍රධාන වගකීම් දෙකක් සඳහන් කරන්න.",
+      "relevant_section": "7",
+      "retrieved_sections": [
+        "8",
+        "36",
+        "52"
+      ],
+      "hit": false,
+      "hit_rank": null
+    },
+    {
+      "question": "වෙළෙඳ ආයතනයක් මිල ලැයිස්තු ප්‍රදර්ශනය නොකරන්නේ නම් සහ රජයේ නිලධාරීන්ට පරීක්ෂා කිරීමට ඉඩ නොදෙන්නේ නම් කුමක් සිදුවේද?",
+      "relevant_section": "26",
+      "retrieved_sections": [
+        "26",
+        "18"
+      ],
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "question": "ගැනුම්කරුවෙකුට අවශ්‍ය භාණ්ඩය විකිණීම ප්‍රතික්ෂේප කර වෙනත් කොන්දේසි පැනවීම වරදක්ද?",
+      "relevant_section": "15",
+      "retrieved_sections": [
+        "16",
+        "15",
+        "14"
+      ],
+      "hit": true,
+      "hit_rank": 2
+    },
+    {
+      "question": "සිල්ලර වෙළෙන්දෙකු අත්‍යවශ්‍ය භාණ්ඩයක මිල අධිකාරියේ අනුමැතිය නැතිව වැඩි කරන්නේ නම් එය කුමන වගන්තියට පටහැනිද?",
+      "relevant_section": "18",
+      "retrieved_sections": [
+        "18",
+        "26"
+      ],
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "question": "වෙළෙන්දන්ගේ වංචනික ක්‍රියා ගැන සොයා බලන ප්‍රධාන වගන්තිය කුමක්ද?",
+      "relevant_section": "30",
+      "retrieved_sections": [
+        "58",
+        "38",
+        "21"
+      ],
+      "hit": false,
+      "hit_rank": null
+    },
+    {
+      "question": "භාණ්ඩ රැස්කර තබා ගැනීම සහ අධික මිලට විකිණීම යන වැරදි දෙකම සිදු කළ වෙළෙන්දෙකුට ලැබෙන දඬුවම තීරණය කරන්නේ කුමන වගන්තියද?",
+      "relevant_section": "60",
+      "retrieved_sections": [
+        "11",
+        "19",
+        "61"
+      ],
+      "hit": false,
+      "hit_rank": null
+    },
+    {
+      "question": "අධිකාරියට තම අරමුණු ඉටු කර ගැනීමට ඇති බලතල මොනවාද?",
+      "relevant_section": "8",
+      "retrieved_sections": [
+        "36",
+        "8",
+        "56"
+      ],
+      "hit": true,
+      "hit_rank": 2
+    },
+    {
+      "question": "අයිතමයක මිල ප්‍රදර්ශනය කළ යුතු බව පවසන වගන්තිය කුමක්ද?",
+      "relevant_section": "26",
+      "retrieved_sections": [
+        "26",
+        "74",
+        "15"
+      ],
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "question": "පාරිභෝගිකයා දැනුවත් කිරීමේ වැඩසටහන් පැවැත්වීම අධිකාරියේ වගකීමක්ද?",
+      "relevant_section": "7",
+      "retrieved_sections": [
+        "8",
+        "36",
+        "12"
+      ],
+      "hit": false,
+      "hit_rank": null
+    },
+    {
+      "question": "පාරිභෝගික අධිකාරියට නඩු පැවරිය හැකිද?",
+      "relevant_section": "60",
+      "retrieved_sections": [
+        "38",
+        "73",
+        "2"
+      ],
+      "hit": false,
+      "hit_rank": null
+    },
+    {
+      "question": "වැරදි තොරතුරු සපයන වෙළෙන්දකුට ලැබෙන දඬුවම කුමක්ද?",
+      "relevant_section": "60",
+      "retrieved_sections": [
+        "31",
+        "13",
+        "32"
+      ],
+      "hit": false,
+      "hit_rank": null
+    },
+    {
+      "question": "අධිකාරිය පරීක්ෂා කරන පැමිණිලි මොනවාද?",
+      "relevant_section": "13",
+      "retrieved_sections": [
+        "13",
+        "23"
+      ],
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "question": "පාරිභෝගික ආරක්ෂාව සඳහා භාණ්ඩ ප්‍රවාහනය ගැන විධිවිධාන තිබේද?",
+      "relevant_section": "12",
+      "retrieved_sections": [
+        "10",
+        "12",
+        "7"
+      ],
+      "hit": true,
+      "hit_rank": 2
+    },
+    {
+      "question": "අත්‍යවශ්‍ය සේවාවක මිල වැඩි කිරීමට පෙර කළ යුත්තේ කුමක්ද?",
+      "relevant_section": "18",
+      "retrieved_sections": [
+        "18",
+        "20",
+        "20"
+      ],
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "question": "වෙළෙන්දෙකුට තම පාරිභෝගිකයන්ට අසාධාරණ කොන්දේසි ඉදිරිපත් කළ හැකිද?",
+      "relevant_section": "30",
+      "retrieved_sections": [
+        "7",
+        "29",
+        "14"
+      ],
+      "hit": false,
+      "hit_rank": null
+    },
+    {
+      "question": "භාණ්ඩයක ඇසුරුම (Packing) සම්බන්ධයෙන් නීති පැනවිය හැකිද?",
+      "relevant_section": "10",
+      "retrieved_sections": [
+        "15",
+        "61",
+        "28"
+      ],
+      "hit": false,
+      "hit_rank": null
+    },
+    {
+      "question": "මෙම පනත ක්‍රියාත්මක වන්නේ කාට එරෙහිවද?",
+      "relevant_section": "60",
+      "retrieved_sections": [
+        "73",
+        "64"
+      ],
+      "hit": false,
+      "hit_rank": null
+    }
+  ]
+}

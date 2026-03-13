@@ -53,7 +53,7 @@ def build_prompt(query: str, RAG_enabled: bool, chunks) -> str:
 
     "Answer Structure Requirements:\n"
     "1. Start with a direct answer to the question.\n"
-    "2. If it is a MCQ, clearly state the correct option (e.g., A, B, C, or D) at the beginning of the answer.\n"
+    "2. If it is a MCQ, first state \"නිවරැදි පිළිතුර: \" followed by the option letter.\n"
     "3. Then explain the legal rule using numbered sections.\n"
     "4. Use bold words for important legal terms, acts, or concepts.\n"
     "5. When relevant, mention subsection numbers (e.g., (1), (2), (a), (b)).\n"
