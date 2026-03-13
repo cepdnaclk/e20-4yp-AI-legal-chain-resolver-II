@@ -11,7 +11,6 @@ from Tools.retriever_utils import (  # noqa: E402
     get_vectorstore,
     retrieve_chunks_bm25,
     retrieve_chunks_faiss,
-    retrieve_chunks_title,
 )
 
 
@@ -55,14 +54,8 @@ def _evaluate_retrieval(
 
         faiss_chunks = retrieve_chunks_faiss(vectorstore, question, top_k)
         bm25_chunks = retrieve_chunks_bm25(vectorstore, question, top_k)
-        title_chunks = retrieve_chunks_title(
-            vectorstore, act_name or None, relevant_section
-        )
-        if not title_chunks and act_name:
-            title_chunks = retrieve_chunks_title(
-                vectorstore, None, relevant_section
-            )
-        chunks = faiss_chunks + bm25_chunks + title_chunks
+        
+        chunks = faiss_chunks + bm25_chunks
         retrieved_sections = [
             _normalize_section(chunk.section_number) for chunk in chunks
         ]
