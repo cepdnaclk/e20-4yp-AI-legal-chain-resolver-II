@@ -8,8 +8,8 @@ SECTION_PATTERN = re.compile(
     flags=re.MULTILINE,
 )
 SUBSECTION_PATTERN = re.compile(
-    r"^\s*\((?P<num>\d+)\)\s*",
-    flags=re.MULTILINE,
+    r"^\s*\((?P<num>[0-9]+)\)\s*",
+    flags=re.MULTILINE | re.ASCII,
 )
 
 

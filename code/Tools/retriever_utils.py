@@ -1,4 +1,3 @@
-import argparse
 from dataclasses import dataclass
 import logging
 import math
@@ -12,13 +11,10 @@ from langchain_core.embeddings import Embeddings
 from langchain_community.vectorstores import FAISS
 from sentence_transformers import CrossEncoder, SentenceTransformer
 
-try:
-    import google.genai as genai
-except ImportError as exc:
-    raise ImportError(
-        "google-genai is not installed. Install it with "
-        "`pip install google-genai`."
-    ) from exc
+_VECTORSTORE = None
+_EMBEDDING_MODEL = None
+_RERANKER = None
+_RERANKER_MODEL_NAME = None
 
 
 class SentenceTransformerEmbeddings(Embeddings):
@@ -64,6 +60,30 @@ def load_vectorstore(repo_root: Path) -> tuple[FAISS, SentenceTransformer]:
         allow_dangerous_deserialization=True,
     )
     return vectorstore, model
+
+
+def get_vectorstore(repo_root: Path) -> tuple[FAISS, SentenceTransformer]:
+    global _VECTORSTORE, _EMBEDDING_MODEL
+    if _VECTORSTORE is not None and _EMBEDDING_MODEL is not None:
+        return _VECTORSTORE, _EMBEDDING_MODEL
+
+    _VECTORSTORE, _EMBEDDING_MODEL = load_vectorstore(repo_root)
+    return _VECTORSTORE, _EMBEDDING_MODEL
+
+
+def get_reranker(model_name: str) -> CrossEncoder:
+    global _RERANKER, _RERANKER_MODEL_NAME
+    if _RERANKER is not None and _RERANKER_MODEL_NAME == model_name:
+        return _RERANKER
+
+    _RERANKER = CrossEncoder(model_name)
+    _RERANKER_MODEL_NAME = model_name
+    return _RERANKER
+
+
+def preload_retriever(repo_root: Path, reranker_model_name: str) -> None:
+    get_vectorstore(repo_root)
+    get_reranker(reranker_model_name)
 
 
 def tokenize(text: str) -> List[str]:
@@ -214,6 +234,73 @@ def retrieve_chunks_title(
         )
     ]
 
+
+def _parse_subsection_number(value: str | None) -> int | None:
+    if value is None:
+        return None
+    try:
+        return int(str(value).strip())
+    except ValueError:
+        return None
+
+
+def retrieve_chunks_by_act_section(
+    vectorstore: FAISS, act: str | None, section_number: str | None
+) -> List[RetrievedChunk]:
+    if not section_number:
+        return []
+
+    doc_ids = list(vectorstore.index_to_docstore_id.values())
+    documents = []
+    for doc_id in doc_ids:
+        doc = vectorstore.docstore.search(doc_id)
+        if doc is not None:
+            documents.append(doc)
+
+    if not documents:
+        return []
+
+    matched = []
+    for doc_index, doc in enumerate(documents):
+        metadata = doc.metadata or {}
+        doc_act = metadata.get("act")
+        doc_section = metadata.get("section_number")
+        if act and (doc_act or "").strip() != act.strip():
+            continue
+        if doc_section is None:
+            continue
+        if str(doc_section).strip() != str(section_number).strip():
+            continue
+        matched.append((doc_index, doc))
+
+    if not matched:
+        return []
+
+    def sort_key(item):
+        doc_index, doc = item
+        subsection = (doc.metadata or {}).get("subsection_number")
+        parsed = _parse_subsection_number(subsection)
+        if parsed is None:
+            return (1, doc_index)
+        return (0, parsed, doc_index)
+
+    matched.sort(key=sort_key)
+    first_meta = matched[0][1].metadata or {}
+    merged_content = "\n\n".join(doc.page_content for _, doc in matched)
+    return [
+        RetrievedChunk(
+            content=merged_content,
+            source=first_meta.get("source", "unknown"),
+            section_number=first_meta.get("section_number"),
+            section_title=first_meta.get("section_title"),
+            subsection_number=None,
+            act=first_meta.get("act"),
+            method="act_section",
+            score=None,
+        )
+    ]
+
+
 def retrieve_chunks_by_section(
     vectorstore: FAISS, section_number: str
 ) -> List[RetrievedChunk]:
@@ -258,43 +345,12 @@ def retrieve_chunks_by_section(
         )
     ]
 
-def build_prompt(query: str, chunks: List[RetrievedChunk]) -> str:
-    logging.info("Building prompt with %s retrieved chunks", len(chunks))
-    context_blocks = []
-    for idx, chunk in enumerate(chunks, start=1):
-        context_blocks.append(
-            "[Context {idx} | method: {method} | source: {source} | "
-            "section: {section_number} | subsection: {subsection_number} | "
-            "title: {section_title}]\n"
-            "{content}".format(
-                idx=idx,
-                method=chunk.method,
-                source=chunk.source,
-                section_number=chunk.section_number,
-                subsection_number=chunk.subsection_number,
-                section_title=chunk.section_title,
-                content=chunk.content,
-            )
-        )
-
-    context_text = "\n\n".join(context_blocks)
-    return (
-        "You are a legal assistant. Answer the user question using only the context.\n"
-        "If the context is insufficient, say you do not have enough information.\n"
-        "When you use a chunk, cite it by its source/section metadata if provided.\n"
-        "There might be multiple relevant chunks; you can use information from all of them, but dont use unrelated chunks. \n"
-        "Use short citations like [source=..., section=..., rule=...].\n\n"
-        f"Question:\n{query}\n\n"
-        f"Context:\n{context_text}"
-    )
-
-
 def rerank_chunks(
     query: str, chunks: List[RetrievedChunk], model_name: str, top_k: int
 ) -> List[RetrievedChunk]:
     if not chunks:
         return []
-    reranker = CrossEncoder(model_name)
+    reranker = get_reranker(model_name)
     pairs = [(query, chunk.content) for chunk in chunks]
     scores = reranker.predict(pairs).tolist()
     scored = []
@@ -317,91 +373,3 @@ def deduplicate_chunks(chunks: List[RetrievedChunk]) -> List[RetrievedChunk]:
     return unique_chunks
 
 
-def call_gemini(prompt: str, model_name: str) -> str:
-    logging.info("Calling Gemini model %s", model_name)
-    load_dotenv()
-    api_key = os.environ.get("GEMINI_API_KEY")
-    if not api_key:
-        raise EnvironmentError("Missing GEMINI_API_KEY environment variable.")
-
-    client = genai.Client(api_key=api_key)
-    logging.info("Sending prompt to Gemini (chars=%s)", len(prompt))
-    response = client.models.generate_content(
-        model=model_name,
-        contents=prompt,
-    )
-    if not response or not response.text:
-        return "No response text returned from Gemini."
-    return response.text.strip()
-
-
-def parse_args() -> argparse.Namespace:
-    query_default = ""
-    parser = argparse.ArgumentParser(
-        description="Retrieve FAISS chunks and answer with Gemini."
-    )
-    parser.add_argument("--query", default=query_default, help="User query to answer.")
-    parser.add_argument("--top-k", type=int, default=5, help="Number of chunks to retrieve.")
-    parser.add_argument("--act", default=None, help="Act name to retrieve by.")
-    parser.add_argument(
-        "--section",
-        default=None,
-        help="Section number to retrieve by (requires --act or can be standalone).",
-    )
-    parser.add_argument(
-        "--model-name",
-        default=os.environ.get("GEMINI_MODEL", "gemini-2.5-flash"),
-        help="Gemini model name (or set GEMINI_MODEL).",
-    )
-    return parser.parse_args()
-
-
-def main() -> None:
-    args = parse_args()
-    query = "අධිකාරියේ අරමුණු " if not args.query else args.query
-    logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
-    repo_root = Path(__file__).resolve().parents[1]
-    logging.info("Repo root: %s", repo_root)
-    vectorstore, _embedding_model = load_vectorstore(repo_root)
-    faiss_chunks = retrieve_chunks_faiss(vectorstore, query, args.top_k)
-    bm25_chunks = retrieve_chunks_bm25(vectorstore, query, args.top_k)
-    title_chunks = retrieve_chunks_title(vectorstore, args.act, args.section)
-    chunks = faiss_chunks + bm25_chunks + title_chunks
-    unique_chunks = deduplicate_chunks(chunks)
-    reranked_chunks = rerank_chunks(
-        query,
-        unique_chunks,
-        "cross-encoder/mmarco-mMiniLMv2-L12-H384-v1",
-        args.top_k,
-    )
-    logging.info(
-        "Retrieved %s FAISS chunks, %s BM25 chunks, and %s title chunks",
-        len(faiss_chunks),
-        len(bm25_chunks),
-        len(title_chunks),
-    )
-    logging.info("Deduplicated chunks: %s -> %s", len(chunks), len(unique_chunks))
-    print("\nRetrieved chunks:\n")
-    for idx, chunk in enumerate(reranked_chunks, start=1):
-        print(
-            "[Chunk {idx} | method: {method} | source: {source} | "
-            "section: {section_number} | subsection: {subsection_number} | "
-            "title: {section_title}]\n{content}\n".format(
-                idx=idx,
-                method=chunk.method,
-                source=chunk.source,
-                section_number=chunk.section_number,
-                subsection_number=chunk.subsection_number,
-                section_title=chunk.section_title,
-                content=chunk.content,
-            )
-        )
-    #prompt = build_prompt(query, reranked_chunks)
-    # answer = call_gemini(prompt, args.model_name)
-
-    # print("\nAnswer:\n")
-    # print(answer)
-
-
-if __name__ == "__main__":
-    main()
