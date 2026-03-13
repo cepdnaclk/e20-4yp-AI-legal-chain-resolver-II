@@ -172,7 +172,7 @@ def main() -> None:
     parser.add_argument(
         "--output",
         type=Path,
-        default=code_root /"Evaluation" / "Results" / "consumer_act2003_results.json",
+        default=code_root /"Evaluation" / "Results" / f"consumer_act2003_results{args.top_k}.json",
         help="Optional path to write detailed results JSON.",
     )
     args = parser.parse_args()

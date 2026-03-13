@@ -1,0 +1,594 @@
+{
+  "metrics": {
+    "hit_rate": 0.86,
+    "precision_at_k": 0.08600000000000002,
+    "recall_at_k": 0.86,
+    "mrr": 0.7833333333333333
+  },
+  "details": [
+    {
+      "question_id": "Q1",
+      "question": "2003 අංක 9 දරන පනත කුමක් සම්බන්ධයෙන්ද?",
+      "relevant_section": "1",
+      "retrieved_sections": [
+        "1",
+        "10",
+        "59"
+      ],
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "question_id": "Q2",
+      "question": "පාරිභෝගික කටයුතු පිළිබඳ අධිකාරිය පිහිටුවනු ලබන්නේ කුමන වගන්තිය යටතේද?",
+      "relevant_section": "2",
+      "retrieved_sections": [
+        "2",
+        "36",
+        "1"
+      ],
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "question_id": "Q3",
+      "question": "අධිකාරිය කුමන ස්වභාවයේ ආයතනයක් ලෙස පවතින්නේද?",
+      "relevant_section": "2",
+      "retrieved_sections": [
+        "2",
+        "24",
+        "34"
+      ],
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "question_id": "Q4",
+      "question": "අධිකාරියේ සභාපතිවරයා සහ සාමාජිකයන් පත් කරනුයේ කවුරුන් විසින්ද?",
+      "relevant_section": "3",
+      "retrieved_sections": [
+        "3",
+        "4"
+      ],
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "question_id": "Q5",
+      "question": "අධිකාරියේ සාමාජිකයන් උපරිමයෙන් කොපමණක් විය යුතුද?",
+      "relevant_section": "3",
+      "retrieved_sections": [
+        "3",
+        "4"
+      ],
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "question_id": "Q6",
+      "question": "අධිකාරියේ පූර්ණ කාලීන සාමාජිකයන් කොපමණද?",
+      "relevant_section": "3",
+      "retrieved_sections": [
+        "3",
+        "4"
+      ],
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "question_id": "Q7",
+      "question": "අධිකාරියේ සභාපතිවරයාගේ ධුර කාලය කොපමණද?",
+      "relevant_section": "4",
+      "retrieved_sections": [
+        "4",
+        "39",
+        "5"
+      ],
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "question_id": "Q8",
+      "question": "අධිකාරියේ ලේකම් ලෙස කටයුතු කරන්නේ කවුද?",
+      "relevant_section": "5",
+      "retrieved_sections": [
+        "5",
+        "52",
+        "54"
+      ],
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "question_id": "Q9",
+      "question": "පාරිභෝගිකයන්ගේ ජීවිත හා දේපල ආරක්ෂා කිරීම අධිකාරියේ කුමන කොටසට අයත්ද?",
+      "relevant_section": "7",
+      "retrieved_sections": [
+        "7",
+        "10",
+        "12"
+      ],
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "question_id": "Q10",
+      "question": "අසාධාරණ වෙළෙඳ පිළිවෙත්වලට විරුද්ධව පාරිභෝගිකයන් ආරක්ෂා කිරීම කුමන වගන්තියට අයත්ද?",
+      "relevant_section": "7",
+      "retrieved_sections": [
+        "7",
+        "10",
+        "9"
+      ],
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "question_id": "Q11",
+      "question": "ව්‍යවසායයන් අතර සීමාකාරී ගිවිසුම් පාලනය කිරීම අධිකාරියේ කුමක්ද?",
+      "relevant_section": "8",
+      "retrieved_sections": [
+        "8",
+        "14",
+        "9"
+      ],
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "question_id": "Q12",
+      "question": "තරඟකාරීත්වය ප්‍රවර්ධනය කිරීම අධිකාරියේ කුමන වගන්තියට අයත්ද?",
+      "relevant_section": "8",
+      "retrieved_sections": [
+        "41",
+        "7",
+        "36"
+      ],
+      "hit": false,
+      "hit_rank": null
+    },
+    {
+      "question_id": "Q13",
+      "question": "පාරිභෝගිකයන් දැනුවත් කිරීම අධිකාරියේ කුමන කර්තව්‍යයක්ද?",
+      "relevant_section": "8",
+      "retrieved_sections": [
+        "7",
+        "9",
+        "12"
+      ],
+      "hit": false,
+      "hit_rank": null
+    },
+    {
+      "question_id": "Q14",
+      "question": "භාණ්ඩ ලේබල් කිරීම සහ මිල ලකුණු කිරීම සම්බන්ධ විධාන නිකුත් කිරීම කුමන වගන්තිය යටතේද?",
+      "relevant_section": "10",
+      "retrieved_sections": [
+        "10",
+        "11"
+      ],
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "question_id": "Q15",
+      "question": "10 වගන්තිය යටතේ නිකුත් කරන විධාන පළ කළ යුත්තේ කොහෙද?",
+      "relevant_section": "10",
+      "retrieved_sections": [
+        "10",
+        "11"
+      ],
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "question_id": "Q16",
+      "question": "ලකුණු කර ඇති මිලට වඩා වැඩි මිලකට භාණ්ඩ විකිණීම කුමක්ද?",
+      "relevant_section": "11",
+      "retrieved_sections": [
+        "11",
+        "26",
+        "14"
+      ],
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "question_id": "Q17",
+      "question": "භාණ්ඩ සහ සේවාවල ප්‍රමිති නියම කළ හැක්කේ කවුරුන්ද?",
+      "relevant_section": "12",
+      "retrieved_sections": [
+        "13",
+        "12",
+        "12"
+      ],
+      "hit": true,
+      "hit_rank": 2
+    },
+    {
+      "question_id": "Q18",
+      "question": "පාරිභෝගික පැමිණිලි පරීක්ෂා කිරීම කුමන වගන්තිය යටතේද?",
+      "relevant_section": "13",
+      "retrieved_sections": [
+        "38",
+        "13",
+        "36"
+      ],
+      "hit": true,
+      "hit_rank": 2
+    },
+    {
+      "question_id": "Q19",
+      "question": "භාණ්ඩයක් සම්බන්ධ පැමිණිල්ලක් ඉදිරිපත් කළ යුත්තේ කොපමණ කාලයක් ඇතුළතද?",
+      "relevant_section": "13",
+      "retrieved_sections": [
+        "13",
+        "18",
+        "62"
+      ],
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "question_id": "Q20",
+      "question": "අධිකාරිය සාදන්නන් හා වෙළෙන්දන් සමඟ ගිවිසුම්වලට එළඹිය හැක්කේ කුමන වගන්තිය යටතේද?",
+      "relevant_section": "14",
+      "retrieved_sections": [
+        "14",
+        "9"
+      ],
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "question_id": "Q21",
+      "question": "වෙළෙන්දකු භාණ්ඩ විකිණීම ප්‍රතික්ෂේප නොකළ යුතුය යන නියමය කුමන වගන්තියේද?",
+      "relevant_section": "15",
+      "retrieved_sections": [
+        "15",
+        "16",
+        "14"
+      ],
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "question_id": "Q22",
+      "question": "භාණ්ඩ නොමැති බව වංචා ලෙස ප්‍රකාශ කිරීම කුමන වගන්තියට අදාළද?",
+      "relevant_section": "16",
+      "retrieved_sections": [
+        "61",
+        "62",
+        "31"
+      ],
+      "hit": false,
+      "hit_rank": null
+    },
+    {
+      "question_id": "Q23",
+      "question": "අධික ප්‍රමාණයකින් භාණ්ඩ ගබඩා කර තබා ගැනීම තහනම් වන්නේ කුමන වගන්තිය යටතේද?",
+      "relevant_section": "17",
+      "retrieved_sections": [
+        "17",
+        "61",
+        "59"
+      ],
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "question_id": "Q24",
+      "question": "අත්‍යාවශ්‍ය භාණ්ඩ ලෙස නිශ්චිත කරනු ලබන්නේ කවුරුන් විසින්ද?",
+      "relevant_section": "18",
+      "retrieved_sections": [
+        "18",
+        "13"
+      ],
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "question_id": "Q25",
+      "question": "අත්‍යාවශ්‍ය භාණ්ඩයක මිල වැඩි කිරීමට පෙර අවශ්‍ය අනුමතිය කවුරුන්ගෙන්ද?",
+      "relevant_section": "18",
+      "retrieved_sections": [
+        "18",
+        "21",
+        "20"
+      ],
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "question_id": "Q26",
+      "question": "අධික මිලකට භාණ්ඩ විකිණීම පිළිබඳ විමර්ශනයක් ආරම්භ කිරීමට හැකි කවුරුන්ටද?",
+      "relevant_section": "19",
+      "retrieved_sections": [
+        "22",
+        "19",
+        "20"
+      ],
+      "hit": true,
+      "hit_rank": 2
+    },
+    {
+      "question_id": "Q27",
+      "question": "19 වගන්තිය යටතේ විමර්ශන වාර්තාව කා වෙත ඉදිරිපත් කළ යුතුද?",
+      "relevant_section": "19",
+      "retrieved_sections": [
+        "20",
+        "38"
+      ],
+      "hit": false,
+      "hit_rank": null
+    },
+    {
+      "question_id": "Q28",
+      "question": "විමර්ශනයක් සඳහා ලේඛන ඉදිරිපත් කිරීමට නියම කළ හැක්කේ කවුරුන්ද?",
+      "relevant_section": "20",
+      "retrieved_sections": [
+        "20",
+        "36",
+        "57"
+      ],
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "question_id": "Q29",
+      "question": "විමර්ශනයක අවසානයේ උපරිම මිල නිර්දේශ කරන්නේ කවුද?",
+      "relevant_section": "20",
+      "retrieved_sections": [
+        "20",
+        "21"
+      ],
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "question_id": "Q30",
+      "question": "සභාව විසින් පිළිගත් ප්‍රතිඥාවක් කඩ කිරීම කුමක් ලෙස සලකනවාද?",
+      "relevant_section": "21",
+      "retrieved_sections": [
+        "21"
+      ],
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "question_id": "Q31",
+      "question": "මහජන සාමාජිකයෙකුට විමර්ශනයක් ඉල්ලා සිටිය හැක්කේ කුමන වගන්තිය යටතේද?",
+      "relevant_section": "22",
+      "retrieved_sections": [
+        "37",
+        "38",
+        "36"
+      ],
+      "hit": false,
+      "hit_rank": null
+    },
+    {
+      "question_id": "Q32",
+      "question": "භාණ්ඩයක මිල සම්බන්ධ ප්‍රශ්නයක් පරීක්ෂා කිරීමට අධිකාරියට යොමු කළ හැක්කේ කවුරුන්ද?",
+      "relevant_section": "23",
+      "retrieved_sections": [
+        "23",
+        "24",
+        "14"
+      ],
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "question_id": "Q33",
+      "question": "අධිකාරිය විසින් මිල සම්බන්ධ වාර්තාව අමාත්‍යවරයා වෙත යැවිය යුත්තේ කොපමණ කාලයකින්ද?",
+      "relevant_section": "23",
+      "retrieved_sections": [
+        "23",
+        "33",
+        "20"
+      ],
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "question_id": "Q34",
+      "question": "අධිකාරියට මිල සම්බන්ධ කරුණු සමාලෝචනය කර වාර්තා කළ හැක්කේ කා වෙතද?",
+      "relevant_section": "24",
+      "retrieved_sections": [
+        "24",
+        "23",
+        "19"
+      ],
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "question_id": "Q35",
+      "question": "අමාත්‍යවරයාට වාර්තා ප්‍රකාශයට පත් කළ හැක්කේ කුමන වගන්තිය යටතේද?",
+      "relevant_section": "25",
+      "retrieved_sections": [
+        "20",
+        "24",
+        "25"
+      ],
+      "hit": true,
+      "hit_rank": 3
+    },
+    {
+      "question_id": "Q36",
+      "question": "වෙළෙන්දකු විසින් භාණ්ඩයේ මිල ප්‍රදර්ශනය කළ යුතුය යන නියමය කුමන වගන්තියේද?",
+      "relevant_section": "26",
+      "retrieved_sections": [
+        "21",
+        "26",
+        "15"
+      ],
+      "hit": true,
+      "hit_rank": 2
+    },
+    {
+      "question_id": "Q37",
+      "question": "පාරිභෝගික සංවිධාන ප්‍රවර්ධනය කිරීම කුමන වගන්තියේ කර්තව්‍යයක්ද?",
+      "relevant_section": "8",
+      "retrieved_sections": [
+        "8",
+        "36",
+        "49"
+      ],
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "question_id": "Q38",
+      "question": "වෙළෙඳපොළ තත්ත්වය පිළිබඳ අධ්‍යයනය කිරීම අධිකාරියේ කුමක්ද?",
+      "relevant_section": "8",
+      "retrieved_sections": [
+        "8",
+        "33",
+        "41"
+      ],
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "question_id": "Q39",
+      "question": "අධිකාරිය විසින් කමිටු පත් කළ හැක්කේ කුමන අරමුණ සඳහාද?",
+      "relevant_section": "8",
+      "retrieved_sections": [
+        "8",
+        "54",
+        "53"
+      ],
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "question_id": "Q40",
+      "question": "වෙළෙඳපොළ තරඟකාරී මිල ප්‍රවර්ධනය කිරීම අධිකාරියේ කුමක්ද?",
+      "relevant_section": "8",
+      "retrieved_sections": [
+        "8",
+        "41",
+        "7"
+      ],
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "question_id": "Q41",
+      "question": "භාණ්ඩ හා සේවාවල ගුණත්වය ආරක්ෂා කිරීම අධිකාරියේ කුමක්ද?",
+      "relevant_section": "8",
+      "retrieved_sections": [
+        "12",
+        "7",
+        "8"
+      ],
+      "hit": true,
+      "hit_rank": 3
+    },
+    {
+      "question_id": "Q42",
+      "question": "පාරිභෝගික අධ්‍යාපනය ප්‍රවර්ධනය කිරීම කුමන වගන්තියේද?",
+      "relevant_section": "8",
+      "retrieved_sections": [
+        "8",
+        "49",
+        "1"
+      ],
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "question_id": "Q43",
+      "question": "අධිකාරියට සේවාවන් සඳහා ගාස්තු අය කළ හැක්කේ කුමන වගන්තිය යටතේද?",
+      "relevant_section": "8",
+      "retrieved_sections": [
+        "65",
+        "23",
+        "49"
+      ],
+      "hit": false,
+      "hit_rank": null
+    },
+    {
+      "question_id": "Q44",
+      "question": "වෙළෙඳපොළ තොරතුරු වෙනත් ආයතන සමඟ හුවමාරු කිරීම අධිකාරියේ කුමක්ද?",
+      "relevant_section": "8",
+      "retrieved_sections": [
+        "9",
+        "14",
+        "36"
+      ],
+      "hit": false,
+      "hit_rank": null
+    },
+    {
+      "question_id": "Q45",
+      "question": "වෙළෙන්දන්ගේ සංගම් සමඟ ගිවිසුම්වලට එළඹීම කුමන වගන්තිය යටතේද?",
+      "relevant_section": "14",
+      "retrieved_sections": [
+        "9",
+        "14",
+        "14"
+      ],
+      "hit": true,
+      "hit_rank": 2
+    },
+    {
+      "question_id": "Q46",
+      "question": "වෙළෙන්දකු විසින් අධික ප්‍රමාණයකින් භාණ්ඩ තබා ගැනීම කුමක්ද?",
+      "relevant_section": "17",
+      "retrieved_sections": [
+        "17",
+        "19"
+      ],
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "question_id": "Q47",
+      "question": "අත්‍යාවශ්‍ය භාණ්ඩයක මිල වැඩි කිරීමේ අවසරය ලබා දිය හැක්කේ කවුද?",
+      "relevant_section": "18",
+      "retrieved_sections": [
+        "18"
+      ],
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "question_id": "Q48",
+      "question": "විමර්ශනයකදී ලේඛන ඉදිරිපත් කිරීමට නියෝග කළ හැක්කේ කවුද?",
+      "relevant_section": "20",
+      "retrieved_sections": [
+        "20",
+        "36"
+      ],
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "question_id": "Q49",
+      "question": "සභාවේ නිර්දේශ අනුව උපරිම මිල නියම කරනු ලබන්නේ කවුරුන්ද?",
+      "relevant_section": "20",
+      "retrieved_sections": [
+        "20",
+        "19"
+      ],
+      "hit": true,
+      "hit_rank": 1
+    },
+    {
+      "question_id": "Q50",
+      "question": "වෙළෙන්දකු විසින් මිල ප්‍රදර්ශනය නොකිරීම කුමක්ද?",
+      "relevant_section": "26",
+      "retrieved_sections": [
+        "26",
+        "18",
+        "17"
+      ],
+      "hit": true,
+      "hit_rank": 1
+    }
+  ]
+}

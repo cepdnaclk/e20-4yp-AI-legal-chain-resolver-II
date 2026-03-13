@@ -2,49 +2,47 @@
   {
     "question_id": "Q1",
     "question_type": "mcq",
-    "question_text": "පාරිභෝගික කටයුතු අධිකාරිය පනත අංක 9 2003 පනත බලාත්මක වූ දිනය කුමක්ද?",
+    "question_text": "2003 අංක 9 දරන පනත කුමක් සම්බන්ධයෙන්ද?",
     "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
     "section": 1,
     "options": {
-      "A": "2003 අප්‍රේල් මස 05 දින",
-      "B": "2003 අප්‍රේල් මස 17 දින",
-      "C": "2003 මැයි මස 21 දින",
-      "D": "2003 ජූනි මස 05 දින"
-    },
-    "correct_option": "B"
-  },
-  {
-    "question_id": "Q2",
-    "question_type": "mcq",
-    "question_text": "පාරිභෝගික කටයුතු අධිකාරිය පනතෙන් අවලංගු කරන ලද පනත් කොපමණ ද?",
-    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
-    "section": 2,
-    "options": {
-      "A": "එක් පනතක්",
-      "B": "පනත් දෙකක්",
-      "C": "පනත් තුනක්",
-      "D": "පනත් හතරක්"
-    },
-    "correct_option": "B"
-  },
-  {
-    "question_id": "Q3",
-    "question_type": "mcq",
-    "question_text": "පාරිභෝගික ආරක්ෂණ පනත අංක 1 1979 අවලංගු කරන ලද්දේ කුමන පනතෙන් ද?",
-    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
-    "section": 2,
-    "options": {
-      "A": "පාරිභෝගික කටයුතු අධිකාරිය පනත අංක 9 2003",
-      "B": "සාධාරණ වෙළඳ කොමිෂන් සභා පනත",
-      "C": "අභ්‍යන්තර වෙළඳ පනත",
-      "D": "මිල පාලන පනත"
+      "A": "පාරිභෝගික කටයුතු පිළිබඳ අධිකාරිය",
+      "B": "බැංකු පද්ධතිය",
+      "C": "බදු පද්ධතිය",
+      "D": "පොලිස් පද්ධතිය"
     },
     "correct_option": "A"
   },
+
+  {
+    "question_id": "Q2",
+    "question_type": "mcq",
+    "question_text": "පාරිභෝගික කටයුතු පිළිබඳ අධිකාරිය පිහිටුවනු ලබන්නේ කුමන වගන්තිය යටතේද?",
+    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
+    "section": 2,
+    "options": { "A": "1", "B": "2", "C": "3", "D": "4" },
+    "correct_option": "B"
+  },
+
+  {
+    "question_id": "Q3",
+    "question_type": "mcq",
+    "question_text": "අධිකාරිය කුමන ස්වභාවයේ ආයතනයක් ලෙස පවතින්නේද?",
+    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
+    "section": 2,
+    "options": {
+      "A": "පුද්ගලික සමාගමක්",
+      "B": "සංස්ථාවක්",
+      "C": "සංවිධානයක්",
+      "D": "සංසදයක්"
+    },
+    "correct_option": "B"
+  },
+
   {
     "question_id": "Q4",
     "question_type": "mcq",
-    "question_text": "අධිකාරියේ සභාපතිවරයා සහ අනෙකුත් සාමාජිකයින් පත් කරනුයේ කවුරුන් ද?",
+    "question_text": "අධිකාරියේ සභාපතිවරයා සහ සාමාජිකයන් පත් කරනුයේ කවුරුන් විසින්ද?",
     "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
     "section": 3,
     "options": {
@@ -55,648 +53,554 @@
     },
     "correct_option": "B"
   },
+
   {
     "question_id": "Q5",
     "question_type": "mcq",
-    "question_text": "අධිකාරියේ සභාපතිවරයා හැර අනෙකුත් සාමාජිකයින් සංඛ්‍යාව අවම වශයෙන් කොපමණ විය යුතුද?",
+    "question_text": "අධිකාරියේ සාමාජිකයන් උපරිමයෙන් කොපමණක් විය යුතුද?",
     "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
     "section": 3,
-    "options": {
-      "A": "පස් දෙනෙක්",
-      "B": "හත් දෙනෙක්",
-      "C": "දස දෙනෙක්",
-      "D": "පහළොව් දෙනෙක්"
-    },
+    "options": { "A": "5", "B": "8", "C": "10", "D": "15" },
     "correct_option": "C"
   },
+
   {
     "question_id": "Q6",
     "question_type": "mcq",
-    "question_text": "අධිකාරියේ පූර්ණ කාලීන සාමාජිකයින් කොපමණ දෙනෙක් විය යුතුද?",
+    "question_text": "අධිකාරියේ පූර්ණ කාලීන සාමාජිකයන් කොපමණද?",
     "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
     "section": 3,
-    "options": {
-      "A": "දෙදෙනෙක්",
-      "B": "තුන් දෙනෙක්",
-      "C": "හතර දෙනෙක්",
-      "D": "පස් දෙනෙක්"
-    },
+    "options": { "A": "2", "B": "3", "C": "4", "D": "5" },
     "correct_option": "B"
   },
+
   {
     "question_id": "Q7",
     "question_type": "mcq",
-    "question_text": "අධිකාරියේ සාමාජිකයින් සතුව තිබිය යුතු ප්‍රධාන සුදුසුකම් කුමක්ද?",
+    "question_text": "අධිකාරියේ සභාපතිවරයාගේ ධුර කාලය කොපමණද?",
     "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
-    "section": 3,
-    "options": {
-      "A": "ප්‍රසිද්ධ විශ්වවිද්‍යාල උපාධියක්",
-      "B": "කර්මාන්ත, නීතිය, ආර්ථික විද්‍යාව, වාණිජ්‍යය, පරිපාලනය, ගිණුම්කරණය, විද්‍යාව හෝ සෞඛ්‍ය ක්ෂේත්‍රයේ පිළිගත් සුදුසුකම් හා පළපුරුද්ද",
-      "C": "රජයේ සේවයේ අවම වශයෙන් වසර 20ක සේවා කාලයක්",
-      "D": "පාර්ලිමේන්තු සාමාජිකත්වය"
-    },
-    "correct_option": "B"
+    "section": 4,
+    "options": { "A": "1 වසර", "B": "2 වසර", "C": "3 වසර", "D": "5 වසර" },
+    "correct_option": "C"
   },
+
   {
     "question_id": "Q8",
     "question_type": "mcq",
-    "question_text": "අධිකාරියේ ප්‍රධාන අරමුණු අතුරින් එකක් නොවන්නේ කුමක්ද?",
+    "question_text": "අධිකාරියේ ලේකම් ලෙස කටයුතු කරන්නේ කවුද?",
     "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
-    "section": 4,
+    "section": 5,
     "options": {
-      "A": "ජීවිතයට හා දේපළට අනතුරුදායක භාණ්ඩ විකිණීමෙන් පාරිභෝගිකයින් ආරක්ෂා කිරීම",
-      "B": "අසාධාරණ හා සීමිත වෙළඳ ක්‍රියාවන්ගෙන් පාරිභෝගිකයින් ආරක්ෂා කිරීම",
-      "C": "අපනයන වෙළඳාම දියුණු කිරීම",
-      "D": "ඵලදායී තරඟකාරිත්වය ප්‍රවර්ධනය කිරීම"
+      "A": "අමාත්‍යවරයා",
+      "B": "අධ්‍යක්ෂ ජනරාල්",
+      "C": "සභාපති",
+      "D": "නීතිපති"
     },
-    "correct_option": "C"
+    "correct_option": "B"
   },
+
   {
     "question_id": "Q9",
     "question_type": "mcq",
-    "question_text": "අධිකාරියට භාණ්ඩ නිෂ්පාදකයින්ට හෝ වෙළෙන්දන්ට ලේබල් කිරීම, මිල නියම කිරීම සහ ඇසුරුම් කිරීම පිළිබඳව සාමාන්‍ය නියෝග නිකුත් කළ හැකි වන්නේ කුමන අංශයෙන්ද?",
+    "question_text": "පාරිභෝගිකයන්ගේ ජීවිත හා දේපල ආරක්ෂා කිරීම අධිකාරියේ කුමන කොටසට අයත්ද?",
     "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
-    "section": 5,
-    "options": {
-      "A": "අංශ 3",
-      "B": "අංශ 4",
-      "C": "අංශ 5",
-      "D": "අංශ 6"
-    },
-    "correct_option": "C"
+    "section": 7,
+    "options": { "A": "අරමුණු", "B": "බලතල", "C": "නීති", "D": "නඩු" },
+    "correct_option": "A"
   },
+
   {
     "question_id": "Q10",
     "question_type": "mcq",
-    "question_text": "අධිකාරියට භාණ්ඩ සහ සේවා සඳහා ප්‍රමිති හා පිරිවිතර නියම කළ හැක්කේ කුමන අරමුණින්ද?",
+    "question_text": "අසාධාරණ වෙළෙඳ පිළිවෙත්වලට විරුද්ධව පාරිභෝගිකයන් ආරක්ෂා කිරීම කුමන වගන්තියට අයත්ද?",
     "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
-    "section": 6,
-    "options": {
-      "A": "රජයේ ආදායම වැඩි කිරීම සඳහා",
-      "B": "පාරිභෝගික ආරක්ෂණය සහතික කිරීම සඳහා",
-      "C": "වෙළෙන්දන්ගේ ලාභ වැඩි කිරීම සඳහා",
-      "D": "ආනයනික භාණ්ඩ අඩු කිරීම සඳහා"
-    },
-    "correct_option": "B"
+    "section": 7,
+    "options": { "A": "අරමුණු", "B": "දඩ", "C": "අභියාචනා", "D": "පාලන" },
+    "correct_option": "A"
   },
+
   {
     "question_id": "Q11",
     "question_type": "mcq",
-    "question_text": "වෙළෙන්දෙක් සලකුණු කළ මිලට වඩා ඉහළ මිලකට භාණ්ඩ විකුණන්නේ නම් එය කුමක් ලෙස සැලකේද?",
+    "question_text": "ව්‍යවසායයන් අතර සීමාකාරී ගිවිසුම් පාලනය කිරීම අධිකාරියේ කුමක්ද?",
     "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
     "section": 8,
     "options": {
-      "A": "සාමාන්‍ය වෙළඳ ක්‍රියාවක්",
-      "B": "පනත යටතේ වරදක්",
-      "C": "හිතකර ව්‍යාපාරික තීරණයක්",
-      "D": "අනුමත වෙළඳ ක්‍රමයක්"
+      "A": "අරමුණක්",
+      "B": "කර්තව්‍යයක්",
+      "C": "දඩයක්",
+      "D": "අභියාචනයක්"
     },
     "correct_option": "B"
   },
+
   {
     "question_id": "Q12",
     "question_type": "mcq",
-    "question_text": "වෙළෙන්දෙකුට තම සන්තකයේ ඇති භාණ්ඩ විකිණීම ප්‍රතික්ෂේප කළ හැකිද?",
+    "question_text": "තරඟකාරීත්වය ප්‍රවර්ධනය කිරීම අධිකාරියේ කුමන වගන්තියට අයත්ද?",
     "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
-    "section": 9,
-    "options": {
-      "A": "ඔව්, ඕනෑම අවස්ථාවක",
-      "B": "නැත, එය පනතෙන් තහනම් වේ",
-      "C": "ඔව්, අමාත්‍යවරයාගේ අනුමැතිය ඇතිව",
-      "D": "ඔව්, පාරිභෝගිකයා ගෙවීමට අපොහොසත් නම්"
-    },
-    "correct_option": "B"
+    "section": 8,
+    "options": { "A": "කර්තව්‍ය", "B": "දඩ", "C": "අභියාචන", "D": "පත්කිරීම්" },
+    "correct_option": "A"
   },
+
   {
     "question_id": "Q13",
     "question_type": "mcq",
-    "question_text": "අධිකාරියේ බලතල යටතේ ක්‍රියා කරන නිලධාරියෙකුට බාධා කිරීම කුමක් ලෙස සැලකේද?",
-    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
-    "section": 10,
-    "options": {
-      "A": "සාමාන්‍ය ක්‍රියාවක්",
-      "B": "වරදක්",
-      "C": "අයිතියක්",
-      "D": "නීත්‍යානුකූල විරෝධයක්"
-    },
-    "correct_option": "B"
-  },
-  {
-    "question_id": "Q14",
-    "question_type": "mcq",
-    "question_text": "වාර්තාවල සාවද්‍ය ප්‍රකාශ කිරීම කුමක් ලෙස සැලකේද?",
-    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
-    "section": 10,
-    "options": {
-      "A": "නිරපරාධී වැරැද්දක්",
-      "B": "වරදක්",
-      "C": "සාමාන්‍ය කාර්යාල දෝෂයක්",
-      "D": "අනුමත ක්‍රියාවක්"
-    },
-    "correct_option": "B"
-  },
-  {
-    "question_id": "Q15",
-    "question_type": "mcq",
-    "question_text": "පනත යටතේ වරදක් කරන පුද්ගලයෙකුට පළමු වරට දඬුවම් කිරීමේදී දඬුවම් වර්ග කොපමණද?",
-    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
-    "section": 11,
-    "options": {
-      "A": "රුපියල් දඬුවම පමණක්",
-      "B": "සිර දඬුවම පමණක්",
-      "C": "රුපියල් දඬුවම හෝ සිර දඬුවම හෝ දෙකම",
-      "D": "ප්‍රජා සේවා කටයුතු"
-    },
-    "correct_option": "C"
-  },
-  {
-    "question_id": "Q16",
-    "question_type": "mcq",
-    "question_text": "අධිකාරියට තරඟකාරී විරෝධී ක්‍රියාවන් පිළිබඳව විමර්ශන පැවැත්විය හැක්කේ කුමන අංශය යටතේද?",
-    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
-    "section": 15,
-    "options": {
-      "A": "අංශ 10",
-      "B": "අංශ 12",
-      "C": "අංශ 15",
-      "D": "අංශ 18"
-    },
-    "correct_option": "C"
-  },
-  {
-    "question_id": "Q17",
-    "question_type": "mcq",
-    "question_text": "අධිකාරිය විසින් පාරිභෝගික කටයුතු සභාවට නිර්දේශ ඉදිරිපත් කළ හැක්කේ කුමන කාරණා සම්බන්ධයෙන්ද?",
-    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
-    "section": 16,
-    "options": {
-      "A": "රජයේ ආදායම් ප්‍රතිපත්ති",
-      "B": "තරඟකාරී විරෝධී ක්‍රියාවන්",
-      "C": "විදේශ වෙළඳාම",
-      "D": "කෘෂිකාර්මික සංවර්ධනය"
-    },
-    "correct_option": "B"
-  },
-  {
-    "question_id": "Q18",
-    "question_type": "mcq",
-    "question_text": "සාධාරණ වෙළඳ කොමිෂන් සභා පනත අංක 1 1987 අවලංගු කළේ කුමන පනතෙන්ද?",
-    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
-    "section": 2,
-    "options": {
-      "A": "පාරිභෝගික ආරක්ෂණ පනත",
-      "B": "පාරිභෝගික කටයුතු අධිකාරිය පනත අංක 9 2003",
-      "C": "අභ්‍යන්තර වෙළඳ පනත",
-      "D": "මිල පාලන පනත"
-    },
-    "correct_option": "B"
-  },
-  {
-    "question_id": "Q19",
-    "question_type": "mcq",
-    "question_text": "අධිකාරිය විසින් භාණ්ඩ විකිණීමේ කාලය හා ස්ථාන නියම කළ හැක්කේ කුමන අරමුණින්ද?",
-    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
-    "section": 5,
-    "options": {
-      "A": "වෙළෙන්දන්ගේ ලාභ වැඩි කිරීම",
-      "B": "පාරිභෝගිකයින් ආරක්ෂා කිරීම",
-      "C": "රජයේ බදු එකතු කිරීම",
-      "D": "ආනයන සීමා කිරීම"
-    },
-    "correct_option": "B"
-  },
-  {
-    "question_id": "Q20",
-    "question_type": "mcq",
-    "question_text": "අධිකාරියට භාණ්ඩ නිෂ්පාදනය, ආනයනය, ගබඩා කිරීම සහ විකිණීම සඳහා කොන්දේසි නියම කළ හැක්කේ කුමන අංශය යටතේද?",
-    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
-    "section": 5,
-    "options": {
-      "A": "අංශ 3",
-      "B": "අංශ 4",
-      "C": "අංශ 5",
-      "D": "අංශ 7"
-    },
-    "correct_option": "C"
-  },
-  {
-    "question_id": "Q21",
-    "question_type": "mcq",
-    "question_text": "පාරිභෝගික කටයුතු අධිකාරිය පිහිටුවනු ලබන්නේ මෙම පනතේ කුමන වගන්තිය යටතේද?",
-    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
-    "section": 3,
-    "options": {
-      "A": "වගන්ති 2",
-      "B": "වගන්ති 3",
-      "C": "වගන්ති 4",
-      "D": "වගන්ති 5"
-    },
-    "correct_option": "B"
-  },
-  {
-    "question_id": "Q22",
-    "question_type": "mcq",
-    "question_text": "අධිකාරියේ සභාපතිවරයා හා අධ්‍යක්ෂ ජනරාල්වරයා ඇතුළුව අධිකාරිය සමන්විත වන්නේ සාමාජිකයින් කී දෙනෙකුගෙන්ද?",
-    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
-    "section": 4,
-    "options": {
-      "A": "පස් දෙනෙකු",
-      "B": "හත් දෙනෙකු",
-      "C": "නවදෙනෙකු",
-      "D": "දහ දෙනෙකු"
-    },
-    "correct_option": "C"
-  },
-  {
-    "question_id": "Q23",
-    "question_type": "mcq",
-    "question_text": "අධිකාරියේ සභාපතිවරයා හා අධ්‍යක්ෂ ජනරාල්වරයා හැර අනෙකුත් සාමාජිකයින්ගේ ධුර කාලය කොපමණද?",
-    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
-    "section": 5,
-    "options": {
-      "A": "වසර එකක්",
-      "B": "වසර දෙකක්",
-      "C": "වසර තුනක්",
-      "D": "වසර පහක්"
-    },
-    "correct_option": "C"
-  },
-  {
-    "question_id": "Q24",
-    "question_type": "mcq",
-    "question_text": "අධිකාරියේ රැස්වීමක ගණපූරණය සඳහා අවශ්‍ය සාමාජික සංඛ්‍යාව කොපමණද?",
-    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
-    "section": 6,
-    "options": {
-      "A": "තුන් දෙනෙකු",
-      "B": "හතර දෙනෙකු",
-      "C": "පස් දෙනෙකු",
-      "D": "හය දෙනෙකු"
-    },
-    "correct_option": "C"
-  },
-  {
-    "question_id": "Q25",
-    "question_type": "mcq",
-    "question_text": "පාරිභෝගික කටයුතු සභාව පිහිටුවනු ලබන්නේ මෙම පනතේ කුමන වගන්තිය යටතේද?",
-    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
-    "section": 7,
-    "options": {
-      "A": "වගන්ති 5",
-      "B": "වගන්ති 6",
-      "C": "වගන්ති 7",
-      "D": "වගන්ති 8"
-    },
-    "correct_option": "C"
-  },
-  {
-    "question_id": "Q26",
-    "question_type": "mcq",
-    "question_text": "පාරිභෝගික කටයුතු සභාවේ සාමාජිකයින් සංඛ්‍යාව කොපමණද?",
-    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
-    "section": 7,
-    "options": {
-      "A": "පස් දෙනෙකු",
-      "B": "හත් දෙනෙකු",
-      "C": "නවදෙනෙකු",
-      "D": "දහ එකක්"
-    },
-    "correct_option": "D"
-  },
-  {
-    "question_id": "Q27",
-    "question_type": "mcq",
-    "question_text": "අධ්‍යක්ෂ ජනරාල්වරයා විසින් නියම කරනු ලබන පරිදි සභාවේ රැස්වීම් පැවැත්විය යුත්තේ කොපමණ කාලයකට වරක්ද?",
+    "question_text": "පාරිභෝගිකයන් දැනුවත් කිරීම අධිකාරියේ කුමන කර්තව්‍යයක්ද?",
     "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
     "section": 8,
     "options": {
-      "A": "මසකට වරක්",
-      "B": "මාස දෙකකට වරක්",
-      "C": "මාස තුනකට වරක්",
-      "D": "මාස හයකට වරක්"
+      "A": "පරීක්ෂණ",
+      "B": "අධ්‍යාපන",
+      "C": "ගිවිසුම්",
+      "D": "අභියාචන"
     },
+    "correct_option": "B"
+  },
+
+  {
+    "question_id": "Q14",
+    "question_type": "mcq",
+    "question_text": "භාණ්ඩ ලේබල් කිරීම සහ මිල ලකුණු කිරීම සම්බන්ධ විධාන නිකුත් කිරීම කුමන වගන්තිය යටතේද?",
+    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
+    "section": 10,
+    "options": { "A": "8", "B": "9", "C": "10", "D": "11" },
     "correct_option": "C"
   },
+
   {
-    "question_id": "Q28",
+    "question_id": "Q15",
     "question_type": "mcq",
-    "question_text": "අධිකාරියේ නිලධාරීන් හා සේවකයින් පත් කිරීමේ බලය කාට පැවරී තිබේද?",
+    "question_text": "10 වගන්තිය යටතේ නිකුත් කරන විධාන පළ කළ යුත්තේ කොහෙද?",
     "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
     "section": 10,
     "options": {
-      "A": "සභාපතිවරයා",
-      "B": "අධ්‍යක්ෂ ජනරාල්වරයා",
-      "C": "අධිකාරිය",
-      "D": "අමාත්‍යවරයා"
+      "A": "ගැසට් පත්‍රයේ",
+      "B": "රූපවාහිනියේ",
+      "C": "පාර්ලිමේන්තුවේ",
+      "D": "බැංකුවේ"
     },
+    "correct_option": "A"
+  },
+
+  {
+    "question_id": "Q16",
+    "question_type": "mcq",
+    "question_text": "ලකුණු කර ඇති මිලට වඩා වැඩි මිලකට භාණ්ඩ විකිණීම කුමක්ද?",
+    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
+    "section": 11,
+    "options": {
+      "A": "අනුමත ක්‍රියාවක්",
+      "B": "වරදක්",
+      "C": "නීත්‍යානුකූල ක්‍රියාවක්",
+      "D": "බදු ක්‍රියාවක්"
+    },
+    "correct_option": "B"
+  },
+
+  {
+    "question_id": "Q17",
+    "question_type": "mcq",
+    "question_text": "භාණ්ඩ සහ සේවාවල ප්‍රමිති නියම කළ හැක්කේ කවුරුන්ද?",
+    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
+    "section": 12,
+    "options": {
+      "A": "අධිකාරිය",
+      "B": "බැංකුව",
+      "C": "පාර්ලිමේන්තුව",
+      "D": "පොලිසිය"
+    },
+    "correct_option": "A"
+  },
+
+  {
+    "question_id": "Q18",
+    "question_type": "mcq",
+    "question_text": "පාරිභෝගික පැමිණිලි පරීක්ෂා කිරීම කුමන වගන්තිය යටතේද?",
+    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
+    "section": 13,
+    "options": { "A": "11", "B": "12", "C": "13", "D": "14" },
     "correct_option": "C"
   },
+
+  {
+    "question_id": "Q19",
+    "question_type": "mcq",
+    "question_text": "භාණ්ඩයක් සම්බන්ධ පැමිණිල්ලක් ඉදිරිපත් කළ යුත්තේ කොපමණ කාලයක් ඇතුළතද?",
+    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
+    "section": 13,
+    "options": { "A": "මාස 1", "B": "මාස 2", "C": "මාස 3", "D": "මාස 6" },
+    "correct_option": "C"
+  },
+
+  {
+    "question_id": "Q20",
+    "question_type": "mcq",
+    "question_text": "අධිකාරිය සාදන්නන් හා වෙළෙන්දන් සමඟ ගිවිසුම්වලට එළඹිය හැක්කේ කුමන වගන්තිය යටතේද?",
+    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
+    "section": 14,
+    "options": { "A": "12", "B": "13", "C": "14", "D": "15" },
+    "correct_option": "C"
+  },
+
+  {
+    "question_id": "Q21",
+    "question_type": "mcq",
+    "question_text": "වෙළෙන්දකු භාණ්ඩ විකිණීම ප්‍රතික්ෂේප නොකළ යුතුය යන නියමය කුමන වගන්තියේද?",
+    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
+    "section": 15,
+    "options": { "A": "14", "B": "15", "C": "16", "D": "17" },
+    "correct_option": "B"
+  },
+
+  {
+    "question_id": "Q22",
+    "question_type": "mcq",
+    "question_text": "භාණ්ඩ නොමැති බව වංචා ලෙස ප්‍රකාශ කිරීම කුමන වගන්තියට අදාළද?",
+    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
+    "section": 16,
+    "options": { "A": "15", "B": "16", "C": "17", "D": "18" },
+    "correct_option": "B"
+  },
+
+  {
+    "question_id": "Q23",
+    "question_type": "mcq",
+    "question_text": "අධික ප්‍රමාණයකින් භාණ්ඩ ගබඩා කර තබා ගැනීම තහනම් වන්නේ කුමන වගන්තිය යටතේද?",
+    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
+    "section": 17,
+    "options": { "A": "16", "B": "17", "C": "18", "D": "19" },
+    "correct_option": "B"
+  },
+
+  {
+    "question_id": "Q24",
+    "question_type": "mcq",
+    "question_text": "අත්‍යාවශ්‍ය භාණ්ඩ ලෙස නිශ්චිත කරනු ලබන්නේ කවුරුන් විසින්ද?",
+    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
+    "section": 18,
+    "options": {
+      "A": "අමාත්‍යවරයා",
+      "B": "සභාපති",
+      "C": "නීතිපති",
+      "D": "අධිකරණය"
+    },
+    "correct_option": "A"
+  },
+
+  {
+    "question_id": "Q25",
+    "question_type": "mcq",
+    "question_text": "අත්‍යාවශ්‍ය භාණ්ඩයක මිල වැඩි කිරීමට පෙර අවශ්‍ය අනුමතිය කවුරුන්ගෙන්ද?",
+    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
+    "section": 18,
+    "options": {
+      "A": "පොලිසියෙන්",
+      "B": "අධිකාරියෙන්",
+      "C": "බැංකුවෙන්",
+      "D": "අධිකරණයෙන්"
+    },
+    "correct_option": "B"
+  },
+
+  {
+    "question_id": "Q26",
+    "question_type": "mcq",
+    "question_text": "අධික මිලකට භාණ්ඩ විකිණීම පිළිබඳ විමර්ශනයක් ආරම්භ කිරීමට හැකි කවුරුන්ටද?",
+    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
+    "section": 19,
+    "options": {
+      "A": "අධ්‍යක්ෂ ජනරාල්",
+      "B": "පාර්ලිමේන්තුව",
+      "C": "බැංකුව",
+      "D": "පොලිසිය"
+    },
+    "correct_option": "A"
+  },
+
+  {
+    "question_id": "Q27",
+    "question_type": "mcq",
+    "question_text": "19 වගන්තිය යටතේ විමර්ශන වාර්තාව කා වෙත ඉදිරිපත් කළ යුතුද?",
+    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
+    "section": 19,
+    "options": {
+      "A": "අධ්‍යක්ෂ ජනරාල්",
+      "B": "ජනාධිපති",
+      "C": "අධිකරණය",
+      "D": "බැංකුව"
+    },
+    "correct_option": "A"
+  },
+
+  {
+    "question_id": "Q28",
+    "question_type": "mcq",
+    "question_text": "විමර්ශනයක් සඳහා ලේඛන ඉදිරිපත් කිරීමට නියම කළ හැක්කේ කවුරුන්ද?",
+    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
+    "section": 20,
+    "options": { "A": "සභාව", "B": "බැංකුව", "C": "පොලිසිය", "D": "ජනාධිපති" },
+    "correct_option": "A"
+  },
+
   {
     "question_id": "Q29",
     "question_type": "mcq",
-    "question_text": "අධිකාරිය විසින් නිකුත් කරනු ලබන අවවාද නිවේදනයක් ප්‍රකාශයට පත් කිරීම සඳහා වගකිව යුත්තේ කවුරුන්ද?",
+    "question_text": "විමර්ශනයක අවසානයේ උපරිම මිල නිර්දේශ කරන්නේ කවුද?",
+    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
+    "section": 20,
+    "options": { "A": "සභාව", "B": "පොලිසිය", "C": "බැංකුව", "D": "අධිකරණය" },
+    "correct_option": "A"
+  },
+
+  {
+    "question_id": "Q30",
+    "question_type": "mcq",
+    "question_text": "සභාව විසින් පිළිගත් ප්‍රතිඥාවක් කඩ කිරීම කුමක් ලෙස සලකනවාද?",
+    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
+    "section": 21,
+    "options": {
+      "A": "අපරාධයක්",
+      "B": "නීත්‍යානුකූල ක්‍රියාවක්",
+      "C": "අභියාචනයක්",
+      "D": "ගිවිසුමක්"
+    },
+    "correct_option": "A"
+  },
+
+  {
+    "question_id": "Q31",
+    "question_type": "mcq",
+    "question_text": "මහජන සාමාජිකයෙකුට විමර්ශනයක් ඉල්ලා සිටිය හැක්කේ කුමන වගන්තිය යටතේද?",
+    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
+    "section": 22,
+    "options": { "A": "21", "B": "22", "C": "23", "D": "24" },
+    "correct_option": "B"
+  },
+
+  {
+    "question_id": "Q32",
+    "question_type": "mcq",
+    "question_text": "භාණ්ඩයක මිල සම්බන්ධ ප්‍රශ්නයක් පරීක්ෂා කිරීමට අධිකාරියට යොමු කළ හැක්කේ කවුරුන්ද?",
+    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
+    "section": 23,
+    "options": {
+      "A": "අමාත්‍යවරයා",
+      "B": "පොලිසිය",
+      "C": "බැංකුව",
+      "D": "නීතිපති"
+    },
+    "correct_option": "A"
+  },
+
+  {
+    "question_id": "Q33",
+    "question_type": "mcq",
+    "question_text": "අධිකාරිය විසින් මිල සම්බන්ධ වාර්තාව අමාත්‍යවරයා වෙත යැවිය යුත්තේ කොපමණ කාලයකින්ද?",
+    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
+    "section": 23,
+    "options": { "A": "සති 2", "B": "මාස 1", "C": "මාස 3", "D": "මාස 6" },
+    "correct_option": "B"
+  },
+
+  {
+    "question_id": "Q34",
+    "question_type": "mcq",
+    "question_text": "අධිකාරියට මිල සම්බන්ධ කරුණු සමාලෝචනය කර වාර්තා කළ හැක්කේ කා වෙතද?",
+    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
+    "section": 24,
+    "options": {
+      "A": "අමාත්‍යවරයා",
+      "B": "ජනාධිපති",
+      "C": "පාර්ලිමේන්තුව",
+      "D": "පොලිසිය"
+    },
+    "correct_option": "A"
+  },
+
+  {
+    "question_id": "Q35",
+    "question_type": "mcq",
+    "question_text": "අමාත්‍යවරයාට වාර්තා ප්‍රකාශයට පත් කළ හැක්කේ කුමන වගන්තිය යටතේද?",
+    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
+    "section": 25,
+    "options": { "A": "23", "B": "24", "C": "25", "D": "26" },
+    "correct_option": "C"
+  },
+
+  {
+    "question_id": "Q36",
+    "question_type": "mcq",
+    "question_text": "වෙළෙන්දකු විසින් භාණ්ඩයේ මිල ප්‍රදර්ශනය කළ යුතුය යන නියමය කුමන වගන්තියේද?",
+    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
+    "section": 26,
+    "options": { "A": "24", "B": "25", "C": "26", "D": "27" },
+    "correct_option": "C"
+  },
+
+  {
+    "question_id": "Q37",
+    "question_type": "mcq",
+    "question_text": "පාරිභෝගික සංවිධාන ප්‍රවර්ධනය කිරීම කුමන වගන්තියේ කර්තව්‍යයක්ද?",
+    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
+    "section": 8,
+    "options": { "A": "කර්තව්‍ය", "B": "දඩ", "C": "අභියාචන", "D": "අරමුණ" },
+    "correct_option": "A"
+  },
+
+  {
+    "question_id": "Q38",
+    "question_type": "mcq",
+    "question_text": "වෙළෙඳපොළ තත්ත්වය පිළිබඳ අධ්‍යයනය කිරීම අධිකාරියේ කුමක්ද?",
+    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
+    "section": 8,
+    "options": { "A": "බලතල", "B": "කර්තව්‍ය", "C": "දඩ", "D": "අභියාචන" },
+    "correct_option": "B"
+  },
+
+  {
+    "question_id": "Q39",
+    "question_type": "mcq",
+    "question_text": "අධිකාරිය විසින් කමිටු පත් කළ හැක්කේ කුමන අරමුණ සඳහාද?",
+    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
+    "section": 8,
+    "options": {
+      "A": "කර්තව්‍ය ඉටු කිරීම",
+      "B": "බදු අයකිරීම",
+      "C": "නඩු පැවරීම",
+      "D": "බැංකු පාලනය"
+    },
+    "correct_option": "A"
+  },
+
+  {
+    "question_id": "Q40",
+    "question_type": "mcq",
+    "question_text": "වෙළෙඳපොළ තරඟකාරී මිල ප්‍රවර්ධනය කිරීම අධිකාරියේ කුමක්ද?",
+    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
+    "section": 8,
+    "options": { "A": "අරමුණ", "B": "කර්තව්‍ය", "C": "නඩු", "D": "බදු" },
+    "correct_option": "B"
+  },
+
+  {
+    "question_id": "Q41",
+    "question_type": "mcq",
+    "question_text": "භාණ්ඩ හා සේවාවල ගුණත්වය ආරක්ෂා කිරීම අධිකාරියේ කුමක්ද?",
+    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
+    "section": 8,
+    "options": { "A": "කර්තව්‍ය", "B": "නඩු", "C": "දඩ", "D": "අභියාචන" },
+    "correct_option": "A"
+  },
+
+  {
+    "question_id": "Q42",
+    "question_type": "mcq",
+    "question_text": "පාරිභෝගික අධ්‍යාපනය ප්‍රවර්ධනය කිරීම කුමන වගන්තියේද?",
+    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
+    "section": 8,
+    "options": { "A": "7", "B": "8", "C": "9", "D": "10" },
+    "correct_option": "B"
+  },
+
+  {
+    "question_id": "Q43",
+    "question_type": "mcq",
+    "question_text": "අධිකාරියට සේවාවන් සඳහා ගාස්තු අය කළ හැක්කේ කුමන වගන්තිය යටතේද?",
+    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
+    "section": 8,
+    "options": { "A": "6", "B": "7", "C": "8", "D": "9" },
+    "correct_option": "C"
+  },
+
+  {
+    "question_id": "Q44",
+    "question_type": "mcq",
+    "question_text": "වෙළෙඳපොළ තොරතුරු වෙනත් ආයතන සමඟ හුවමාරු කිරීම අධිකාරියේ කුමක්ද?",
+    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
+    "section": 8,
+    "options": { "A": "කර්තව්‍ය", "B": "දඩ", "C": "නඩු", "D": "අභියාචන" },
+    "correct_option": "A"
+  },
+
+  {
+    "question_id": "Q45",
+    "question_type": "mcq",
+    "question_text": "වෙළෙන්දන්ගේ සංගම් සමඟ ගිවිසුම්වලට එළඹීම කුමන වගන්තිය යටතේද?",
+    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
+    "section": 14,
+    "options": { "A": "12", "B": "13", "C": "14", "D": "15" },
+    "correct_option": "C"
+  },
+
+  {
+    "question_id": "Q46",
+    "question_type": "mcq",
+    "question_text": "වෙළෙන්දකු විසින් අධික ප්‍රමාණයකින් භාණ්ඩ තබා ගැනීම කුමක්ද?",
+    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
+    "section": 17,
+    "options": {
+      "A": "නීත්‍යානුකූල",
+      "B": "තහනම්",
+      "C": "අනුමත",
+      "D": "අභියාචන"
+    },
+    "correct_option": "B"
+  },
+
+  {
+    "question_id": "Q47",
+    "question_type": "mcq",
+    "question_text": "අත්‍යාවශ්‍ය භාණ්ඩයක මිල වැඩි කිරීමේ අවසරය ලබා දිය හැක්කේ කවුද?",
     "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
     "section": 18,
     "options": {
       "A": "අධිකාරිය",
-      "B": "අධ්‍යක්ෂ ජනරාල්වරයා",
-      "C": "නිෂ්පාදකයා හෝ වෙළෙන්දා",
-      "D": "සභාපතිවරයා"
+      "B": "බැංකුව",
+      "C": "පොලිසිය",
+      "D": "අධිකරණය"
     },
-    "correct_option": "C"
+    "correct_option": "A"
   },
-  {
-    "question_id": "Q30",
-    "question_type": "mcq",
-    "question_text": "වෙළෙඳ ප්‍රතිපත්ති හා පාරිභෝගික ආරක්ෂණ ප්‍රතිපත්ති සම්බන්ධයෙන් අධිකාරිය නිර්දේශ කළ යුත්තේ කාටද?",
-    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
-    "section": 11,
-    "options": {
-      "A": "ජනාධිපතිවරයා",
-      "B": "අමාත්‍යවරයා",
-      "C": "පාර්ලිමේන්තුව",
-      "D": "අගමැති"
-    },
-    "correct_option": "B"
-  },
-  {
-    "question_id": "Q31",
-    "question_type": "mcq",
-    "question_text": "අධිකාරිය විසින් විමර්ශන පවත්වා වාර්තා කිරීමට හැකි කාරණා මොනවාද?",
-    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
-    "section": 12,
-    "options": {
-      "A": "නිෂ්පාදන හා සේවා පිළිබඳ පමණක්",
-      "B": "වෙළඳ ක්‍රියාකාරකම් පමණක්",
-      "C": "මිල ගණන් පමණක්",
-      "D": "නිෂ්පාදන, සේවා, වෙළඳ ක්‍රියාකාරකම් හා මිල ගණන්"
-    },
-    "correct_option": "D"
-  },
-  {
-    "question_id": "Q32",
-    "question_type": "mcq",
-    "question_text": "අධිකාරිය විසින් නිකුත් කරනු ලබන නියෝග උල්ලංඝනය කිරීම සම්බන්ධයෙන් දඬුවම් නියම කර ඇත්තේ කුමන වගන්තියෙන්ද?",
-    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
-    "section": 52,
-    "options": {
-      "A": "වගන්ති 50",
-      "B": "වගන්ති 51",
-      "C": "වගන්ති 52",
-      "D": "වගන්ති 53"
-    },
-    "correct_option": "C"
-  },
-  {
-    "question_id": "Q33",
-    "question_type": "mcq",
-    "question_text": "අධිකාරිය විසින් නියම කරනු ලබන සේවා ප්‍රමිතියට අනුකූල නොවන සේවාවක් සැපයීම සම්බන්ධයෙන් දඬුවම් කුමන වගන්තියෙන් නියම කර ඇත්ද?",
-    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
-    "section": 53,
-    "options": {
-      "A": "වගන්ති 51",
-      "B": "වගන්ති 52",
-      "C": "වගන්ති 53",
-      "D": "වගන්ති 54"
-    },
-    "correct_option": "C"
-  },
-  {
-    "question_id": "Q34",
-    "question_type": "mcq",
-    "question_text": "අධිකාරියේ නිලධාරියෙකුට බාධා කිරීම හෝ ඔහුගේ රාජකාරි ඉටු කිරීමට බාධා කිරීම සම්බන්ධයෙන් දඬුවම් කුමන වගන්තියෙන් නියම කර ඇත්ද?",
-    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
-    "section": 54,
-    "options": {
-      "A": "වගන්ති 52",
-      "B": "වගන්ති 53",
-      "C": "වගන්ති 54",
-      "D": "වගන්ති 55"
-    },
-    "correct_option": "C"
-  },
-  {
-    "question_id": "Q35",
-    "question_type": "mcq",
-    "question_text": "අධිකාරියේ නිලධාරියෙකුට සාවද්‍ය තොරතුරු ලබා දීම හෝ වැරදි ප්‍රකාශයක් කිරීම සම්බන්ධයෙන් දඬුවම් කුමන වගන්තියෙන් නියම කර ඇත්ද?",
-    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
-    "section": 55,
-    "options": {
-      "A": "වගන්ති 53",
-      "B": "වගන්ති 54",
-      "C": "වගන්ති 55",
-      "D": "වගන්ති 56"
-    },
-    "correct_option": "C"
-  },
-  {
-    "question_id": "Q36",
-    "question_type": "mcq",
-    "question_text": "අධිකාරිය විසින් ලබා ගත් රහස්‍ය තොරතුරු අනවසරයෙන් හෙළිදරව් කිරීම සම්බන්ධයෙන් දඬුවම් කුමන වගන්තියෙන් නියම කර ඇත්ද?",
-    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
-    "section": 56,
-    "options": {
-      "A": "වගන්ති 54",
-      "B": "වගන්ති 55",
-      "C": "වගන්ති 56",
-      "D": "වගන්ති 57"
-    },
-    "correct_option": "C"
-  },
-  {
-    "question_id": "Q37",
-    "question_type": "mcq",
-    "question_text": "සංස්ථාවක් විසින් මෙම පනත යටතේ වරදක් කරන ලද්දේ නම්, එම වරද සම්බන්ධයෙන් වගකිව යුත්තේ කවුරුන්ද?",
-    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
-    "section": 57,
-    "options": {
-      "A": "සංස්ථාව පමණක්",
-      "B": "අධ්‍යක්ෂවරු පමණක්",
-      "C": "සංස්ථාව සහ වරද කිරීමේ අවස්ථාවේ එහි අධ්‍යක්ෂවරු",
-      "D": "කළමනාකරු පමණක්"
-    },
-    "correct_option": "C"
-  },
-  {
-    "question_id": "Q38",
-    "question_type": "mcq",
-    "question_text": "මෙම පනත යටතේ වරදක් කළ අයෙකුට නඩු පැවරීමට හැකි උසස්තම අධිකරණය කුමක්ද?",
-    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
-    "section": 58,
-    "options": {
-      "A": "මහාධිකරණය",
-      "B": "දිස්ත්‍රික් අධිකරණය",
-      "C": "මහේස්ත්‍රාත් අධිකරණය",
-      "D": "අභියාචනාධිකරණය"
-    },
-    "correct_option": "C"
-  },
-  {
-    "question_id": "Q39",
-    "question_type": "mcq",
-    "question_text": "අධිකාරිය විසින් පනවනු ලබන මූල්‍ය දඬුවමක් ගෙවීමට අපොහොසත් වන අයෙකුට අධිකාරියට ඇති අයිතිය කුමක්ද?",
-    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
-    "section": 59,
-    "options": {
-      "A": "සිරගත කිරීම",
-      "B": "දඬුවම වැඩි කිරීම",
-      "C": "දිස්ත්‍රික් අධිකරණයෙන් නඩු පැවරීම",
-      "D": "දඬුවම අත්හැර දැමීම"
-    },
-    "correct_option": "C"
-  },
-  {
-    "question_id": "Q40",
-    "question_type": "mcq",
-    "question_text": "අධිකාරිය විසින් නියම කරනු ලබන අනිවාර්ය ප්‍රමිතීන් ප්‍රකාශයට පත් කළ යුත්තේ කෙසේද?",
-    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
-    "section": 19,
-    "options": {
-      "A": "පුවත්පත්වල පමණක්",
-      "B": "රජයේ ගැසට් පත්‍රයේ",
-      "C": "රේඩියෝවෙන් පමණක්",
-      "D": "වෙබ් අඩවියේ පමණක්"
-    },
-    "correct_option": "B"
-  },
-  {
-    "question_id": "Q41",
-    "question_type": "mcq",
-    "question_text": "අධිකාරිය විසින් මිල ගණන් පාලනය කිරීමේ බලතල ලබා ඇත්තේ කුමන වගන්තියෙන්ද?",
-    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
-    "section": 16,
-    "options": {
-      "A": "වගන්ති 14",
-      "B": "වගන්ති 15",
-      "C": "වගන්ති 16",
-      "D": "වගන්ති 17"
-    },
-    "correct_option": "C"
-  },
-  {
-    "question_id": "Q42",
-    "question_type": "mcq",
-    "question_text": "අධිකාරිය විසින් වෙළෙඳුන්ට මිල ලැයිස්තු ප්‍රදර්ශනය කිරීමට නියෝග කළ හැක්කේ කුමන වගන්තිය යටතේද?",
-    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
-    "section": 20,
-    "options": {
-      "A": "වගන්ති 18",
-      "B": "වගන්ති 19",
-      "C": "වගන්ති 20",
-      "D": "වගන්ති 21"
-    },
-    "correct_option": "C"
-  },
-  {
-    "question_id": "Q43",
-    "question_type": "mcq",
-    "question_text": "අධිකාරිය විසින් වෙළෙඳුන්ට රිසිට්පත් නිකුත් කිරීමට නියෝග කළ හැක්කේ කුමන වගන්තිය යටතේද?",
-    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
-    "section": 21,
-    "options": {
-      "A": "වගන්ති 19",
-      "B": "වගන්ති 20",
-      "C": "වගන්ති 21",
-      "D": "වගන්ති 22"
-    },
-    "correct_option": "C"
-  },
-  {
-    "question_id": "Q44",
-    "question_type": "mcq",
-    "question_text": "අධිකාරිය විසින් වෙළෙඳුන්ට වගකීම් හෝ ඇපකරයන් ලබා දීමට නියෝග කළ හැක්කේ කුමන වගන්තිය යටතේද?",
-    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
-    "section": 22,
-    "options": {
-      "A": "වගන්ති 20",
-      "B": "වගන්ති 21",
-      "C": "වගන්ති 22",
-      "D": "වගන්ති 23"
-    },
-    "correct_option": "C"
-  },
-  {
-    "question_id": "Q45",
-    "question_type": "mcq",
-    "question_text": "අධිකාරිය විසින් විමර්ශන පවත්වීම සඳහා පරිශ්‍රයන්ට ඇතුළු වීමේ බලතල ලබා ඇත්තේ කුමන වගන්තියෙන්ද?",
-    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
-    "section": 23,
-    "options": {
-      "A": "වගන්ති 21",
-      "B": "වගන්ති 22",
-      "C": "වගන්ති 23",
-      "D": "වගන්ති 24"
-    },
-    "correct_option": "C"
-  },
-  {
-    "question_id": "Q46",
-    "question_type": "mcq",
-    "question_text": "අධිකාරිය විසින් භාණ්ඩ රඳවා තබා ගැනීමේ බලතල ලබා ඇත්තේ කුමන වගන්තියෙන්ද?",
-    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
-    "section": 24,
-    "options": {
-      "A": "වගන්ති 22",
-      "B": "වගන්ති 23",
-      "C": "වගන්ති 24",
-      "D": "වගන්ති 25"
-    },
-    "correct_option": "C"
-  },
-  {
-    "question_id": "Q47",
-    "question_type": "mcq",
-    "question_text": "අධිකාරිය විසින් භාණ්ඩ නැවත ලබා දීමට හෝ විනාශ කිරීමට බලතල ලබා ඇත්තේ කුමන වගන්තියෙන්ද?",
-    "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
-    "section": 25,
-    "options": {
-      "A": "වගන්ති 23",
-      "B": "වගන්ති 24",
-      "C": "වගන්ති 25",
-      "D": "වගන්ති 26"
-    },
-    "correct_option": "C"
-  },
+
   {
     "question_id": "Q48",
     "question_type": "mcq",
-    "question_text": "අධිකාරිය විසින් පරීක්ෂණ සඳහා නියැදි ලබා ගැනීමේ බලතල ලබා ඇත්තේ කුමන වගන්තියෙන්ද?",
+    "question_text": "විමර්ශනයකදී ලේඛන ඉදිරිපත් කිරීමට නියෝග කළ හැක්කේ කවුද?",
     "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
-    "section": 26,
-    "options": {
-      "A": "වගන්ති 24",
-      "B": "වගන්ති 25",
-      "C": "වගන්ති 26",
-      "D": "වගන්ති 27"
-    },
-    "correct_option": "C"
+    "section": 20,
+    "options": { "A": "සභාව", "B": "ජනාධිපති", "C": "බැංකුව", "D": "පොලිසිය" },
+    "correct_option": "A"
   },
+
   {
     "question_id": "Q49",
     "question_type": "mcq",
-    "question_text": "අධිකාරිය විසින් වෙළෙඳුන්ගෙන් තොරතුරු ලබා ගැනීමේ බලතල ලබා ඇත්තේ කුමන වගන්තියෙන්ද?",
+    "question_text": "සභාවේ නිර්දේශ අනුව උපරිම මිල නියම කරනු ලබන්නේ කවුරුන්ද?",
     "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
-    "section": 27,
+    "section": 20,
     "options": {
-      "A": "වගන්ති 25",
-      "B": "වගන්ති 26",
-      "C": "වගන්ති 27",
-      "D": "වගන්ති 28"
+      "A": "අධිකාරිය",
+      "B": "බැංකුව",
+      "C": "අධිකරණය",
+      "D": "පොලිසිය"
     },
-    "correct_option": "C"
+    "correct_option": "A"
   },
+
   {
     "question_id": "Q50",
     "question_type": "mcq",
-    "question_text": "අධිකාරිය විසින් ලියකියවිලි පරීක්ෂා කිරීමේ හා පිටපත් ලබා ගැනීමේ බලතල ලබා ඇත්තේ කුමන වගන්තියෙන්ද?",
+    "question_text": "වෙළෙන්දකු විසින් මිල ප්‍රදර්ශනය නොකිරීම කුමක්ද?",
     "act_name": "Consumer Affairs Authority Act No. 9 of 2003",
-    "section": 28,
+    "section": 26,
     "options": {
-      "A": "වගන්ති 26",
-      "B": "වගන්ති 27",
-      "C": "වගන්ති 28",
-      "D": "වගන්ති 29"
+      "A": "නීත්‍යානුකූල",
+      "B": "වරදක්",
+      "C": "ගිවිසුමක්",
+      "D": "අභියාචනයක්"
     },
-    "correct_option": "C"
+    "correct_option": "B"
   }
 ]
