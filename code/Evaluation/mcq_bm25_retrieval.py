@@ -7,7 +7,7 @@ from typing import Any, Dict, Iterable, List, Optional, Tuple
 
 sys.path.append(str(Path(__file__).resolve().parents[1]))
 
-from Agents.retriver import retrieve_from_intent  # noqa: E402
+from Tools.retriever_utils import get_vectorstore, retrieve_chunks_bm25  # noqa: E402
 
 
 def _load_questions(path: Path) -> List[Dict[str, Any]]:
@@ -37,6 +37,9 @@ def _evaluate_retrieval(
     recall_sum = 0.0
     details: List[Dict[str, Any]] = []
 
+    repo_root = Path(__file__).resolve().parents[1]
+    vectorstore, _embedding_model = get_vectorstore(repo_root)
+
     for item in items:
         question = (item.get("question_text") or "").strip()
         relevant_section = _normalize_section(item.get("section"))
@@ -44,8 +47,7 @@ def _evaluate_retrieval(
             continue
         total += 1
 
-        test_intent = {"intent": "QUESTION", "query": question}
-        chunks = retrieve_from_intent(test_intent, top_k=top_k)
+        chunks = retrieve_chunks_bm25(vectorstore, question, top_k)
         retrieved_sections = [
             _normalize_section(chunk.section_number) for chunk in chunks
         ]
@@ -103,10 +105,10 @@ def main() -> None:
         / "consumer_protection_act2003_mcq.json"
     )
     results_dir = code_root / "Evaluation" / "Results"
-    default_output = results_dir / "mcq_retrieval_results.json"
+    default_output = results_dir / "mcq_bm25_retrieval_results.json"
 
     parser = argparse.ArgumentParser(
-        description="Evaluate MCQ retrieval quality using section matching."
+        description="Evaluate MCQ retrieval using BM25 only."
     )
     parser.add_argument(
         "--dataset",
@@ -131,7 +133,7 @@ def main() -> None:
     items = _load_questions(args.dataset)
     metrics, details = _evaluate_retrieval(items, args.top_k)
 
-    print("Retrieval metrics:")
+    print("BM25 retrieval metrics:")
     print(f"hit_rate@{args.top_k}: {metrics['hit_rate']:.4f}")
     print(f"precision@{args.top_k}: {metrics['precision_at_k']:.4f}")
     print(f"recall@{args.top_k}: {metrics['recall_at_k']:.4f}")
