@@ -39,7 +39,7 @@ def api_query():
         return jsonify({"error": "query_required"}), 400
 
     try:
-        response = retrieve_with_intent(query, RAG_enabled=_rag_enabled)
+        response = retrieve_with_intent(query)
     except Exception as exc:
         return jsonify({"error": "internal_error", "details": str(exc)}), 500
 

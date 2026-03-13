@@ -174,7 +174,7 @@ form.addEventListener("submit", async (event) => {
         ],
       };
     } else {
-      const response = await fetch("/api/query-stream", {
+      const response = await fetch("/api/query", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -187,49 +187,12 @@ form.addEventListener("submit", async (event) => {
         typingBubble.textContent = errorText || "Something went wrong.";
         return;
       }
-
-      if (!response.body) {
-        typingBubble.textContent = "Streaming not supported in this browser.";
-        return;
-      }
-
-      const reader = response.body.getReader();
-      const decoder = new TextDecoder();
-      let buffer = "";
-      typingBubble.innerHTML = "";
-
-      while (true) {
-        const { value, done } = await reader.read();
-        if (done) {
-          break;
-        }
-        buffer += decoder.decode(value, { stream: true });
-        typingBubble.innerHTML = formatMultiline(buffer);
-        chat.scrollTop = chat.scrollHeight;
-      }
-
-      buffer += decoder.decode();
-      data = { response: buffer };
+      data = await response.json();
     }
     typingBubble.innerHTML = "";
 
-    let answer = data.answer || (data.parsed && data.parsed.answer) || "";
-    let citations =
-      data.citations || (data.parsed && data.parsed.citations) || [];
-    const rawResponse = data.response || "";
-
-    if (!answer && rawResponse) {
-      const fenceMatch = rawResponse.match(/```(?:json)?\s*([\s\S]*?)\s*```/i);
-      const candidate = fenceMatch ? fenceMatch[1].trim() : rawResponse;
-      try {
-        const parsed = JSON.parse(candidate);
-        answer = parsed.answer || "";
-        citations = parsed.citations || [];
-      } catch (err) {
-        answer = candidate;
-        citations = [];
-      }
-    }
+    const answer = data.answer || "";
+    const citations = data.citations || [];
 
     if (answer) {
       const formattedAnswer = formatInlineBold(answer);

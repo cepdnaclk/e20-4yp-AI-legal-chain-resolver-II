@@ -50,7 +50,9 @@ def build_prompt(query: str, chunks: List[RetrievedChunk]) -> str:
         f"Context:\n{context_text}"
     )
 
-def retrieve_from_intent(intent_payload: dict, top_k: int = 5) -> List[RetrievedChunk]:
+def retrieve_from_intent(
+    intent_payload: dict, top_k: int = 5, return_all: bool = False
+) -> List[RetrievedChunk] | tuple[List[RetrievedChunk], List[RetrievedChunk]]:
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
     repo_root = Path(__file__).resolve().parents[1]
     logging.info("Repo root: %s", repo_root)
@@ -63,17 +65,18 @@ def retrieve_from_intent(intent_payload: dict, top_k: int = 5) -> List[Retrieved
 
     if intent_type == "ACT":
         if not section:
-            return []
-        return retrieve_chunks_by_section(vectorstore, str(section))
+            return ([], []) if return_all else []
+        chunks = retrieve_chunks_by_section(vectorstore, str(section))
+        return (chunks, chunks) if return_all else chunks
 
     if not query:
-        return []
+        return ([], []) if return_all else []
 
     faiss_chunks = retrieve_chunks_faiss(vectorstore, query, top_k)
     bm25_chunks = retrieve_chunks_bm25(vectorstore, query, top_k)
     title_chunks = retrieve_chunks_title(vectorstore, act, section)
-    chunks = faiss_chunks + bm25_chunks + title_chunks
-    unique_chunks = deduplicate_chunks(chunks)
+    all_chunks = faiss_chunks + bm25_chunks + title_chunks
+    unique_chunks = deduplicate_chunks(all_chunks)
     reranked_chunks = rerank_chunks(
         query,
         unique_chunks,
@@ -87,7 +90,11 @@ def retrieve_from_intent(intent_payload: dict, top_k: int = 5) -> List[Retrieved
         len(bm25_chunks),
         len(title_chunks),
     )
-    logging.info("Deduplicated chunks: %s -> %s", len(chunks), len(unique_chunks))
+    logging.info(
+        "Deduplicated chunks: %s -> %s", len(all_chunks), len(unique_chunks)
+    )
+    if return_all:
+        return reranked_chunks, all_chunks
     return reranked_chunks
 
 
@@ -137,18 +144,29 @@ def _expand_top_section(
 
 if __name__ == "__main__":
     query ='''
-පාරිභෝගික කටයුතු අධිකාරී පනතේ ප්‍රධාන අරමුණක් 
-නොවන්නේ කුමක්ද? 
-A. වයවසායන් අත්‍ර සීමාකාරී මවළඳ ගිවිසුම් පාලනය කිරීම 
-B. ත්‍රඟකාරීත්වයට අිත්‍කර භාවිත්‍යන් විමශජනය කිරීම 
-C. පාරිමභෝගිකයන්ට අසාධාරණ මිල ගණන් නියම කිරීමට වයවසායන්ට ඉඩ ීම 
-D. භාණ්ඩ හා මස්වා වල මිල, ගුණාත්මකභාවය සහ ලබා ගැනීම පිළිබඳව පාරිමභෝගිකයන් දැනුවත් කිරීම
-'''
+    පාරිභෝගික කටයුතු අධිකාරීයේ ප්‍රධාන අරමුණක් 
+    නොවන්නේ කුමක්ද? 
+    A. වයවසායන් අතර සීමාකාරී වෙළඳ ගිවිසුම් පාලනය කිරීම 
+    B. ත්‍රඟකාරීත්වයට අහිතකර භාවිත්‍යන් විමර්ශනය කිරීම 
+    C. පාරිභෝගිකයන්ට අසාධාරණ මිල ගණන් නියම කිරීමට වයවසායන්ට ඉඩ දීම
+    D. භාණ්ඩ හා සේවා වල මිල, ගුණාත්මකභාවය සහ ලබා ගැනීම පිළිබඳව පාරිමභෝගිකයන් දැනුවත් කිරීම    
+    '''
+#     query= '''
+# පාරිමභෝගික කටයුතු අධිකාරී පනත් ප්‍රධාන අරමුණක් නොවන කුමක්ද? \n    A. වයවසායන් අත්‍ර සීමාකාරී මවළඳ ගිවිසුම් පාලනය කිරීම \n    B. ත්‍රඟකාරීත්වයට අිත්‍කර භාවිත්‍ය                                 යන් විමශජනය කිරීම \n    C. පාරිමභෝගිකයන්ට අසාධාරණ මිල ගණන් නියම කිරීමට වයවසායන්ට ඉඩ ීම \n    D. භාණ්ඩ හා මස්වා වල මිල, ගුණාත්මකභාවය සහ ලබා ගැනීම පිළිබඳව පාරිමභෝගිකයන් දැනුව                         වත් කිරීම'''
+    query = '''
+    අධිකාරිය විසින් පාරිභෝගිකයා ආරක්ෂා කිරීම සඳහා කුමන කරුණු සම්බන්ධයෙන් සාමාන්‍ය විධාන නිකුත් කළ හැකිද?
+    A. භාණ්ඩ ආනයනය කිරීම පමණක්
+    B. භාණ්ඩ ලේබල් කිරීම, මිල ලකුණු කිරීම, ඇසිරීම සහ විකිණීම
+    C. භාණ්ඩ ප්‍රවාහනය කිරීම පමණක්
+    D. වෙළෙඳසැල් ලියාපදිංචි කිරීම
+    '''
+    query= "අධිකාරියේ සහාපතිවරයා සභ සාමාජිකයන්‌ගේ ධුර කාලය කුමක්ද?"
+    
     test_intent = {
         "intent": "QUESTION",
         "query": query
     }
-    query1= "අධිකාරියේ සහාපතිවරයා සභ සාමාජිකයන්‌ගේ ධුර කාලය කුමක්ද?"
+    query= "අධිකාරියේ සහාපතිවරයා සභ සාමාජිකයන්‌ගේ ධුර කාලය කුමක්ද?"
     query2 = "පාරිභෝගික කටයුතු පිළිබඳ අධිකාරිය පනතේ 13 වන වගන්තිය මොකක්ද?"
     query3 = "අධිකාරියේ අරමුණු මොනවාද?"
     query4="අධිකාරියේ කර්තවය"
