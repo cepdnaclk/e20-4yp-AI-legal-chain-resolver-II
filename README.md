@@ -17,6 +17,10 @@ AI Legal Chain Resolver II is a web application that answers Sri Lankan legal qu
 - `code/static/*`: Frontend UI, streaming display, and citation download flow.
 - `code/Data/Acts/*`: Act text and PDF sources used for citations.
 
+## High Level Architecture
+
+![High level architecture](docs/images/FYP.png)
+
 ## Data Layout
 
 - Act text: `code/Data/Acts/Text/`
@@ -58,7 +62,14 @@ pip install -r requirement.txt
 
 ## How To Run
 
-1) Activate your virtual environment and install dependencies.
+1) Create and activate a virtual environment, then install dependencies:
+
+```bash
+python -m venv code/.venv
+code\.venv\Scripts\Activate.ps1
+pip install -r requirement.txt
+```
+
 2) Run the Flask app:
 
 ```bash
