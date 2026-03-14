@@ -22,6 +22,25 @@ AI Legal Chain Resolver II is a web application that answers Sri Lankan legal qu
 - Act text: `code/Data/Acts/Text/`
 - Act PDFs: `code/Data/Acts/PDF/`
 - RAG chunks: `code/Data/chunks/`
+- Cleaned text: `code/Data/Cleaned/`
+- FAISS indexes: `code/Data/Indexes/`
+
+## Folder Structure
+
+```
+code/
+  Agents/
+  Data/
+    Acts/
+      PDF/
+      Text/
+    Cleaned/
+    Indexes/
+  Evaluation/
+  Pipelines/
+  Tools/
+  app.py
+```
 
 ## Setup
 
@@ -34,16 +53,28 @@ set GEMINI_API_KEY=your_key_here
 2) Install dependencies:
 
 ```bash
-pip install flask google-genai python-dotenv
+pip install -r requirement.txt
 ```
 
-## Run
+## How To Run
+
+1) Activate your virtual environment and install dependencies.
+2) Run the Flask app:
 
 ```bash
 python code/app.py
 ```
 
 Open `http://localhost:5000`.
+
+## How To Add New Data To RAG
+
+1) Put cleaned text files into `code/Data/Cleaned/`.
+2) Run `code/Tools/build_faiss.py` to rebuild the FAISS index.
+
+## How To Evaluate
+
+Run the scripts under `code/Evaluation/` for retrieval and QA evaluation.
 
 ## API Endpoints
 
