@@ -19,7 +19,7 @@ class SentenceTransformerEmbeddings(Embeddings):
 
 CHUNK_SIZE = 500
 CHUNK_OVERLAP = 50
-ACT_NAME = "2025 අංක 13 දරන විනිමය පත්‍ර (සංශෝධන) පනත"
+ACT_NAME = "2003 අංක 9 දරන පාරිභෝගික කටයුතු පිළිබඳ අධිකාරිය පනත"
 
 def main():
     repo_root = Path(__file__).resolve().parents[1]

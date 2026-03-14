@@ -1,0 +1,12 @@
+flask
+python-dotenv
+google-genai
+langchain-community
+langchain-core
+langchain-text-splitters
+sentence-transformers
+faiss-cpu
+neo4j
+torch
+transformers
+xformers
