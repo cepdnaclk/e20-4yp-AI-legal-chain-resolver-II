@@ -1,13 +1,16 @@
 # AI Legal Chain Resolver II
 
-AI Legal Chain Resolver II is a web application that answers Sri Lankan legal queries in Sinhala using a Gemini-backed RAG pipeline. It retrieves relevant legal act sections, generates structured answers, and provides citations with direct PDF downloads for referenced acts.
+This project implements an AI-based legal question answering system using Retrieval Augmented Generation (RAG) and a Knowledge Graph (KG). The system retrieves relevant sections from legal documents and generates answers grounded in the retrieved context, improving reliability and reducing hallucinations compared to general language models.
+
+The system is designed to help users quickly understand legal information by providing structured answers with references to the relevant legal sections.
 
 ## Key Features
 
-- Sinhala-first legal Q&A with structured, citation-aware responses.
-- Retrieval-augmented generation using act and section context.
-- Real-time streaming responses in the UI.
-- Citation cards with per-act PDF downloads.
+- RAG-based legal QA system for retrieving and answering legal queries.
+- Knowledge Graph integration to improve query understanding and retrieval.
+- Multiple retrieval methods including BM25, FAISS vector search.
+- Structured answer generation with references to relevant legal sections.
+- Evaluation framework measuring retrieval performance, answer accuracy, hallucination rate, and system performance.
 
 ## Architecture Overview
 
