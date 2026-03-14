@@ -4,10 +4,11 @@ import json
 import re
 import sys
 import logging
+import time
 
 sys.path.append(str(Path(__file__).resolve().parents[1]))
 
-from Agents.retriver import RetrievedChunk, retrieve_from_intent, retrieve_full_section
+from Agents.retriver import retrieve_from_intent, retrieve_full_section
 from Agents.intent_classifier import intent_classify
 from Agents.response_generator import generate_response, generate_response_stream
 from Tools.retriever_utils import deduplicate_chunks
@@ -29,25 +30,9 @@ def _extract_json_payload(raw: str) -> dict | None:
     return None
 
 
-def _chunk_to_dict(chunk: RetrievedChunk) -> dict:
-    return {
-        "method": chunk.method,
-        "source": chunk.source,
-        "act": chunk.act,
-        "section_number": chunk.section_number,
-        "subsection_number": chunk.subsection_number,
-        "section_title": chunk.section_title,
-        "score": chunk.score,
-        "content": chunk.content,
-    }
-
-
 def _write_retrieval_log(
-    user_query: str,
-    intent_payload: dict | None,
-    all_chunks: list[RetrievedChunk],
-    final_chunks: list[RetrievedChunk],
-    final_response: str | None,
+    retrieve_time_seconds: float | None,
+    answer_time_seconds: float | None,
 ) -> None:
     repo_root = Path(__file__).resolve().parents[1]
     log_dir = repo_root / "logs"
@@ -55,11 +40,12 @@ def _write_retrieval_log(
     log_path = log_dir / "retrieval_log.jsonl"
     entry = {
         "timestamp": datetime.now(timezone.utc).isoformat(),
-        "query": user_query,
-        "intent": intent_payload,
-        "all_chunks": [_chunk_to_dict(chunk) for chunk in all_chunks],
-        "final_chunks": [_chunk_to_dict(chunk) for chunk in final_chunks],
-        "final_response": final_response,
+        "retrieve_time_ms": round(retrieve_time_seconds * 1000, 2)
+        if retrieve_time_seconds is not None
+        else None,
+        "answer_time_ms": round(answer_time_seconds * 1000, 2)
+        if answer_time_seconds is not None
+        else None,
     }
     with log_path.open("a", encoding="utf-8") as handle:
         handle.write(json.dumps(entry, ensure_ascii=True) + "\n")
@@ -70,23 +56,27 @@ def retrieve_with_intent(user_query: str,RAG_enabled: bool=True, top_k: int = 5)
     print(user_query)
     intent_payload = intent_classify(user_query)
     if not intent_payload:
-        _write_retrieval_log(user_query, None, [], [], None)
+        _write_retrieval_log(None, None)
         return None
     print("Intent payload: %s", intent_payload)
     print("==========================\n")
     intent_type = (intent_payload.get("type") or intent_payload.get("intent") or "").upper()
     if intent_type == "OTHER" or intent_type.startswith("ERROR"):
         response = json.dumps({"answer": intent_payload.get("query")})
-        _write_retrieval_log(user_query, intent_payload, [], [], response)
+        _write_retrieval_log(None, None)
         return response
     if not RAG_enabled:
+        answer_start = time.perf_counter()
         response = generate_response(user_query, RAG_enabled,[])
-        _write_retrieval_log(user_query, intent_payload, [], [], response)
+        answer_time_seconds = time.perf_counter() - answer_start
+        _write_retrieval_log(None, answer_time_seconds)
         return response
 
+    retrieve_start = time.perf_counter()
     chunks, all_chunks = retrieve_from_intent(
         intent_payload, top_k=top_k, return_all=True
     )
+    retrieve_time_seconds = time.perf_counter() - retrieve_start
     for idx, chunk in enumerate(chunks, start=1):
         print(
             "Retrieved chunk %s: act=%s, section=%s, source=%s, method=%s",
@@ -97,8 +87,9 @@ def retrieve_with_intent(user_query: str,RAG_enabled: bool=True, top_k: int = 5)
             chunk.method,
         )
     print("Generating response with retrieved chunks...")
+    answer_start = time.perf_counter()
     response = generate_response(user_query, RAG_enabled, chunks)
-    final_chunks = list(chunks)
+    answer_time_seconds = time.perf_counter() - answer_start
     payload = _extract_json_payload(response)
     action = payload.get("action") if payload else None
     if (
@@ -110,12 +101,11 @@ def retrieve_with_intent(user_query: str,RAG_enabled: bool=True, top_k: int = 5)
         extra_chunks = retrieve_full_section(act, section)
         if extra_chunks:
             merged = deduplicate_chunks(extra_chunks + chunks)
+            answer_start = time.perf_counter()
             response = generate_response(user_query, RAG_enabled, merged)
-            final_chunks = list(merged)
+            answer_time_seconds = time.perf_counter() - answer_start
     print("Final response:\n", response)
-    _write_retrieval_log(
-        user_query, intent_payload, all_chunks, final_chunks, response
-    )
+    _write_retrieval_log(retrieve_time_seconds, answer_time_seconds)
     return response
 
 
