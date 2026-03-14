@@ -1,3 +1,5 @@
 .env
 code/Models/
 code/Data/Indexes/
+__pycache__/
+*.pyc
