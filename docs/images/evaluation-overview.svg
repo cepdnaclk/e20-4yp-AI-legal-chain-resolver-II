@@ -1,0 +1,38 @@
+<svg width="1200" height="760" viewBox="0 0 1200 760" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Evaluation overview</title>
+  <desc id="desc">Overview cards summarizing hybrid retrieval, BM25 retrieval, short answer retrieval, and top-3 retrieval metrics.</desc>
+  <rect width="1200" height="760" rx="28" fill="#F7FAFE"/>
+  <rect x="30" y="30" width="1140" height="700" rx="24" fill="white" stroke="#D7E2EE"/>
+  <text x="80" y="95" fill="#083B6D" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700">Evaluation Overview</text>
+  <text x="80" y="132" fill="#546579" font-family="Segoe UI, Arial, sans-serif" font-size="18">Repository-tracked metrics across retrieval configurations and the short-answer benchmark.</text>
+  <rect x="80" y="180" width="240" height="180" rx="24" fill="#EEF4FB" stroke="#D7E2EE"/>
+  <text x="110" y="225" fill="#546579" font-family="Segoe UI, Arial, sans-serif" font-size="18">Hybrid Retrieval</text>
+  <text x="110" y="290" fill="#0B5CAB" font-family="Segoe UI, Arial, sans-serif" font-size="58" font-weight="700">98%</text>
+  <text x="110" y="332" fill="#083B6D" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="600">Hit Rate</text>
+  <text x="110" y="354" fill="#546579" font-family="Segoe UI, Arial, sans-serif" font-size="16">Best recall on the 50-question MCQ benchmark</text>
+  <rect x="350" y="180" width="240" height="180" rx="24" fill="#EEF4FB" stroke="#D7E2EE"/>
+  <text x="380" y="225" fill="#546579" font-family="Segoe UI, Arial, sans-serif" font-size="18">BM25 Retrieval</text>
+  <text x="380" y="290" fill="#0B5CAB" font-family="Segoe UI, Arial, sans-serif" font-size="58" font-weight="700">0.84</text>
+  <text x="380" y="332" fill="#083B6D" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="600">MRR</text>
+  <text x="380" y="354" fill="#546579" font-family="Segoe UI, Arial, sans-serif" font-size="16">Strongest ranking quality among standalone methods</text>
+  <rect x="620" y="180" width="240" height="180" rx="24" fill="#EEF4FB" stroke="#D7E2EE"/>
+  <text x="650" y="225" fill="#546579" font-family="Segoe UI, Arial, sans-serif" font-size="18">MCQ Retrieval</text>
+  <text x="650" y="290" fill="#0B5CAB" font-family="Segoe UI, Arial, sans-serif" font-size="58" font-weight="700">86%</text>
+  <text x="650" y="332" fill="#083B6D" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="600">Top-3 Hit Rate</text>
+  <text x="650" y="354" fill="#546579" font-family="Segoe UI, Arial, sans-serif" font-size="16">From the tracked top-k retrieval run in the repo</text>
+  <rect x="890" y="180" width="240" height="180" rx="24" fill="#EEF4FB" stroke="#D7E2EE"/>
+  <text x="920" y="225" fill="#546579" font-family="Segoe UI, Arial, sans-serif" font-size="18">Short Answers</text>
+  <text x="920" y="290" fill="#0B5CAB" font-family="Segoe UI, Arial, sans-serif" font-size="58" font-weight="700">62%</text>
+  <text x="920" y="332" fill="#083B6D" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="600">Hit Rate</text>
+  <text x="920" y="354" fill="#546579" font-family="Segoe UI, Arial, sans-serif" font-size="16">Harder XLSX benchmark for short legal questions</text>
+  <rect x="80" y="410" width="1050" height="250" rx="24" fill="#FBFCFE" stroke="#D7E2EE"/>
+  <text x="120" y="460" fill="#083B6D" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="700">What the results say</text>
+  <circle cx="140" cy="520" r="8" fill="#0B5CAB"/>
+  <text x="165" y="527" fill="#102033" font-family="Segoe UI, Arial, sans-serif" font-size="20">Hybrid retrieval achieves the best overall coverage, confirming that dense and lexical search are complementary.</text>
+  <circle cx="140" cy="570" r="8" fill="#0B5CAB"/>
+  <text x="165" y="577" fill="#102033" font-family="Segoe UI, Arial, sans-serif" font-size="20">BM25 alone still ranks relevant sections very well, which is expected for highly structured legal phrasing.</text>
+  <circle cx="140" cy="620" r="8" fill="#0B5CAB"/>
+  <text x="165" y="627" fill="#102033" font-family="Segoe UI, Arial, sans-serif" font-size="20">The short-answer benchmark remains the hardest setting, indicating room for broader data coverage and stronger reranking.</text>
+  <text x="80" y="700" fill="#546579" font-family="Segoe UI, Arial, sans-serif" font-size="16">Sources: code/Evaluation/Results/mcq_hybrid_retrieval_results.json, mcq_bm25_retrieval_results.json,</text>
+  <text x="80" y="722" fill="#546579" font-family="Segoe UI, Arial, sans-serif" font-size="16">mcq_retrieval_results.json, and consumer_act2003_results.json.</text>
+</svg>
