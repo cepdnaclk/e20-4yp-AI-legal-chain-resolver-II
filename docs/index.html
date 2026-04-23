@@ -38,7 +38,6 @@
     line-height: 1.7;
   }
 
-  /* ── NAV ── */
   nav {
     position: sticky; top: 0; z-index: 100;
     background: rgba(6,21,43,0.96);
@@ -59,7 +58,6 @@
   }
   .nav-links a:hover { color: var(--gold-light); }
 
-  /* ── HERO ── */
   .hero {
     background: linear-gradient(145deg, var(--navy) 0%, var(--navy-mid) 60%, #0a1f3e 100%);
     padding: 5rem 2rem 4rem;
@@ -124,7 +122,6 @@
     font-size: 0.68rem; min-width: 18px;
   }
 
-  /* ── MAIN LAYOUT ── */
   main { max-width: 1100px; margin: 0 auto; padding: 3rem 2rem; }
   section { margin-bottom: 3rem; }
 
@@ -145,7 +142,6 @@
     background: linear-gradient(90deg, rgba(201,168,76,0.3), transparent);
   }
 
-  /* ── CARDS ── */
   .card {
     background: var(--white); border: 1px solid rgba(0,0,0,0.07);
     border-radius: 14px; padding: 1.5rem; box-shadow: var(--shadow-sm);
@@ -164,7 +160,6 @@
   .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
   .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
 
-  /* ── ABSTRACT ── */
   .abstract-block {
     background: var(--navy); border-radius: 18px; padding: 2.5rem;
     position: relative; overflow: hidden;
@@ -181,7 +176,6 @@
     border-radius: 4px; margin-bottom: 1rem; letter-spacing: 0.06em;
   }
 
-  /* ── METRICS ── */
   .metrics-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
   .metric-card {
     background: var(--white); border: 1px solid rgba(0,0,0,0.07);
@@ -205,7 +199,6 @@
     padding: 0.15rem 0.4rem; border-radius: 4px; display: inline-block;
   }
 
-  /* ── ARCHITECTURE FIGURE ── */
   .figure-block {
     background: var(--white); border: 1px solid rgba(0,0,0,0.07);
     border-radius: 16px; padding: 1.5rem; box-shadow: var(--shadow-sm); margin-top: 1.25rem;
@@ -219,7 +212,6 @@
     font-style: italic;
   }
 
-  /* ── RESULT CALLOUTS ── */
   .result-callout {
     background: linear-gradient(135deg, #eff7ff, #e8f2fa);
     border: 1px solid #c5ddf5; border-radius: 12px; padding: 1.25rem 1.4rem;
@@ -227,7 +219,6 @@
   .result-callout strong { display: block; color: var(--navy); font-size: 0.9rem; margin-bottom: 0.4rem; }
   .result-callout p { font-size: 0.84rem; color: #3a5a7a; line-height: 1.65; }
 
-  /* ── PIPELINE STEPS ── */
   .pipeline {
     display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative;
     margin: 1.5rem 0;
@@ -235,7 +226,6 @@
   .pipeline-step {
     background: var(--white); border: 1px solid rgba(0,0,0,0.07);
     padding: 1.25rem 1rem; position: relative; text-align: center;
-    transition: background 0.2s;
   }
   .pipeline-step:first-child { border-radius: 14px 0 0 14px; }
   .pipeline-step:last-child { border-radius: 0 14px 14px 0; }
@@ -249,6 +239,94 @@
   }
   .pipeline-step h4 { font-size: 0.8rem; color: var(--navy); font-weight: 600; margin-bottom: 0.3rem; }
   .pipeline-step p { font-size: 0.75rem; color: var(--muted); line-height: 1.5; }
+
+  /* ── EVAL TABLE ── */
+  .eval-table-wrap {
+    background: var(--white); border: 1px solid rgba(0,0,0,0.07);
+    border-radius: 14px; overflow: hidden; box-shadow: var(--shadow-sm);
+  }
+  .eval-table-wrap h3 {
+    padding: 1rem 1.25rem 0.75rem;
+    font-size: 0.95rem; font-weight: 600; color: var(--navy);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+  .eval-table { width: 100%; border-collapse: collapse; }
+  .eval-table th {
+    background: #dce9f7; color: var(--navy); font-size: 0.8rem;
+    font-weight: 600; padding: 0.65rem 1.25rem; text-align: left;
+  }
+  .eval-table td {
+    padding: 0.6rem 1.25rem; font-size: 0.84rem; color: var(--text);
+    border-bottom: 1px solid rgba(0,0,0,0.04);
+  }
+  .eval-table tr:last-child td { border-bottom: none; }
+  .eval-table tr:hover td { background: #f7fbff; }
+  .score-val { font-family: 'DM Mono', monospace; font-weight: 600; color: var(--navy-light); }
+
+  /* ── COMPARISON TABLE ── */
+  .compare-table { width: 100%; border-collapse: collapse; }
+  .compare-table th {
+    background: #dce9f7; color: var(--navy); font-size: 0.8rem;
+    font-weight: 600; padding: 0.65rem 1.25rem; text-align: left;
+  }
+  .compare-table td {
+    padding: 0.6rem 1.25rem; font-size: 0.84rem; color: var(--text);
+    border-bottom: 1px solid rgba(0,0,0,0.04);
+  }
+  .compare-table tr:last-child td { border-bottom: none; }
+  .compare-table tr:hover td { background: #f7fbff; }
+  .highlight-row td { background: rgba(201,168,76,0.07) !important; font-weight: 600; }
+  .highlight-row td:first-child { color: var(--navy); }
+
+  /* ── IMPACT / LIMITATIONS ── */
+  .impact-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .impact-card {
+    background: var(--white); border: 1px solid rgba(0,0,0,0.07);
+    border-radius: 14px; padding: 1.5rem; box-shadow: var(--shadow-sm);
+  }
+  .impact-card h3 {
+    font-size: 0.95rem; font-weight: 600; color: var(--navy);
+    margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;
+  }
+  .impact-card ul { list-style: none; padding: 0; }
+  .impact-card ul li {
+    font-size: 0.85rem; color: var(--muted); line-height: 1.6;
+    padding: 0.4rem 0; border-bottom: 1px solid rgba(0,0,0,0.04);
+    display: flex; align-items: flex-start; gap: 0.5rem;
+  }
+  .impact-card ul li:last-child { border-bottom: none; }
+  .impact-card ul li::before { content: '•'; color: var(--gold); font-size: 1rem; line-height: 1.4; flex-shrink: 0; }
+  .impact-card.green { border-top: 3px solid #4caf82; }
+  .impact-card.amber { border-top: 3px solid #c9a84c; }
+
+  /* ── DEMO SCREENSHOTS ── */
+  .demo-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+  .demo-card {
+    background: var(--white); border: 1px solid rgba(0,0,0,0.07);
+    border-radius: 14px; overflow: hidden; box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .demo-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+  .demo-card .demo-img-wrap {
+    background: #f0f4f8; overflow: hidden; height: 200px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .demo-card .demo-img-wrap img {
+    width: 100%; height: 100%; object-fit: cover;
+  }
+  .demo-placeholder {
+    width: 100%; height: 100%; background: linear-gradient(135deg, #e8eef5, #d5e2ee);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 0.5rem; color: var(--muted);
+  }
+  .demo-placeholder i { font-size: 2rem; color: #a0b4c8; }
+  .demo-placeholder span { font-size: 0.78rem; }
+  .demo-card .demo-label {
+    padding: 0.9rem 1.1rem;
+    border-top: 1px solid rgba(0,0,0,0.05);
+  }
+  .demo-card .demo-label strong { display: block; font-size: 0.88rem; color: var(--navy); margin-bottom: 0.2rem; }
+  .demo-card .demo-label span { font-size: 0.78rem; color: var(--muted); }
 
   /* ── TEAM ── */
   .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
@@ -282,7 +360,6 @@
   }
   .social-icon:hover { background: var(--navy); color: var(--gold); }
 
-  /* ── LINKS ── */
   .links-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
   .link-card {
     display: flex; align-items: center; gap: 0.85rem; padding: 1rem 1.25rem;
@@ -300,7 +377,6 @@
   .link-text strong { display: block; color: var(--navy); font-size: 0.88rem; font-weight: 600; }
   .link-text span { color: var(--muted); font-size: 0.76rem; }
 
-  /* ── FOOTER ── */
   footer {
     background: var(--navy); color: rgba(255,255,255,0.4); text-align: center;
     padding: 1.5rem; font-size: 0.78rem;
@@ -308,19 +384,15 @@
   }
   footer span { color: var(--gold); }
 
-  /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
-    .hero-grid, .grid-2, .grid-3, .metrics-grid, .team-grid { grid-template-columns: 1fr; }
+    .hero-grid, .grid-2, .grid-3, .metrics-grid, .team-grid, .impact-grid, .demo-grid { grid-template-columns: 1fr; }
     .pipeline { grid-template-columns: 1fr 1fr; }
-    .pipeline-step:nth-child(2) { border-radius: 0; }
-    .pipeline-step:nth-child(3) { border-radius: 0; }
     .pipeline-step:nth-child(2)::after { display: none; }
     .links-grid { grid-template-columns: 1fr; }
     nav .nav-links { display: none; }
     h1 { font-size: 2rem; }
   }
 
-  /* ── ANIMATIONS ── */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
@@ -335,7 +407,6 @@
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <span class="nav-brand">e20-4yp · CE · Peradeniya</span>
   <ul class="nav-links">
@@ -343,11 +414,11 @@
     <li><a href="#related-works">Related Works</a></li>
     <li><a href="#methodology">Methodology</a></li>
     <li><a href="#results">Results</a></li>
+    <li><a href="#demo">Demo</a></li>
     <li><a href="#team">Team</a></li>
   </ul>
 </nav>
 
-<!-- HERO -->
 <header class="hero">
   <div class="hero-inner">
     <span class="eyebrow">Final Year Project — 2024/2025</span>
@@ -382,8 +453,10 @@
           <li><a href="#methodology" data-num="03">Methodology</a></li>
           <li><a href="#implementation" data-num="04">Implementation</a></li>
           <li><a href="#results" data-num="05">Results & Analysis</a></li>
-          <li><a href="#team" data-num="06">Team</a></li>
-          <li><a href="#links" data-num="07">Links</a></li>
+          <li><a href="#demo" data-num="06">System Demo</a></li>
+          <li><a href="#impact" data-num="07">Impact & Limitations</a></li>
+          <li><a href="#team" data-num="08">Team</a></li>
+          <li><a href="#links" data-num="09">Links</a></li>
         </ul>
       </div>
     </div>
@@ -402,14 +475,14 @@
     <div class="abstract-block">
       <span class="abstract-tag">Overview</span>
       <p>
-        General-purpose language models are unreliable for legal queries in low-resource languages
+        General purpose language models are unreliable for legal queries in low-resource languages
         like Sinhala — they hallucinate sections, misquote provisions, and provide no source traceability.
         This project grounds answer generation entirely on retrieved legal context from Sri Lankan
-        commercial law, initially focused on the Consumer Affairs Authority Act No. 9 of 2003.
+        commercial law.
         Gemini handles intent classification and answer generation in Sinhala, while a hybrid pipeline
-        combining FAISS dense retrieval, BM25 lexical search, and cross-encoder re-ranking handles
+        combining Knowladge Graph,FAISS dense retrieval, BM25 lexical search, and cross-encoder re-ranking handles
         candidate selection — exposed via a Flask API with structured JSON responses, citation grouping,
-        and in-browser PDF download. The result is an auditable, citation-grounded legal assistant
+        and in browser PDF download. The result is an auditable, citation grounded legal assistant
         for everyday citizens.
       </p>
     </div>
@@ -426,7 +499,7 @@
       <div class="card">
         <div class="card-icon"><i class="fas fa-database"></i></div>
         <h3>Retrieval-Augmented Generation</h3>
-        <p>Generation is constrained by retrieved context, targeting hallucination reduction and citation-based answers — the foundational technique behind this system's reliability.</p>
+        <p>Generation is constrained by retrieved context, targeting hallucination reduction and citation based answers — the foundational technique behind this system's reliability and traceability.</p>
       </div>
       <div class="card">
         <div class="card-icon"><i class="fas fa-search"></i></div>
@@ -441,12 +514,12 @@
       <div class="card">
         <div class="card-icon"><i class="fas fa-language"></i></div>
         <h3>Low-Resource NLP</h3>
-        <p>Sinhala has limited NLP tooling. The system leverages Gemini's multilingual capability for generation while using language-agnostic retrieval to sidestep tokenisation gaps.</p>
+        <p>Sinhala has limited NLP tooling. The system leverages Gemini's multilingual capability for generation while using language agnostic retrieval to sidestep tokenisation gaps.</p>
       </div>
       <div class="card">
         <div class="card-icon"><i class="fas fa-layer-group"></i></div>
         <h3>Cross-Encoder Re-ranking</h3>
-        <p>Bi-encoder retrieval is fast but imprecise. A cross-encoder re-ranks top-k candidates by scoring query-document pairs jointly, dramatically improving final precision.</p>
+        <p>Bi-encoder retrieval is fast but imprecise. A cross-encoder re-ranks top k candidates by scoring query-document pairs jointly, dramatically improving final precision.</p>
       </div>
       <div class="card">
         <div class="card-icon"><i class="fas fa-file-alt"></i></div>
@@ -491,38 +564,22 @@
       <div class="card">
         <div class="card-icon"><i class="fas fa-cut"></i></div>
         <h3>Data Preparation & Chunking</h3>
-        <p>
-          Acts are parsed from PDFs and cleaned. Section and subsection boundaries are detected
-          using regex patterns, then recursive character splitting creates retrieval units that
-          preserve legal structure — ensuring no section spans multiple unrelated chunks.
-        </p>
+        <p>Acts are parsed from PDFs and cleaned. Section and subsection boundaries are detected using regex patterns, then recursive character splitting creates retrieval units that preserve legal structure.</p>
       </div>
       <div class="card">
         <div class="card-icon"><i class="fas fa-project-diagram"></i></div>
         <h3>Index Construction</h3>
-        <p>
-          <code style="background:#f0f5ff;padding:0.1rem 0.3rem;border-radius:4px;font-family:'DM Mono',monospace;font-size:0.8rem;">build_faiss.py</code>
-          converts chunks into LangChain documents and stores them in a FAISS index with rich metadata:
-          act name, section number, section title, and source file path for PDF download.
-        </p>
+        <p><code style="background:#f0f5ff;padding:0.1rem 0.3rem;border-radius:4px;font-family:'DM Mono',monospace;font-size:0.8rem;">build_faiss.py</code> converts chunks into LangChain documents and stores them in a FAISS index with rich metadata: act name, section number, section title, and source file path.</p>
       </div>
       <div class="card">
         <div class="card-icon"><i class="fas fa-route"></i></div>
         <h3>Intent-Aware Retrieval Routing</h3>
-        <p>
-          The intent classifier routes each query to the most appropriate retrieval path —
-          section number lookup, full hybrid FAISS/BM25 search, section title search, or
-          a polite non-legal fallback when the query is outside scope.
-        </p>
+        <p>The intent classifier routes each query to the most appropriate retrieval path — section number lookup, full hybrid FAISS/BM25 search, section title search, or a polite non-legal fallback.</p>
       </div>
       <div class="card">
         <div class="card-icon"><i class="fas fa-sort-amount-up"></i></div>
         <h3>Re-ranking & Answer Generation</h3>
-        <p>
-          After merging and deduplicating candidates, a cross-encoder scores each chunk against
-          the query jointly. Gemini then produces a structured Sinhala answer citing only the
-          top-ranked retrieved context — never hallucinating beyond what was retrieved.
-        </p>
+        <p>After merging and deduplicating candidates, a cross-encoder scores each chunk against the query jointly. Gemini then produces a structured Sinhala answer citing only the top-ranked retrieved context.</p>
       </div>
     </div>
 
@@ -543,41 +600,22 @@
       <div class="card">
         <div class="card-icon"><i class="fas fa-server"></i></div>
         <h3>Application Layer</h3>
-        <p>
-          <code style="background:#f0f5ff;padding:0.1rem 0.3rem;border-radius:4px;font-family:'DM Mono',monospace;font-size:0.8rem;">app.py</code>
-          exposes three endpoints: synchronous answer generation, streaming answers for large responses,
-          and PDF download by source. The frontend renders structured answer cards, inline citation
-          badges with section numbers, and a PDF download flow — all over standard REST.
-        </p>
+        <p><code style="background:#f0f5ff;padding:0.1rem 0.3rem;border-radius:4px;font-family:'DM Mono',monospace;font-size:0.8rem;">app.py</code> exposes three endpoints: synchronous answer generation, streaming answers for large responses, and PDF download by source. The frontend renders structured answer cards, inline citation badges, and a PDF download flow.</p>
       </div>
       <div class="card">
         <div class="card-icon"><i class="fas fa-robot"></i></div>
         <h3>Core Orchestration Agent</h3>
-        <p>
-          <code style="background:#f0f5ff;padding:0.1rem 0.3rem;border-radius:4px;font-family:'DM Mono',monospace;font-size:0.8rem;">collab_agent.py</code>
-          orchestrates the full retrieval pipeline, optionally expands full sections when a summary
-          chunk is top-ranked, and logs per-query performance metrics to
-          <code style="background:#f0f5ff;padding:0.1rem 0.3rem;border-radius:4px;font-family:'DM Mono',monospace;font-size:0.8rem;">retrieval_log.jsonl</code>
-          for offline evaluation.
-        </p>
+        <p><code style="background:#f0f5ff;padding:0.1rem 0.3rem;border-radius:4px;font-family:'DM Mono',monospace;font-size:0.8rem;">collab_agent.py</code> orchestrates the full retrieval pipeline, optionally expands full sections when a summary chunk is top-ranked, and logs per-query performance metrics to <code style="background:#f0f5ff;padding:0.1rem 0.3rem;border-radius:4px;font-family:'DM Mono',monospace;font-size:0.8rem;">retrieval_log.jsonl</code>.</p>
       </div>
       <div class="card">
         <div class="card-icon"><i class="fas fa-vials"></i></div>
         <h3>Evaluation Methodology</h3>
-        <p>
-          Two benchmarks were used: an MCQ benchmark testing whether the correct section appears
-          in the top-k retrieved chunks (hit rate), and a short-answer XLSX evaluation scoring
-          the generated Sinhala answer against reference answers by section coverage and accuracy.
-        </p>
+        <p>Two benchmarks were used: an MCQ benchmark testing whether the correct section appears in the top-k retrieved chunks (hit rate), and a short-answer XLSX evaluation scoring the generated Sinhala answer against reference answers by section coverage and accuracy.</p>
       </div>
       <div class="card">
         <div class="card-icon"><i class="fas fa-cogs"></i></div>
         <h3>Tech Stack</h3>
-        <p>
-          Python · Flask · LangChain · FAISS · BM25 (rank_bm25) · Sentence-Transformers
-          (cross-encoder) · Google Gemini API · PDFMiner · Pandas · Vanilla JS frontend.
-          Deployable as a single-process Flask app with pre-built FAISS indices.
-        </p>
+        <p>Python · Flask · LangChain · FAISS · BM25 (rank_bm25) · Sentence-Transformers (cross-encoder) · Google Gemini API · PDFMiner · Pandas · Vanilla JS frontend. Deployable as a single-process Flask app with pre-built FAISS indices.</p>
       </div>
     </div>
   </section>
@@ -590,6 +628,7 @@
       <div class="section-line"></div>
     </div>
 
+    <!-- Top-line metrics -->
     <div class="metrics-grid">
       <div class="metric-card">
         <div class="num">98%</div>
@@ -613,31 +652,172 @@
       </div>
     </div>
 
+    <!-- Embedding Model Evaluation + KG vs RAG side by side -->
+    <div class="grid-2" style="margin-top: 1.25rem;">
+      <div class="eval-table-wrap">
+        <h3><i class="fas fa-vector-square" style="color:var(--gold);margin-right:0.4rem;"></i>Embedding Model Evaluation</h3>
+        <table class="eval-table">
+          <thead>
+            <tr><th>Metric</th><th>Score</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>MRR@10</td><td class="score-val">0.8604</td></tr>
+            <tr><td>Recall@1</td><td class="score-val">0.7576</td></tr>
+            <tr><td>Recall@3</td><td class="score-val">0.9576</td></tr>
+            <tr><td>Recall@5</td><td class="score-val">0.9879</td></tr>
+            <tr><td>Recall@10</td><td class="score-val">1.0000</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="eval-table-wrap">
+        <h3><i class="fas fa-balance-scale" style="color:var(--gold);margin-right:0.4rem;"></i>KG + RAG vs RAG Only</h3>
+        <table class="eval-table">
+          <thead>
+            <tr><th>System Configuration</th><th>Total</th><th>Correct</th><th>Accuracy</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>KG + RAG (Full System)</strong></td><td class="score-val">50</td><td class="score-val">48</td><td class="score-val">96%</td></tr>
+            <tr><td>RAG Only (Baseline)</td><td class="score-val">50</td><td class="score-val">44</td><td class="score-val">88%</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Comparative Analysis -->
+    <div class="eval-table-wrap" style="margin-top: 1.25rem;">
+      <h3><i class="fas fa-chart-bar" style="color:var(--gold);margin-right:0.4rem;"></i>Comparative Analysis With Existing Systems</h3>
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>System</th>
+            <th>MCQ Accuracy</th>
+            <th>Short Answer Score</th>
+            <th>Citation Accuracy (MCQ)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="highlight-row">
+            <td>Our System</td>
+            <td class="score-val">96%</td>
+            <td class="score-val">4.8</td>
+            <td class="score-val">96%</td>
+          </tr>
+          <tr>
+            <td>ChatGPT</td>
+            <td class="score-val">76%</td>
+            <td class="score-val">4.6</td>
+            <td class="score-val">20%</td>
+          </tr>
+          <tr>
+            <td>Gemini 3</td>
+            <td class="score-val">96%</td>
+            <td class="score-val">4.8</td>
+            <td class="score-val">90%</td>
+          </tr>
+          <tr>
+            <td>NotebookLM</td>
+            <td class="score-val">96%</td>
+            <td class="score-val">4.9</td>
+            <td class="score-val">92%</td>
+          </tr>
+          <tr>
+            <td>LankaLaw</td>
+            <td class="score-val">74.4%</td>
+            <td class="score-val">4.7</td>
+            <td class="score-val">55.8%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
     <figure class="figure-block">
       <img src="./images/retrieval-benchmark.svg" alt="Retrieval benchmark comparison" loading="lazy" />
       <figcaption>Fig 2 — Retrieval benchmark comparison: FAISS vs BM25 vs Hybrid</figcaption>
-    </figure>
-    <figure class="figure-block">
-      <img src="./images/evaluation-overview.svg" alt="Evaluation overview" loading="lazy" />
-      <figcaption>Fig 3 — End-to-end evaluation overview</figcaption>
     </figure>
 
     <div class="grid-2" style="margin-top: 1.25rem;">
       <div class="result-callout">
         <strong>🔑 Key Observation</strong>
-        <p>
-          Lexical matching (BM25) substantially outperforms dense-only retrieval on rigid legal
-          phrasing — legal text contains precise terminology that dense embeddings may paraphrase
-          away. This validates the hybrid design decision.
-        </p>
+        <p>Lexical matching (BM25) substantially outperforms dense-only retrieval on rigid legal phrasing — legal text contains precise terminology that dense embeddings may paraphrase away. This validates the hybrid design decision.</p>
       </div>
       <div class="result-callout">
         <strong>⚡ Practical Impact</strong>
-        <p>
-          Hybrid + re-ranking maximises recall while filtering noise. In legal QA, missing the
-          correct section is costlier than over-retrieving — making the 98% hybrid hit rate the
-          most operationally significant result.
-        </p>
+        <p>Hybrid + re-ranking maximises recall while filtering noise. In legal QA, missing the correct section is costlier than over-retrieving — making the 98% hybrid hit rate the most operationally significant result.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SYSTEM DEMO -->
+  <section id="demo">
+    <div class="section-header">
+      <span class="section-num">06</span>
+      <h2>System Demo</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="demo-grid">
+      <div class="demo-card">
+        <div class="demo-img-wrap">
+          <div class="demo-placeholder">
+            <img src="./images/screenshot-home.png" alt="Screenshot of the web frontend with a Sinhala legal question input" loading="lazy" />
+          </div>
+        </div>
+        <div class="demo-label">
+          <strong>Home / Query Interface</strong>
+          <span>User enters a Sinhala legal question into the web frontend</span>
+        </div>
+      </div>
+      <div class="demo-card">
+        <div class="demo-img-wrap">
+          <div class="demo-placeholder">
+            <img src="./images/screenshot-answer.png" alt="Screenshot of the generated answer card with citations and PDF download option" loading="lazy" />
+          </div>
+        </div>
+        <div class="demo-label">
+          <strong>Answer Card with Citations</strong>
+          <span>Structured Sinhala answer returned with section citation badges</span>
+        </div>
+      </div>
+      <div class="demo-card">
+        <div class="demo-img-wrap">
+          <div class="demo-placeholder">
+            <img src="./images/screenshot-pdf.png" alt="Screenshot of the PDF source download option" loading="lazy" />
+          </div>
+        </div>
+        <div class="demo-label">
+          <strong>PDF Source Download</strong>
+          <span>Users can download the cited source PDF directly from the answer view</span>
+        </div>
+      </div>
+      
+    </div>
+    
+  </section>
+
+  <!-- IMPACT & LIMITATIONS -->
+  <section id="impact">
+    <div class="section-header">
+      <span class="section-num">07</span>
+      <h2>Impact & Limitations</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="impact-grid">
+      <div class="impact-card green">
+        <h3><i class="fas fa-chart-line" style="color:#4caf82;"></i> Impact of the Research</h3>
+        <ul>
+          <li>Improves access to legal information in Sinhala</li>
+          <li>Helps citizens and small businesses understand commercial law</li>
+          <li>Structured Legal Knowledge Representation</li>
+          <li>Foundation for Future Legal AI Systems</li>
+        </ul>
+      </div>
+      <div class="impact-card amber">
+        <h3><i class="fas fa-exclamation-triangle" style="color:var(--gold);"></i> Limitations</h3>
+        <ul>
+          <li>Limited Legal Coverage</li>
+          <li>Limited to Sinhala language queries</li>
+          <li>Depends on available legal datasets (Acts and Gazettes)</li>
+          <li>Response Time</li>
+        </ul>
       </div>
     </div>
   </section>
@@ -645,30 +825,27 @@
   <!-- TEAM -->
   <section id="team">
     <div class="section-header">
-      <span class="section-num">06</span>
+      <span class="section-num">08</span>
       <h2>Team</h2>
       <div class="section-line"></div>
     </div>
     <div class="team-grid">
-
       <div class="team-card">
         <img src="https://people.ce.pdn.ac.lk/images/staff/academic-staff/damayanthi-herath.jpg" alt="Dr. Damayanthi Herath" class="team-photo" loading="lazy" />
         <span class="supervisor-badge">Supervisor</span>
         <p class="name">Dr. Damayanthi Herath</p>
         <div class="social-links">
-          <a href="https://people.ce.pdn.ac.lk/staff/academic/damayanthi-herath/" target="_blank" rel="noopener" class="social-icon" title="Profile"><i class="fas fa-user-tie"></i></a>
+          <a href="https://people.ce.pdn.ac.lk/staff/academic/damayanthi-herath/" target="_blank" rel="noopener" class="social-icon"><i class="fas fa-user-tie"></i></a>
         </div>
       </div>
-
       <div class="team-card">
         <img src="https://people.ce.pdn.ac.lk/images/staff/academic-staff/yasodha-vimukthi.jpeg" alt="Ms. Yasodha Vimukthi" class="team-photo" loading="lazy" />
         <span class="supervisor-badge">Supervisor</span>
         <p class="name">Ms. Yasodha Vimukthi</p>
         <div class="social-links">
-          <a href="https://people.ce.pdn.ac.lk/staff/academic/yasodha-vimukthi/" target="_blank" rel="noopener" class="social-icon" title="Profile"><i class="fas fa-user-tie"></i></a>
+          <a href="https://people.ce.pdn.ac.lk/staff/academic/yasodha-vimukthi/" target="_blank" rel="noopener" class="social-icon"><i class="fas fa-user-tie"></i></a>
         </div>
       </div>
-
       <div class="team-card">
         <img src="https://avatars.githubusercontent.com/u/150885177?v=4" alt="T.L.B Mapagedara" class="team-photo" loading="lazy" />
         <span class="member-badge">Team Member</span>
@@ -679,7 +856,6 @@
           <a href="https://people.ce.pdn.ac.lk/students/e20/248/" target="_blank" rel="noopener" class="social-icon"><i class="fas fa-user"></i></a>
         </div>
       </div>
-
       <div class="team-card">
         <img src="https://people.ce.pdn.ac.lk/images/students/e20/e20453.jpg" alt="R.J Yogesh" class="team-photo" loading="lazy" />
         <span class="member-badge">Team Member</span>
@@ -690,14 +866,13 @@
           <a href="https://people.ce.pdn.ac.lk/students/e20/453/" target="_blank" rel="noopener" class="social-icon"><i class="fas fa-user"></i></a>
         </div>
       </div>
-
     </div>
   </section>
 
   <!-- LINKS -->
   <section id="links">
     <div class="section-header">
-      <span class="section-num">07</span>
+      <span class="section-num">09</span>
       <h2>Links</h2>
       <div class="section-line"></div>
     </div>
